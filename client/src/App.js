@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const App = () => {
+import { getLatestRecipes } from './redux/recipes/recipes.actions';
+
+// Components
+import Layout from './components/layout/Layout';
+
+// Pages
+import HomePage from './pages/HomePage';
+
+const App = ({ getLatestRecipes }) => {
+  useEffect(() => {
+    getLatestRecipes();
+  }, [])
+
   return (
-    <div className="App">
-      Tasty recipes
-    </div>
+    <Fragment>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+        </Switch>
+      </Layout>
+    </Fragment>
   );
 }
 
-export default App;
+export default connect(null, { getLatestRecipes })(App);
