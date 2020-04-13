@@ -1,11 +1,12 @@
 import React from 'react';
+
+// Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
 
 const HomePage = () => {
   return (
-    <main>
+    <main className='homepage'>
       <Jumbotron fluid imgUrl='site1.jpg' />
-      <h2>Hello?</h2>
     </main>
   )
 }

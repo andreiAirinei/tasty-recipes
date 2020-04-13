@@ -1,9 +1,25 @@
 import {
+  GET_ALL_RECIPES,
   GET_LATEST_RECIPES,
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_SINGLE_RECIPE
 } from './recipes.types';
+
+// Get ALL recipes
+export const getAllRecipes = () => async dispatch => {
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/search.php?s=`);
+    const data = await res.json();
+
+    dispatch({
+      type: GET_ALL_RECIPES,
+      payload: data.meals
+    });
+  } catch (err) {
+    console.log(err.response.statusText);
+  }
+}
 
 // Get latest list of recipes
 export const getLatestRecipes = () => async dispatch => {

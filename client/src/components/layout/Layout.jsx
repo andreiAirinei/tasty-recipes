@@ -5,9 +5,6 @@ import AppHelmet from './AppHelmet';
 import Header from './Header';
 import Footer from './Footer';
 
-// Bootstrap Components
-import Container from 'react-bootstrap/Container';
-
 const Layout = (props) => {
   return (
     <Fragment>
@@ -17,9 +14,7 @@ const Layout = (props) => {
       <div className='d-flex flex-column min-vh-100'>
         <div className="flex-grow-1">
           <Header />
-          <Container fluid='xl' >
-            {props.children}
-          </Container>
+          {props.children}
         </div>
         <Footer />
       </div>

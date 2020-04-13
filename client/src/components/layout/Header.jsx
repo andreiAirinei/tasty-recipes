@@ -9,7 +9,7 @@ const Header = () => {
     <Fragment>
       <nav className='header-navbar'>
         <Container fluid='xl'>
-          <div className="navbar-content d-flex align-items-center justify-content-between py-3">
+          <div className="navbar-content d-flex align-items-center justify-content-between pt-2 ">
             <div></div>
             <div className='brand'>
               <Link to='/'>
