@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import ReactLogo from '../../assets/svgs/solid/search.svg';
 
 import { getAllRecipes } from '../../redux/recipes/recipes.actions';
 
-// Bootstrap Components
-import Button from 'react-bootstrap/Button';
-
-const Searchbar = ({ history, match, getAllRecipes, allRecipes }) => {
+const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
   const [parameters, setParameters] = useState({});
-  // useEffect(() => {
-  //   getAllRecipes();
-  // }, []);
 
   const handleClick = () => allRecipes === null && getAllRecipes();
 
@@ -45,7 +39,8 @@ const Searchbar = ({ history, match, getAllRecipes, allRecipes }) => {
         openMenuOnClick={false}
         noOptionsMessage={() => 'No recipes found.'}
         components={{ DropdownIndicator: () => null }}
-        className='w-100'
+        className='searchbar-select w-100'
+        classNamePrefix="select"
         onChange={setParameters}
         onKeyDown={handleKeyDown}
       />

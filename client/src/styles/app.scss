@@ -68,6 +68,30 @@
   img {
     width: 25px;
   }
+
+  &-select {
+    
+    .select__menu-list::-webkit-scrollbar {
+      width: 5px !important; 
+      height: 0px;
+    }
+
+    .select__menu-list::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+      border-radius: 10px;
+      margin: 5px 0;
+    }
+
+    .select__menu-list::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: var(--danger);
+    }
+  }
+
+  &-select::-webkit-scrollbar {
+    width: 5px;
+  }
 }
 
 .results {
@@ -105,4 +129,66 @@
 .results::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--danger);
+}
+
+// ContentSlider
+.content-slider {
+  overflow: hidden;
+}
+
+.slider-next-arrow {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  height: 100%;
+  transform: translateX(75%);
+}
+
+.slider-previous-arrow {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  transform: translateX(-75%);
+}
+
+.next-arrow-container,
+.previous-arrow-container {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  opacity: 0.93;
+  cursor: pointer;
+
+  .slider-button {
+    border: none;
+    opacity: 0.93;
+    outline: none;
+
+    img {
+      width: 15px;
+    }
+  }
+
+  &:hover,
+  &:hover .slider-button {
+    background:#e9e9e9 !important;
+  }
+}
+
+// SliderItem.jsx
+.slider-item-img {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, transparent, 85%, #fff);
+  }
 }
