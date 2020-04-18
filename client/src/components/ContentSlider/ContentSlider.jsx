@@ -5,58 +5,26 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
-import { getRandomMultipleRecipes } from '../../redux/recipes/recipes.actions';
+import { getRandomMultipleRecipes, getLatestRecipes } from '../../redux/recipes/recipes.actions';
 
 // Components
 import SliderItem from './SliderItem';
 import CustomNextArrow from './CustomNextArrow';
 import CustomPreviousArrow from './CustomPreviousArrow';
+import SliderNavbar from './SliderNavbar';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const ContentSlider = ({ getRandomMultipleRecipes, randomMultiple }) => {
+const ContentSlider = ({ getRandomMultipleRecipes, getLatestRecipes, randomMultiple }) => {
   useEffect(() => {
     getRandomMultipleRecipes();
+
   }, []);
 
-  const handleItemClick = (e) => {
-    console.log(e.target);
-  }
-
-  // Slider settings
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4.5,
-    slidesToScroll: 1,
-    centerMode: true,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPreviousArrow />,
-    responsive: [
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 3.5,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2.5
-        }
-      },
-      {
-        breakpoint: 560,
-        settings: {
-          slidesToShow: 1.5,
-        }
-      }
-    ]
-  };
-
   return (
-    <Container fluid='xl' className='px-0 my-5'>
+    <Container fluid='xl' className='px-0 mb-5'>
+      <SliderNavbar />
       <Slider {...settings} className='content-slider'>
         {
           randomMultiple && randomMultiple.map(recipe =>
@@ -66,25 +34,52 @@ const ContentSlider = ({ getRandomMultipleRecipes, randomMultiple }) => {
               name={recipe.strMeal}
               category={recipe.strCategory}
               imgURL={recipe.strMealThumb}
-              onClick={handleItemClick} />
+            />
           )
         }
-        {/* <SliderItem
-          name='Soy Glazed Meatloves with Wasabi Mashed Potatoes & Roasted Carrots'
-          imgURL='https://www.themealdb.com/images/media/meals/kvbotn1581012881.jpg'
-          category='Ceva Bun'
-        /> */}
       </Slider>
     </Container>
   )
 }
+
+// Slider settings
+const settings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4.5,
+  slidesToScroll: 1,
+  centerMode: true,
+  nextArrow: <CustomNextArrow />,
+  prevArrow: <CustomPreviousArrow />,
+  responsive: [
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 3.5,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2.5
+      }
+    },
+    {
+      breakpoint: 560,
+      settings: {
+        slidesToShow: 1.5,
+      }
+    }
+  ]
+};
 
 const mapStateToProps = state => ({
   randomMultiple: state.recipes.randomMultiple
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRandomMultipleRecipes: () => dispatch(getRandomMultipleRecipes())
+  getRandomMultipleRecipes: () => dispatch(getRandomMultipleRecipes()),
+  getLatestRecipes: () => dispatch(getLatestRecipes())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentSlider);
