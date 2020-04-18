@@ -44,7 +44,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
         onChange={setParameters}
         onKeyDown={handleKeyDown}
       />
-      <Link to='/meal' variant="danger" className="btn btn-danger search-icon px-4">
+      <Link to='/recipe' variant="danger" className="btn btn-danger search-icon px-4">
         <img src={ReactLogo} alt="Search Icon" />
       </Link>
     </div>

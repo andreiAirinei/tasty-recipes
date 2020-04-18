@@ -12,6 +12,26 @@
   min-height: 100vh;
 }
 
+.text-size-08 {
+  font-size: 0.8rem;
+}
+
+.text-size-1 {
+  font-size: 1rem;
+}
+
+.l-spacing-1 {
+  letter-spacing: 1px;
+}
+
+.l-spacing-2 {
+  letter-spacing: 2px;
+ }
+
+.color-1 {
+  color: #888;
+}
+
 // Header.jsx
 .header-navbar {
   .brand {
@@ -86,6 +106,10 @@
     .select__menu-list::-webkit-scrollbar-thumb {
       border-radius: 10px;
       background: var(--danger);
+    }
+
+    .select__value-container:hover {
+      cursor: text;
     }
   }
 
@@ -179,16 +203,64 @@
 }
 
 // SliderItem.jsx
-.slider-item-img {
-  position: relative;
 
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to bottom, transparent, 85%, #fff);
+.content-slider {
+  .slick-slide {
+    max-width: 200px;
+
+    .slider-item {
+      max-width: inherit;
+    
+      .slider-item-img {
+        position: relative;
+        max-width: inherit;
+        height: 260px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        overflow: hidden;
+      
+        img {
+          height: 100%;
+          width: auto;
+        }
+      
+        .card-img-top {
+          display: block;
+          height: 100%;
+          margin: 0 auto;
+          transform: translateX(-10%)
+        }
+      
+        &::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 3;
+          background-image: linear-gradient(to bottom, transparent, 88%, #fff);
+        }
+      }
+    
+      &:hover .slider-item-img {
+        opacity: 0.8;
+      }
+
+      .card-layout {
+        min-height: 130px;
+      }
+    }
+  }
+}
+
+// CardItemFooter.jsx
+.card-item-footer {
+  .recipe-difficulty {
+    &-image {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
   }
 }

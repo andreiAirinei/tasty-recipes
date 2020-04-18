@@ -41,9 +41,15 @@ const ContentSlider = ({ getRandomMultipleRecipes, randomMultiple }) => {
         }
       },
       {
-        breakpoint: 500,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2.5
+        }
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1.5,
         }
       }
     ]
@@ -63,11 +69,11 @@ const ContentSlider = ({ getRandomMultipleRecipes, randomMultiple }) => {
               onClick={handleItemClick} />
           )
         }
-        <SliderItem
+        {/* <SliderItem
           name='Soy Glazed Meatloves with Wasabi Mashed Potatoes & Roasted Carrots'
           imgURL='https://www.themealdb.com/images/media/meals/kvbotn1581012881.jpg'
           category='Ceva Bun'
-        />
+        /> */}
       </Slider>
     </Container>
   )

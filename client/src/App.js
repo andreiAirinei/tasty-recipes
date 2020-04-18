@@ -6,7 +6,7 @@ import Layout from './components/layout/Layout';
 
 // Pages
 import HomePage from './pages/HomePage';
-import MealPage from './pages/MealPage';
+import RecipePage from './pages/RecipePage';
 
 const App = () => {
 
@@ -15,7 +15,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/meal' component={MealPage} />
+          <Route exact path='/recipe' component={RecipePage} />
         </Switch>
       </Layout>
     </Fragment>
