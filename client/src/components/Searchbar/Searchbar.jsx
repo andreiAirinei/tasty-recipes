@@ -7,13 +7,14 @@ import ReactLogo from '../../assets/svgs/solid/search.svg';
 import { getAllRecipes } from '../../redux/recipes/recipes.actions';
 
 const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
-  const [parameters, setParameters] = useState({});
+  const [parameters, setParameters] = useState('');
 
   const handleClick = () => allRecipes === null && getAllRecipes();
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      history.push(`/meal`);
+    // Execute history push only if parameters are not empty
+    if (e.key === 'Enter' && parameters !== '') {
+      history.push(`/meal/${parameters.value}`);
     };
   }
 
@@ -32,7 +33,8 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
     <div className='searchbar mt-3 d-flex' onClick={handleClick}>
       <Select
         theme={customTheme}
-        options={allRecipes}
+        // Empty array as 'options' if recipes list is not ready
+        options={allRecipes ? allRecipes : []}
         placeholder='Search...'
         isClearable
         isSearchable

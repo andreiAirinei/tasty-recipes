@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import CardItemFooter from '../CardItemFooter/CardItemFooter';
+import CardItemFooter from '../../CardItemFooter/CardItemFooter';
 
 // Bootstrap Components
 import Card from 'react-bootstrap/Card';
 
-const shortenTitle = (title) => {
-  let words = title.split(" ");
-  let newTitle = '';
-  for (let i = 0; i < 4; i++) {
-    if (words[i] === undefined) break;
-    newTitle += words[i] + " ";
-  }
-  return newTitle;
-}
-
 const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
+
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const handleImageLoaded = () => setImageLoading(false);
+
   return (
     <Link to='/recipe' className='text-decoration-none text-dark'>
       <Card className='slider-item mx-1 border-0' onClick={onClick}>
         <div className="slider-item-img">
-          <Card.Img variant="top" src={`${imgURL}`} />
+          <Card.Img
+            variant="top"
+            src={`${imgURL}`}
+            onLoad={handleImageLoaded}
+            className={`${imageLoading && 'd-none'}`} />
         </div>
         <div className="card-layout d-flex flex-column justify-content-between">
           <div className="card-layout-top">
@@ -38,8 +37,17 @@ const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
 
       </Card>
     </Link>
-
   )
+}
+
+const shortenTitle = (title) => {
+  let words = title.split(" ");
+  let newTitle = '';
+  for (let i = 0; i < 4; i++) {
+    if (words[i] === undefined) break;
+    newTitle += words[i] + " ";
+  }
+  return newTitle;
 }
 
 export default SliderItem;

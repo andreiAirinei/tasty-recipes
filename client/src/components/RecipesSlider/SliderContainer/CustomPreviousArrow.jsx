@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactLogo from '../../assets/svgs/solid/arrow-left.svg';
+import ReactLogo from '../../../assets/svgs/solid/arrow-left.svg';
 
 const CustomPreviousArrow = (props) => {
   const { onClick } = props;
