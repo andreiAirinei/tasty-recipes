@@ -7,9 +7,9 @@ import Slider from 'react-slick';
 
 // Components
 import SliderItem from './SliderItem';
-import CustomNextArrow from './CustomNextArrow';
-import CustomPreviousArrow from './CustomPreviousArrow';
-import LoadingSpinner from '../../layout/LoadingSpinner';
+import CustomNextArrow from '../../customisations/CustomNextArrow';
+import CustomPreviousArrow from '../../customisations/CustomPreviousArrow';
+import LoadingSpinner from '../../../layout/LoadingSpinner';
 
 const SliderContainer = ({ toShow }) => {
 

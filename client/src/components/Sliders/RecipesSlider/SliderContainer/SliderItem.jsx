@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import CardItemFooter from '../../CardItemFooter/CardItemFooter';
+import CardItemFooter from '../../../CardItemFooter/CardItemFooter';
 
 // Bootstrap Components
 import Card from 'react-bootstrap/Card';

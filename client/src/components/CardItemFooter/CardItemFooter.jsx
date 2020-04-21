@@ -3,7 +3,7 @@ import { ReactComponent as SilverChefHat } from '../../assets/difficulty-silver.
 import { ReactComponent as OrangeChefHat } from '../../assets/difficulty-orange.svg';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
 
-const CardItemFooter = ({ difficulty, time }) => {
+const CardItemFooter = () => {
   const [state, setState] = useState({
     difficulty: null,
     time: null
@@ -11,7 +11,6 @@ const CardItemFooter = ({ difficulty, time }) => {
 
   useEffect(() => {
     setState({
-      ...state,
       difficulty: getRandomDifficulty(),
       time: getRandomTime()
     });
