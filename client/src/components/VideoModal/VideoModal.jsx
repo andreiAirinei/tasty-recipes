@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
 
 // Redux

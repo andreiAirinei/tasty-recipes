@@ -9,10 +9,8 @@ import Slider from 'react-slick';
 import VideoSliderItem from './VideoSliderItem';
 import CustomNextArrow from '../../customisations/CustomNextArrow';
 import CustomPreviousArrow from '../../customisations/CustomPreviousArrow';
-import LoadingSpinner from '../../../layout/LoadingSpinner';
 
 const VideoSliderContainer = ({ toShow }) => {
-  console.log(toShow)
   return (
     <div className='video-slider-container'>
       <Slider {...settings} >

@@ -22,16 +22,22 @@ const VideoSliderItem = ({
 
   useEffect(() => {
     if (youtubeURL) setYoutubeID(youtubeURL.split('?v=')[1]);
-  });
+  }, [youtubeURL]);
 
   const handleImageError = (e) => {
-    // { e.target.onerror = null; e.target.src = "image_path_here" }
+    console.log('error');
+    e.target.src = 'https://i.ibb.co/9sYvpxK/logo.png';
   }
 
   const handleThumbnailClick = () => {
     setVideoURL(youtubeURL);
     modalOpen();
   }
+
+  // YouTube broken links or thumbnails do no trigger onError, thus we have to check if the image loaded is the default YouTube broken thumbnail
+  // const handleImageLoad = ({ target: img }) => {
+  //   if (img.offsetHeight < 100) img.src = 'https://i.ibb.co/xL66Rsx/94116922-2541779732750087-1891164320511819776-n.jpg';
+  // }
 
   return (
     <div className='video-slider-item m-2'>
@@ -41,6 +47,7 @@ const VideoSliderItem = ({
           rounded
           fluid
           onError={handleImageError}
+        // onLoad={handleImageLoad}
         />
         <div className="overlay d-flex align-content-center align-items-center justify-content-center">
           <div className="overlay-image bg-white text-center">

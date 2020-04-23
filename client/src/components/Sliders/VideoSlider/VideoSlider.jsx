@@ -13,9 +13,8 @@ import Container from 'react-bootstrap/Container';
 const VideoSlider = ({ getLatestRecipes, latestRecipes, getRandomMultipleRecipes, randomMultiple }) => {
   useEffect(() => {
     if (randomMultiple.data === null) getRandomMultipleRecipes();
+    // eslint-disable-next-line
   }, []);
-
-  console.log(randomMultiple.data);
 
   return (
     <Container className='video-slider px-0 my-5' fluid='xl'>
