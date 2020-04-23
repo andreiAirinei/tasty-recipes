@@ -4,7 +4,7 @@ import {
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_SINGLE_RECIPE,
-  SET_LOADING
+  SET_LOADING,
 } from './recipes.types';
 
 // Get ALL recipes
@@ -32,7 +32,7 @@ export const getLatestRecipes = () => async dispatch => {
     dispatch({
       type: GET_LATEST_RECIPES,
       payload: {
-        // data: null,
+        data: null,
         isLoading: true
       }
     })
@@ -77,6 +77,7 @@ export const getRandomMultipleRecipes = () => async dispatch => {
     dispatch({
       type: GET_RANDOM_MULTIPLE_RECIPES,
       payload: {
+        data: null,
         isLoading: true
       }
     });

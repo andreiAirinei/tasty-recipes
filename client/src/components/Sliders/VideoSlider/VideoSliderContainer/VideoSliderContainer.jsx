@@ -6,39 +6,38 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
 // Components
-import SliderItem from './SliderItem';
+import VideoSliderItem from './VideoSliderItem';
 import CustomNextArrow from '../../customisations/CustomNextArrow';
 import CustomPreviousArrow from '../../customisations/CustomPreviousArrow';
 import LoadingSpinner from '../../../layout/LoadingSpinner';
 
-const SliderContainer = ({ toShow }) => {
-
-  if (toShow.isLoading || toShow.data === null) return <LoadingSpinner />;
-
+const VideoSliderContainer = ({ toShow }) => {
+  console.log(toShow)
   return (
-    <Slider {...settings} className='slider-container'>
-      {
-        toShow.data && toShow.data.map(recipe =>
-          <SliderItem
-            key={recipe.idMeal}
-            recipeID={recipe.idMeal}
-            name={recipe.strMeal}
-            category={recipe.strCategory}
-            imgURL={recipe.strMealThumb}
-          />
-        )
-      }
-    </Slider>
+    <div className='video-slider-container'>
+      <Slider {...settings} >
+        {
+          toShow.data && toShow.data.map(recipe =>
+            recipe.strYoutube && <VideoSliderItem
+              key={recipe.idMeal}
+              youtubeURL={recipe.strYoutube}
+              title={recipe.strMeal}
+              category={recipe.strCategory}
+            />
+          )
+        }
+      </Slider>
+    </div>
   )
 };
 
-// Slider settings
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 4.5,
+  slidesToShow: 3.7,
   slidesToScroll: 1,
   centerMode: true,
+  initialSlide: 5,
   nextArrow: <CustomNextArrow />,
   prevArrow: <CustomPreviousArrow />,
   responsive: [
@@ -69,5 +68,4 @@ const settings = {
   ]
 };
 
-
-export default SliderContainer;
+export default VideoSliderContainer;
