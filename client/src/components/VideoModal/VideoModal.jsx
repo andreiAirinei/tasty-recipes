@@ -5,12 +5,13 @@ import YouTubePlayer from 'react-player/lib/players/YouTube';
 import { connect } from 'react-redux';
 import { modalClose } from '../../redux/videoModal/videoModal.actions';
 
+// Components
+import ReactLogo from '../../assets/close-button.svg';
+
 // Bootstrap Components
 import Modal from 'react-bootstrap/Modal';
 
 const VideoModal = ({ active, videoURL, modalClose }) => {
-
-  const onHide = () => modalClose();
 
   return (
     <Modal
@@ -18,10 +19,14 @@ const VideoModal = ({ active, videoURL, modalClose }) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={active}
-      onHide={onHide}
+      onHide={modalClose}
     >
-      <Modal.Header closeButton className='p-0 pr-2' />
-      <Modal.Body className='p-0'>
+      <Modal.Body className='video-modal-body p-0'>
+        <div className="modal-close">
+          <button className='modal-close-btn' onClick={modalClose}>
+            <img src={ReactLogo} alt="Button Close" />
+          </button>
+        </div>
         <YouTubePlayer
           url={videoURL}
           playing={true}
