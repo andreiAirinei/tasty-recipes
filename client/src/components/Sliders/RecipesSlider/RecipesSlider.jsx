@@ -51,7 +51,6 @@ const RecipesSlider = ({
             state.showRandom ? 'showRandom' : null
         }
       />
-      <hr />
       {
         state.showLatest && <SliderContainer
           toShow={latestRecipes}

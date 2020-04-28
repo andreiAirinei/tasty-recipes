@@ -41,7 +41,7 @@ const VideoSliderItem = ({
 
   return (
     <div className='video-slider-item m-2'>
-      <div className="thumbnail" onClick={handleThumbnailClick}>
+      <div className="thumbnail box-shadow" onClick={handleThumbnailClick}>
         <Image
           src={`https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`}
           rounded

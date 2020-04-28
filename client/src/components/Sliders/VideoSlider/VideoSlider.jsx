@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { getLatestRecipes, getRandomMultipleRecipes } from '../../../redux/recipes/recipes.actions';
 
 // Components
+import SectionTitle from '../../layout/SectionTitle';
 import VideoSliderContainer from './VideoSliderContainer/VideoSliderContainer';
+import SliderNavbar from '../RecipesSlider/SliderNavbar';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
@@ -18,8 +20,8 @@ const VideoSlider = ({ getLatestRecipes, latestRecipes, getRandomMultipleRecipes
 
   return (
     <Container className='video-slider px-0 my-5' fluid='xl'>
-      <h1 className='text-center'>Latest Videos</h1>
-      <hr />
+      <SectionTitle title='Video Recipes' />
+      {/* <SliderNavbar /> */}
       <VideoSliderContainer toShow={randomMultiple} />
     </Container>
   )
