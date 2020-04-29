@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { getLatestRecipes, getRandomMultipleRecipes } from '../../../redux/recipes/recipes.actions';
+import { getRandomMultipleRecipes } from '../../../redux/recipes/recipes.actions';
 
 // Components
 import SectionTitle from '../../layout/SectionTitle';
 import VideoSliderContainer from './VideoSliderContainer/VideoSliderContainer';
-import SliderNavbar from '../RecipesSlider/SliderNavbar';
+import SliderNavbar from '../SliderNavbar';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const VideoSlider = ({ getLatestRecipes, latestRecipes, getRandomMultipleRecipes, randomMultiple }) => {
+const VideoSlider = ({ latestRecipes, getRandomMultipleRecipes, randomMultiple }) => {
   useEffect(() => {
     if (randomMultiple.data === null) getRandomMultipleRecipes();
     // eslint-disable-next-line
@@ -22,7 +22,7 @@ const VideoSlider = ({ getLatestRecipes, latestRecipes, getRandomMultipleRecipes
     <Container className='video-slider px-0 my-5' fluid='xl'>
       <SectionTitle title='Video Recipes' />
       {/* <SliderNavbar /> */}
-      <VideoSliderContainer toShow={randomMultiple} />
+      <VideoSliderContainer toShow={latestRecipes} />
     </Container>
   )
 }
@@ -33,7 +33,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getLatestRecipes: () => dispatch(getLatestRecipes()),
   getRandomMultipleRecipes: () => dispatch(getRandomMultipleRecipes())
 })
 

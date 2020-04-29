@@ -4,7 +4,7 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 
 const SliderNavbar = ({ activeKey, handleSelect }) => {
-
+  console.log(activeKey);
   return (
     <Nav variant="tabs"
       defaultActiveKey={activeKey}
@@ -19,7 +19,7 @@ const SliderNavbar = ({ activeKey, handleSelect }) => {
         <Nav.Link eventKey='showRandom' className='text-size-1 l-spacing-2' >
           <div className="d-flex align-items-center">
             <span className='mr-1'>Random</span>
-            <img src={require('../../../assets/dice.svg')} alt="Dice" />
+            <img src={require('../../assets/dice.svg')} alt="Dice" />
           </div>
         </Nav.Link>
       </Nav.Item>

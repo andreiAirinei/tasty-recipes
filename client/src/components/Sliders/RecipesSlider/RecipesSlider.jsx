@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { getRandomMultipleRecipes, getLatestRecipes } from '../../../redux/recipes/recipes.actions';
 
 // Components
-import SliderNavbar from './SliderNavbar';
+import SliderNavbar from '../SliderNavbar';
 import SliderContainer from './SliderContainer/SliderContainer';
+import LoadingSpinner from '../../layout/LoadingSpinner';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const RecipesSlider = ({
-  getLatestRecipes,
-  getRandomMultipleRecipes,
-  latestRecipes,
-  randomMultiple
-}) => {
+const RecipesSlider = ({ latestRecipes }) => {
   const [state, setState] = useState({
-    showLatest: true,
-    showRandom: false
+    showRandomRecipes: false,
+    data: null,
+    isLoading: false
   });
-
-  useEffect(() => {
-    if (state.showLatest) getLatestRecipes();
-    if (state.showRandom) getRandomMultipleRecipes();
-    // eslint-disable-next-line
-  }, []);
 
   const handleSelect = (eventKey) => {
     if (eventKey === 'showLatest') {
-      getLatestRecipes();
-      setState({
-        showLatest: true, showRandom: false
-      });
+      setState({ ...state, showRandomRecipes: false });
     } else if (eventKey === 'showRandom') {
-      getRandomMultipleRecipes();
+      // setState({ ...state, showRandomRecipes: true, isLoading: true });
+      fetchRandomRecipes();
+    }
+  }
+
+  const fetchRandomRecipes = async () => {
+    setState({ ...state, isLoading: true });
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/randomselection.php`);
+      const jsonData = await res.json();
+
       setState({
-        showLatest: false, showRandom: true
-      });
+        ...state,
+        showRandomRecipes: true,
+        data: jsonData.meals,
+        isLoading: false
+      })
+    } catch (err) {
+      console.log(err.response.statusText);
     }
   }
 
@@ -47,34 +49,19 @@ const RecipesSlider = ({
       <SliderNavbar
         handleSelect={handleSelect}
         activeKey={
-          state.showLatest ? 'showLatest' :
-            state.showRandom ? 'showRandom' : null
-        }
-      />
+          state.showRandomRecipes ? 'showRandom' : 'showLatest'
+        } />
       {
-        state.showLatest && <SliderContainer
-          toShow={latestRecipes}
-          activeKey={'showLatest'}
-        />
+
       }
-      {
-        state.showRandom && <SliderContainer
-          toShow={randomMultiple}
-          activeKey={'showRandom'}
-        />
-      }
+      <SliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} />
+
     </Container>
   )
 }
 
 const mapStateToProps = state => ({
-  latestRecipes: state.recipes.latestRecipes,
-  randomMultiple: state.recipes.randomMultiple
+  latestRecipes: state.recipes.latestRecipes
 });
 
-const mapDispatchToProps = dispatch => ({
-  getLatestRecipes: () => dispatch(getLatestRecipes()),
-  getRandomMultipleRecipes: () => dispatch(getRandomMultipleRecipes())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesSlider);
+export default connect(mapStateToProps)(RecipesSlider);

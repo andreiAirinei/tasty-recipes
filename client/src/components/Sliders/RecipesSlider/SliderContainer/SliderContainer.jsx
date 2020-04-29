@@ -12,6 +12,8 @@ import CustomPreviousArrow from '../../customisations/CustomPreviousArrow';
 import LoadingSpinner from '../../../layout/LoadingSpinner';
 
 const SliderContainer = ({ toShow }) => {
+  console.log('slider container');
+  console.log(toShow.isLoading);
 
   if (toShow.isLoading || toShow.data === null) return <LoadingSpinner />;
 
@@ -68,6 +70,5 @@ const settings = {
     }
   ]
 };
-
 
 export default SliderContainer;
