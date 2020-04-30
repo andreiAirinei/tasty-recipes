@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ReactLogo from '../../../../assets/play-button.svg'
+import ReactLogo from '../../../assets/play-button.svg'
 
 // Redux
 import { connect } from 'react-redux';
 import {
   modalOpen,
   setVideoURL
-} from '../../../../redux/videoModal/videoModal.actions';
+} from '../../../redux/videoModal/videoModal.actions';
 
 // Bootstrap Components
 import Image from 'react-bootstrap/Image';

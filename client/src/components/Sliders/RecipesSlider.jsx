@@ -1,41 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
 
 // Components
-import SliderNavbar from '../SliderNavbar';
+import SliderNavbar from './SliderNavbar';
 import SliderContainer from './SliderContainer/SliderContainer';
-import LoadingSpinner from '../../layout/LoadingSpinner';
+import VideoSliderContainer from './VideoSliderContainer/VideoSliderContainer';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const RecipesSlider = ({ latestRecipes }) => {
+const RecipesSlider = ({ latestRecipes, isVideo = false }) => {
   const [state, setState] = useState({
-    showRandomRecipes: false,
+    showRandomRecipes: null,
     data: null,
     isLoading: false
   });
+
+  useEffect(() => {
+    if (state.showRandomRecipes) fetchRandomRecipes();
+  }, [state.isLoading]);
 
   const handleSelect = (eventKey) => {
     if (eventKey === 'showLatest') {
       setState({ ...state, showRandomRecipes: false });
     } else if (eventKey === 'showRandom') {
-      // setState({ ...state, showRandomRecipes: true, isLoading: true });
-      fetchRandomRecipes();
+      setState({ ...state, showRandomRecipes: true, isLoading: true });
     }
   }
 
   const fetchRandomRecipes = async () => {
-    setState({ ...state, isLoading: true });
+    console.log(state.showRandomRecipes, state.isLoading);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/randomselection.php`);
       const jsonData = await res.json();
 
       setState({
         ...state,
-        showRandomRecipes: true,
         data: jsonData.meals,
         isLoading: false
       })
@@ -52,10 +54,9 @@ const RecipesSlider = ({ latestRecipes }) => {
           state.showRandomRecipes ? 'showRandom' : 'showLatest'
         } />
       {
-
+        isVideo ? <VideoSliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} /> :
+          <SliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} />
       }
-      <SliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} />
-
     </Container>
   )
 }

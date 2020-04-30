@@ -4,7 +4,6 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 
 const SliderNavbar = ({ activeKey, handleSelect }) => {
-  console.log(activeKey);
   return (
     <Nav variant="tabs"
       defaultActiveKey={activeKey}

@@ -6,10 +6,10 @@ import { getLatestRecipes } from '../redux/recipes/recipes.actions';
 
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
-import RecipesSlider from '../components/Sliders/RecipesSlider/RecipesSlider';
+import RecipesSlider from '../components/Sliders/RecipesSlider';
 import VideoBanner from '../components/VideoBanner/VideoBanner';
-import VideoSlider from '../components/Sliders/VideoSlider/VideoSlider';
 import VideoModal from '../components/VideoModal/VideoModal';
+import SectionTitle from '../components/layout/SectionTitle';
 
 const HomePage = ({ getLatestRecipes }) => {
   useEffect(() => {
@@ -21,7 +21,8 @@ const HomePage = ({ getLatestRecipes }) => {
       <Jumbotron fluid imgUrl='site1.jpg' />
       <RecipesSlider />
       <VideoBanner />
-      <VideoSlider />
+      <SectionTitle title='Video Recipes' />
+      <RecipesSlider isVideo />
       <VideoModal />
     </main>
   )
