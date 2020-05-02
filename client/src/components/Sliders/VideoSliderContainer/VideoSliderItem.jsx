@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactLogo from '../../../assets/play-button.svg'
 
 // Redux
@@ -15,14 +15,12 @@ const VideoSliderItem = ({
   youtubeURL,
   title,
   category,
+  imageURL,
   modalOpen,
   setVideoURL
 }) => {
-  const [youtubeID, setYoutubeID] = useState('');
 
-  useEffect(() => {
-    if (youtubeURL) setYoutubeID(youtubeURL.split('?v=')[1]);
-  }, [youtubeURL]);
+  console.log(imageURL);
 
   const handleImageError = (e) => {
     console.log('error');
@@ -34,16 +32,11 @@ const VideoSliderItem = ({
     modalOpen();
   }
 
-  // YouTube broken links or thumbnails do no trigger onError, thus we have to check if the image loaded is the default YouTube broken thumbnail
-  // const handleImageLoad = ({ target: img }) => {
-  //   if (img.offsetHeight < 100) img.src = 'https://i.ibb.co/xL66Rsx/94116922-2541779732750087-1891164320511819776-n.jpg';
-  // }
-
   return (
     <div className='video-slider-item m-2'>
-      <div className="thumbnail box-shadow" onClick={handleThumbnailClick}>
+      <div className="thumbnail" onClick={handleThumbnailClick}>
         <Image
-          src={`https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`}
+          src={imageURL}
           rounded
           fluid
           onError={handleImageError}

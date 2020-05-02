@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='bg-dark'>
+    <footer className='footer bg-dark'>
       <h1 className='text-white'>Footer</h1>
-    </div>
+    </footer>
   )
 }
 

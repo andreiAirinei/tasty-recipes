@@ -9,7 +9,7 @@ import Jumbotron from '../components/Jumbotron/Jumbotron';
 import RecipesSlider from '../components/Sliders/RecipesSlider';
 import VideoBanner from '../components/VideoBanner/VideoBanner';
 import VideoModal from '../components/VideoModal/VideoModal';
-import SectionTitle from '../components/layout/SectionTitle';
+import CategoriesContainer from '../components/CategoriesSection/CategoriesContainer';
 
 const HomePage = ({ getLatestRecipes }) => {
   useEffect(() => {
@@ -20,9 +20,9 @@ const HomePage = ({ getLatestRecipes }) => {
     <main className='homepage'>
       <Jumbotron fluid imgUrl='site1.jpg' />
       <RecipesSlider />
+      <CategoriesContainer />
       <VideoBanner />
-      <SectionTitle title='Video Recipes' />
-      <RecipesSlider isVideo />
+      <RecipesSlider title='Video Recipes' isVideo />
       <VideoModal />
     </main>
   )

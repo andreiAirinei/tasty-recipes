@@ -9,8 +9,11 @@ import Slider from 'react-slick';
 import VideoSliderItem from './VideoSliderItem';
 import CustomNextArrow from '../customisations/CustomNextArrow';
 import CustomPreviousArrow from '../customisations/CustomPreviousArrow';
+import LoadingSpinner from '../../layout/LoadingSpinner';
 
 const VideoSliderContainer = ({ toShow }) => {
+  if (toShow.isLoading || toShow.data === null) return <LoadingSpinner />;
+
   return (
     <Slider {...settings} className='video-slider-container'>
       {
@@ -20,6 +23,7 @@ const VideoSliderContainer = ({ toShow }) => {
             youtubeURL={recipe.strYoutube}
             title={recipe.strMeal}
             category={recipe.strCategory}
+            imageURL={recipe.strMealThumb}
           />
         )
       }
@@ -30,7 +34,7 @@ const VideoSliderContainer = ({ toShow }) => {
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 3.7,
+  slidesToShow: 3.1,
   slidesToScroll: 1,
   centerMode: true,
   initialSlide: 5,

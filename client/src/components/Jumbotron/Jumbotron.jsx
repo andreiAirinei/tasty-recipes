@@ -17,6 +17,9 @@ const Jumbotron = ({ imgUrl }) => {
           <h1 className='hero-text text-white text-center'>Looking for a tasty recipe?</h1>
           <Searchbar />
         </div>
+        <div className="underlay-image d-none d-md-block">
+          <img src={require('../../assets/ingredients/tomatoes.jpg')} alt="Tomatoes" />
+        </div>
       </div>
     </Container>
 

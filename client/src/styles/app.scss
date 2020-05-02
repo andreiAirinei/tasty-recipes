@@ -7,6 +7,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  overflow-x: hidden !important;
+}
+
 // Utility classes
 .min-vh-100 {
   min-height: 100vh;
@@ -44,17 +48,34 @@
 
 .section-title {
   position: relative;
-  margin: 80px 0 !important;
+  margin: 80px 0 60px 0 !important;
 
-  &::after {
+  &::before {
     position: absolute;
-    content: url('../assets/crossed-knife-and-fork.svg');
-    width: 100px;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    z-index: -999;
+    content: '';
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    background: #f1f1f1;
+    z-index: -6;
   }
+
+  .title {
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      position: absolute;
+      content: url('../assets/crossed-knife-and-fork.svg');
+      width: 100px;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      z-index: -1;
+    }
+  }
+  
 }
 
 // Key Frames
@@ -98,9 +119,15 @@
   }
 }
 
+// Homepage.jsx
+.homepage {
+  overflow: hidden;
+}
+
 // Jumbotron.jsx
 
 .hero {
+  position: relative;
   height: 400px;
   border-radius: 10px;
   background-position-y: center;
@@ -113,6 +140,13 @@
 
   &-text {
     text-shadow: 1px 1px 9px #0a0a0a;
+  }
+
+  .underlay-image {
+    position: absolute;
+    bottom: -100px;
+    right: -300px;
+    z-index: -1;
   }
 }
 
@@ -233,15 +267,14 @@
         position: relative;
         max-width: inherit;
         height: 260px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
         overflow: hidden;
-        animation: slide-in 0.3s ease-in;
+        animation: slide-in 0.5s ease-in;
+        border-radius: 10px;
       
         img {
           height: 100%;
           width: auto;
-          transition: all 0.1s ease-in-out;
+          transition: all 0.2s ease-in-out;
         }
       
         .card-img-top {
@@ -259,13 +292,15 @@
           right: 0;
           bottom: 0;
           z-index: 3;
-          background-image: linear-gradient(to bottom, transparent, 88%, #fff);
+
+          background-image: linear-gradient(to bottom, transparent, 80%, #000);
+          opacity: 0.7;
+          border-radius: 10px;
         }
       }
     
       &:hover .slider-item-img img {
         opacity: 0.9;
-
         transform: scale(1.1) translateX(-10%);
       }
 
@@ -333,6 +368,63 @@
   }
 }
 
+// CategoriesContainer.jsx
+.categories {
+  &-container {
+    position: relative;
+    margin-bottom: 150px;
+
+    .underlay-image {
+      position: absolute;
+      bottom: -150px;
+      left: -250px;
+      z-index: -1;
+      img {
+        width: 400px;
+      }
+    }
+  }
+
+  &-card {
+    position: relative;
+    border-radius: 10px;
+    max-width: 300px;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      border-radius: 7px;
+      background-image: linear-gradient(to bottom, transparent, 80%, #000);
+      opacity: 0.7;
+    }
+
+    &:hover {
+      &::before,
+      img {
+        transform: scale(1.01);
+      }
+
+      &::before {
+        opacity: 0.8;
+      }
+    }
+
+    .category-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+  }
+}
+
 // VideoSlider.jsx 
 .video-slider {
 
@@ -355,8 +447,7 @@
       }
   
       img {
-        transform: scale(1.35);
-        max-height: 200px;
+        // max-height: 200px;
         width: 100%;
       }
   
@@ -464,5 +555,26 @@
     .tasty-logo {
       width: 180px;
     }
+  }
+}
+
+// Footer.jsx
+.footer {
+  position: relative;
+  height: 500px;
+  margin-top: 100px;
+  // overflow: hidden;
+
+  &::before {
+    position: absolute;
+    content: url('../assets/grass2.png');
+    top: 0;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    width: 100vw;
+    height: 120px;
+    transform: translateY(-97%);
+    z-index: -1;
   }
 }

@@ -7,11 +7,12 @@ import { connect } from 'react-redux';
 import SliderNavbar from './SliderNavbar';
 import SliderContainer from './SliderContainer/SliderContainer';
 import VideoSliderContainer from './VideoSliderContainer/VideoSliderContainer';
+import SectionTitle from '../layout/SectionTitle';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const RecipesSlider = ({ latestRecipes, isVideo = false }) => {
+const RecipesSlider = ({ latestRecipes, title, isVideo = false }) => {
   const [state, setState] = useState({
     showRandomRecipes: null,
     data: null,
@@ -48,6 +49,7 @@ const RecipesSlider = ({ latestRecipes, isVideo = false }) => {
 
   return (
     <Container className='recipes-slider px-0 mb-5' fluid='xl'>
+      {title && <SectionTitle title={title} />}
       <SliderNavbar
         handleSelect={handleSelect}
         activeKey={
