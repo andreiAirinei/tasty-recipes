@@ -15,16 +15,8 @@ const CategoriesContainer = () => {
       <Row>
         {
           categoryData.map(category =>
-            <CategoriesItem name={category.name} imgURL={category.imgURL} />)
+            <CategoriesItem key={category.id} name={category.name} imgURL={category.imgURL} />)
         }
-        {/* <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem />
-        <CategoriesItem /> */}
       </Row>
       <div className="underlay-image">
         <img src={require('../../assets/ingredients/oranges.png')} alt="Oranges" />

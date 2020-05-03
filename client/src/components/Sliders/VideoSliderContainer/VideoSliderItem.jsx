@@ -20,8 +20,6 @@ const VideoSliderItem = ({
   setVideoURL
 }) => {
 
-  console.log(imageURL);
-
   const handleImageError = (e) => {
     console.log('error');
     e.target.src = 'https://i.ibb.co/9sYvpxK/logo.png';

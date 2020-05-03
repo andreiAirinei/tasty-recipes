@@ -30,7 +30,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
   }
 
   return (
-    <div className='searchbar mt-3 d-flex' onClick={handleClick}>
+    <div className='searchbar mt-3 d-flex bg-white p-1' onClick={handleClick}>
       <Select
         theme={customTheme}
         // Empty array as 'options' if recipes list is not ready
@@ -46,7 +46,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
         onChange={setParameters}
         onKeyDown={handleKeyDown}
       />
-      <Link to='/recipe' variant="danger" className="btn btn-danger search-icon px-4">
+      <Link to='/recipe' variant="danger" className="btn btn-danger search-icon p-0">
         <img src={ReactLogo} alt="Search Icon" />
       </Link>
     </div>

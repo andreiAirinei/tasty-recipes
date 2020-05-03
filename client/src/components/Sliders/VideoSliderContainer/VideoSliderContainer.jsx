@@ -34,7 +34,7 @@ const VideoSliderContainer = ({ toShow }) => {
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 3.1,
+  slidesToShow: 3.3,
   slidesToScroll: 1,
   centerMode: true,
   initialSlide: 5,
