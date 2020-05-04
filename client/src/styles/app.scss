@@ -598,9 +598,10 @@ body {
 // Using Bootstrap breakpoints
 
 @media only screen and (max-width: 1200px) {
+  .hero { border-radius: 0px;}
+
   .video-banner {
     margin-bottom: 300px;
-
     .cta-card {
       transform: translate(-50%, 75%);
     }

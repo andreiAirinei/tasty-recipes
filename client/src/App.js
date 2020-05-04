@@ -8,6 +8,7 @@ import Layout from './components/layout/Layout';
 // Pages
 import HomePage from './pages/HomePage';
 import RecipePage from './pages/RecipePage';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
 
@@ -16,7 +17,8 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/recipe' component={RecipePage} />
+          <Route path='/recipe' component={RecipePage} />
+          <Route exact path='/recipes' component={Dashboard} />
         </Switch>
       </Layout>
       {/* <VideoModal /> */}

@@ -18,7 +18,11 @@ const HomePage = ({ getLatestRecipes }) => {
 
   return (
     <main className='homepage'>
-      <Jumbotron fluid imgUrl='site1.jpg' />
+      <Jumbotron
+        title='Looking for a tasty recipe?'
+        imgUrl='site1.jpg'
+        underlay='tomatoes.jpg'
+        withSearchbar />
       <RecipesSlider />
       <CategoriesContainer />
       <VideoBanner />

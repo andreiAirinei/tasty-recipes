@@ -6,7 +6,7 @@ import Searchbar from '../Searchbar/Searchbar';
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const Jumbotron = ({ imgUrl }) => {
+const Jumbotron = ({ imgUrl, title, underlay, withSearchbar = false }) => {
   const divStyle = { backgroundImage: 'url(' + require(`../../assets/${imgUrl}`) + ')' };
 
   return (
@@ -14,12 +14,15 @@ const Jumbotron = ({ imgUrl }) => {
       <div className="hero d-flex justify-content-center align-items-center"
         style={divStyle}>
         <div className="hero-content px-2">
-          <h1 className='hero-text text-white text-center'>Looking for a tasty recipe?</h1>
-          <Searchbar />
+          <h1 className='hero-text text-white text-center'>{title}</h1>
+          {withSearchbar && <Searchbar />}
         </div>
-        <div className="underlay-image d-none d-md-block">
-          <img src={require('../../assets/ingredients/tomatoes.jpg')} alt="Tomatoes" />
-        </div>
+        {
+          underlay && <div className="underlay-image d-none d-md-block">
+            <img src={require(`../../assets/ingredients/${underlay}`)} alt="Tomatoes" />
+          </div>
+        }
+
       </div>
     </Container>
 
