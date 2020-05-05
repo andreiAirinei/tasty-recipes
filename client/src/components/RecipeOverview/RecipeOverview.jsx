@@ -5,6 +5,7 @@ import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.ac
 // Components
 import LoadingSpinner from '../layout/LoadingSpinner';
 import RecipeHeader from './RecipeHeader';
+import RecipeContent from './RecipeContent';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container'
@@ -23,6 +24,7 @@ const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe }) => {
     <Container className='recipe-overview' fluid='xl'>
       <div className="recipe-overview-underlay" />
       <RecipeHeader />
+      <RecipeContent />
     </Container>
   )
 }

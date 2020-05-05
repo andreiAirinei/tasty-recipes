@@ -648,5 +648,11 @@ body {
 }
 
 @media only screen and (max-width: 576px) {
-  
+  .recipe-header {
+    padding-top: 50px;
+
+    .recipe-image-holder {
+      max-width: 350px;
+    }
+  }
 }
