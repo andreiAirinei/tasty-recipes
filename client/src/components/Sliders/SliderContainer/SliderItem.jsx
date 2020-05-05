@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import CardItemFooter from '../../CardItemFooter/CardItemFooter';
+import TimeAndDifficulty from '../../TimeAndDifficulty/TimeAndDifficulty';
 
 // Bootstrap Components
 import Card from 'react-bootstrap/Card';
@@ -31,7 +31,7 @@ const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
             </Card.Body>
           </div>
           <div className="card-layout-footer">
-            <CardItemFooter />
+            <TimeAndDifficulty />
           </div>
         </div>
 

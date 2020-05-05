@@ -3,7 +3,7 @@ import { ReactComponent as SilverChefHat } from '../../assets/difficulty-silver.
 import { ReactComponent as OrangeChefHat } from '../../assets/difficulty-orange.svg';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
 
-const CardItemFooter = () => {
+const TimeAndDifficulty = () => {
   const [state, setState] = useState({
     difficulty: null,
     time: null
@@ -60,4 +60,4 @@ const CardItemFooter = () => {
   )
 }
 
-export default CardItemFooter;
+export default TimeAndDifficulty;

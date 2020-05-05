@@ -6,8 +6,9 @@ import Searchbar from '../Searchbar/Searchbar';
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const Jumbotron = ({ imgUrl, title, underlay, withSearchbar = false }) => {
-  const divStyle = { backgroundImage: 'url(' + require(`../../assets/${imgUrl}`) + ')' };
+const Jumbotron = ({ imgURL, title, underlay, withSearchbar = false }) => {
+  const divStyle = { backgroundImage: 'url(' + require(`../../assets/${imgURL}`) + ')' };
+  // const divStyle = { background: `url(${imgURL}) no-repeat center center/cover` };
 
   return (
     <Container fluid='xl' className='px-0'>

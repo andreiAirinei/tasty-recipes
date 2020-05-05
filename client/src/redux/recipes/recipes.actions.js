@@ -5,6 +5,7 @@ import {
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_SINGLE_RECIPE,
   SET_LOADING,
+  CLEAR_SINGLE_RECIPE
 } from './recipes.types';
 
 // Get ALL recipes
@@ -120,6 +121,13 @@ export const getRecipeByID = (recipeID) => async dispatch => {
 export const setLoading = () => dispatch => {
   dispatch({
     type: SET_LOADING
+  })
+}
+
+// Clear Single Recipes
+export const clearSingleRecipe = () => dispatch => {
+  dispatch({
+    type: CLEAR_SINGLE_RECIPE
   })
 }
 

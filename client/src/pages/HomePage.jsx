@@ -8,7 +8,6 @@ import { getLatestRecipes } from '../redux/recipes/recipes.actions';
 import Jumbotron from '../components/Jumbotron/Jumbotron';
 import RecipesSlider from '../components/Sliders/RecipesSlider';
 import VideoBanner from '../components/VideoBanner/VideoBanner';
-import VideoModal from '../components/VideoModal/VideoModal';
 import CategoriesContainer from '../components/CategoriesSection/CategoriesContainer';
 
 const HomePage = ({ getLatestRecipes }) => {
@@ -20,14 +19,13 @@ const HomePage = ({ getLatestRecipes }) => {
     <main className='homepage'>
       <Jumbotron
         title='Looking for a tasty recipe?'
-        imgUrl='site1.jpg'
+        imgURL='site1.jpg'
         underlay='tomatoes.jpg'
         withSearchbar />
       <RecipesSlider />
       <CategoriesContainer />
       <VideoBanner />
       <RecipesSlider title='Video Recipes' isVideo />
-      <VideoModal />
     </main>
   )
 }

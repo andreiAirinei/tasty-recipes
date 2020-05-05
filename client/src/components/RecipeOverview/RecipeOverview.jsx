@@ -1,25 +1,29 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getRecipeByID } from '../../redux/recipes/recipes.actions';
+import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.actions';
 
 // Components
 import LoadingSpinner from '../layout/LoadingSpinner';
-import Jumbotron from '../Jumbotron/Jumbotron';
+import RecipeHeader from './RecipeHeader';
 
-const RecipeOverview = ({ match, getRecipeByID, singleRecipe }) => {
+// Bootstrap
+import Container from 'react-bootstrap/Container'
+
+const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe }) => {
   useEffect(() => {
     getRecipeByID(match.params.recipeID);
 
-    // return {}
-  }, [getRecipeByID, match.params.recipeID]);
+    return () => {
+      clearSingleRecipe();
+    }
+  }, [getRecipeByID, match.params.recipeID, clearSingleRecipe]);
 
-  console.log(singleRecipe);
 
   return (
-    <div className='recipe-overview'>
-      <Jumbotron imgUrl='site2.jpg' />
-      <h1>{singleRecipe && singleRecipe.strMeal}</h1>
-    </div>
+    <Container className='recipe-overview' fluid='xl'>
+      <div className="recipe-overview-underlay" />
+      <RecipeHeader />
+    </Container>
   )
 }
 
@@ -28,7 +32,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRecipeByID: id => dispatch(getRecipeByID(id))
+  getRecipeByID: id => dispatch(getRecipeByID(id)),
+  clearSingleRecipe: () => dispatch(clearSingleRecipe())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeOverview);

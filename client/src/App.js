@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // Components
 import Layout from './components/layout/Layout';
-// import VideoModal from './components/VideoModal/VideoModal';
+import VideoModal from './components/VideoModal/VideoModal';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -21,7 +21,7 @@ const App = () => {
           <Route exact path='/recipes' component={Dashboard} />
         </Switch>
       </Layout>
-      {/* <VideoModal /> */}
+      <VideoModal />
     </Fragment>
   );
 }

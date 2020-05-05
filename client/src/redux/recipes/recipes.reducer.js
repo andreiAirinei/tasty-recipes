@@ -4,6 +4,7 @@ import {
   GET_LATEST_RECIPES,
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
+  CLEAR_SINGLE_RECIPE,
   SET_LOADING
 } from './recipes.types';
 
@@ -64,6 +65,12 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
           data: action.payload.data,
           isLoading: action.payload.isLoading
         }
+      }
+
+    case CLEAR_SINGLE_RECIPE:
+      return {
+        ...state,
+        singleRecipe: null
       }
 
     case SET_LOADING:
