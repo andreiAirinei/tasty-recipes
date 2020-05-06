@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-
-// Redux
-import { connect } from 'react-redux';
-import { getLatestRecipes } from '../redux/recipes/recipes.actions';
+import React from 'react';
 
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
@@ -10,10 +6,7 @@ import RecipesSlider from '../components/Sliders/RecipesSlider';
 import VideoBanner from '../components/VideoBanner/VideoBanner';
 import CategoriesContainer from '../components/CategoriesSection/CategoriesContainer';
 
-const HomePage = ({ getLatestRecipes }) => {
-  useEffect(() => {
-    getLatestRecipes();
-  }, [getLatestRecipes]);
+const HomePage = () => {
 
   return (
     <main className='homepage'>
@@ -30,8 +23,4 @@ const HomePage = ({ getLatestRecipes }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  getLatestRecipes: () => dispatch(getLatestRecipes())
-});
-
-export default connect(null, mapDispatchToProps)(HomePage);
+export default HomePage;

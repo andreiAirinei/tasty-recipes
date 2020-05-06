@@ -14,7 +14,7 @@ import Image from 'react-bootstrap/Image';
 const RecipeHeader = ({ singleRecipe }) => {
 
   return (
-    <div className='recipe-header'>
+    <div className='recipe-header mb-5'>
       {singleRecipe &&
         <Row >
           <Col xs={12} sm={5}>
@@ -23,6 +23,7 @@ const RecipeHeader = ({ singleRecipe }) => {
                 src={singleRecipe.strMealThumb}
                 thumbnail
                 fluid
+                className='shadow-sm'
               />
             </div>
           </Col>
@@ -34,7 +35,7 @@ const RecipeHeader = ({ singleRecipe }) => {
                 <div className="d-flex justify-content-center justify-content-sm-start align-items-center">
                   <img src={require(`../../assets/flags/${singleRecipe.strArea}.png`)}
                     alt={`${singleRecipe.strArea} flag`}
-                    className='mr-4' />
+                    className='mr-4 box-shadow' />
                   <h6 className='m-0'>Delicious <span className='font-weight-bold text-secondary l-spacing-1'>{singleRecipe.strArea}</span> recipe</h6>
                 </div>
               </div>
@@ -43,7 +44,7 @@ const RecipeHeader = ({ singleRecipe }) => {
                 <div className="social-media text-right d-flex align-items-center mt-3 mt-md-0">
                   <p className='font-italic text-right mr-3 my-auto'>
                     <abbr title='HyperText Markup Language'>
-                      <a href={singleRecipe.strSource} className='text-info' target='_blank' rel='noreferrer'>Source</a>
+                      <a href={singleRecipe.strSource} className='text-info' target='_blank' rel='noopener noreferrer'>Source</a>
                     </abbr>
                   </p>
                   <ShareButtons size={20} shareURL='www.google.co.uk' />

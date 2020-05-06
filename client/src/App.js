@@ -1,5 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// Redux
+import { connect } from 'react-redux';
+import { getLatestRecipes } from './redux/recipes/recipes.actions';
 
 // Components
 import Layout from './components/layout/Layout';
@@ -10,7 +14,10 @@ import HomePage from './pages/HomePage';
 import RecipePage from './pages/RecipePage';
 import Dashboard from './pages/Dashboard';
 
-const App = () => {
+const App = ({ getLatestRecipes }) => {
+  useEffect(() => {
+    getLatestRecipes();
+  }, [getLatestRecipes]);
 
   return (
     <Fragment>
@@ -26,4 +33,8 @@ const App = () => {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getLatestRecipes: () => dispatch(getLatestRecipes())
+});
+
+export default connect(null, mapDispatchToProps)(App);

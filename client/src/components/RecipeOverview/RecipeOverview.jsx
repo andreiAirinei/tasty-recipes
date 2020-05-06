@@ -5,7 +5,7 @@ import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.ac
 // Components
 import LoadingSpinner from '../layout/LoadingSpinner';
 import RecipeHeader from './RecipeHeader';
-import RecipeContent from './RecipeContent';
+import RecipeContent from './RecipeContent/RecipeContent';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container'
