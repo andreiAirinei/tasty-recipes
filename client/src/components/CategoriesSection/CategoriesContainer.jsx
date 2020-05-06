@@ -43,8 +43,8 @@ const categoryData = [
   },
   {
     id: 3,
-    name: 'Pasta',
-    imgURL: 'https://i.ibb.co/xFBTyfW/pasta.jpg'
+    name: 'Lamb',
+    imgURL: 'https://i.ibb.co/rGq51ZC/lamb.jpg'
   },
   {
     id: 4,
@@ -53,10 +53,9 @@ const categoryData = [
   },
   {
     id: 5,
-    name: 'Side',
-    imgURL: 'https://i.ibb.co/myS0vJj/side.jpg'
+    name: 'Pasta',
+    imgURL: 'https://i.ibb.co/xFBTyfW/pasta.jpg'
   },
-
   {
     id: 6,
     name: 'Desserts',

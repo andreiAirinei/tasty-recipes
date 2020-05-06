@@ -9,7 +9,7 @@ const SidebarLatestRecipes = ({ latestRecipes, otherClasses = '' }) => {
 
   return (
     <div className={`sidebar-latest ${otherClasses}`}>
-      <h5 className='text-center '><em>Latest</em></h5>
+      <h5 className='text-center text-sm-left'><em>Latest</em></h5>
       <ul className='latest-list list-unstyled'>
         {
           latestRecipes.data && latestRecipes.data.map(recipe => (

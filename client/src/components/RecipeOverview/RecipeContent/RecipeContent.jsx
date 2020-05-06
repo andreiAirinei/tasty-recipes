@@ -14,14 +14,15 @@ const RecipeContent = () => {
   return (
     <div className='recipe-content'>
       <Row>
-        <Col sm={5} lg={5}>
+        <Col sm={{ order: 2, span: 5 }} lg={5}>
           <RecipeIngredients />
-          <SidebarLatestRecipes otherClasses='pr-sm-5 mb-5' />
+          <SidebarLatestRecipes otherClasses='ml-sm-5 mb-5 d-none d-sm-block' />
         </Col>
-        <Col sm={7} lg={7}>
+        <Col sm={{ order: 1, span: 7 }} lg={7} >
           <RecipeInstructions />
         </Col>
       </Row>
+      <SidebarLatestRecipes otherClasses='d-block d-sm-none' />
     </div>
   )
 }

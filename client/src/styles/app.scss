@@ -40,7 +40,7 @@ body {
   color: #888;
 }
 
-.width-100 {
+.width-120 {
   width: 120px;
 }
 
@@ -629,6 +629,18 @@ body {
       border-bottom: 1px dotted #d3d3d3;
       img { width: 40px; }
       .ingredient { width: 150px; }
+    }
+  }
+}
+
+.sidebar-latest {
+  .latest-list-item {
+    border: 1px solid #e7e7e7;
+    border-radius: 7px;
+    .image-holder { width: 70px; }
+
+    &:hover {
+      background: #f8f8f8;
     }
   }
 }

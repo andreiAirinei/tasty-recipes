@@ -19,7 +19,7 @@ const RecipeInstructions = ({ singleRecipe }) => {
   }
 
   return (
-    <div className="recipe-steps">
+    <div className="recipe-steps mb-5">
       {singleRecipe &&
         <>
           <h2 className='mb-4 text-center text-sm-left'>How to make it</h2>

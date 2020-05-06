@@ -42,7 +42,7 @@ const RecipeIngredients = ({ singleRecipe }) => {
   }
 
   return (
-    <div className="recipe-ingredients pr-sm-5 mb-5">
+    <div className="recipe-ingredients ml-sm-5 mb-5">
       <h2 className='mb-4 text-center text-sm-left'>Ingredients</h2>
       <ul className="ingredients-list list-unstyled">
         {state &&
@@ -52,7 +52,7 @@ const RecipeIngredients = ({ singleRecipe }) => {
                 <OverlayTrigger
                   placement='top'
                   overlay={
-                    <Tooltip className='width-100'>
+                    <Tooltip className='width-120'>
                       <img src={item.image} alt={item.ingredient} />
                     </Tooltip>
                   }
