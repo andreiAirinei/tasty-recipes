@@ -14,7 +14,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
   const handleKeyDown = (e) => {
     // Execute history push only if parameters are not empty
     if (e.key === 'Enter' && parameters !== '') {
-      history.push(`/meal/${parameters.value}`);
+      history.push(`/recipe/${parameters.value}`);
     };
   }
 
@@ -46,7 +46,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
         onChange={setParameters}
         onKeyDown={handleKeyDown}
       />
-      <Link to='/recipe' variant="danger" className="btn btn-danger search-icon p-0">
+      <Link to={`/recipe/${parameters.value}`} variant="danger" className="btn btn-danger search-icon p-0">
         <img src={ReactLogo} alt="Search Icon" />
       </Link>
     </div>
