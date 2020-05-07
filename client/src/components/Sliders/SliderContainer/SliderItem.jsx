@@ -26,7 +26,11 @@ const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
         <div className="card-layout d-flex flex-column justify-content-between">
           <div className="card-layout-top">
             <Card.Body className='p-0 pt-3'>
-              <Card.Text className='text-danger mb-1 l-spacing-2'>{category}</Card.Text>
+              {
+                category ?
+                  <Card.Text className='text-danger mb-1 l-spacing-2'>{category}</Card.Text>
+                  : <hr />
+              }
               <Card.Text className='pr-1  color-1'>{shortenTitle(name)}</Card.Text>
             </Card.Body>
           </div>

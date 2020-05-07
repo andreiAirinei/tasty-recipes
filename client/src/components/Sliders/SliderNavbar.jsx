@@ -10,12 +10,12 @@ const SliderNavbar = ({ activeKey, handleSelect }) => {
       className='slider-navbar my-4 justify-content-center'
       onSelect={handleSelect}>
       <Nav.Item className='latest'>
-        <Nav.Link eventKey='showLatest' className='text-size-1 l-spacing-2'>
+        <Nav.Link eventKey='showLatest' className=' l-spacing-2'>
           Latest
         </Nav.Link>
       </Nav.Item>
       <Nav.Item className='random'>
-        <Nav.Link eventKey='showRandom' className='text-size-1 l-spacing-2' >
+        <Nav.Link eventKey='showRandom' className=' l-spacing-2' >
           <div className="d-flex align-items-center">
             <span className='mr-1'>Random</span>
             <img src={require('../../assets/dice.svg')} alt="Dice" />

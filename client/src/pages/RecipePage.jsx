@@ -5,8 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 import RecipeOverview from '../components/RecipeOverview/RecipeOverview';
 
 // We don't need withRouter as we have 'match' prop from the App.jsx Route
-const RecipePage = ({ match, location }) => {
-  console.log(match, location);
+const RecipePage = ({ match }) => {
 
   return (
     <div className='recipe-page'>

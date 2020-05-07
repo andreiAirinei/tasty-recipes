@@ -6,11 +6,13 @@ import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.ac
 import LoadingSpinner from '../layout/LoadingSpinner';
 import RecipeHeader from './RecipeHeader';
 import RecipeContent from './RecipeContent/RecipeContent';
+import RelatedRecipes from '../Sliders/RelatedRecipes';
+import SectionTitle from '../layout/SectionTitle';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container'
 
-const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe }) => {
+const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe }) => {
   useEffect(() => {
     getRecipeByID(match.params.recipeID);
 
@@ -19,13 +21,21 @@ const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe }) => {
     }
   }, [getRecipeByID, match.params.recipeID, clearSingleRecipe]);
 
-
   return (
-    <Container className='recipe-overview' fluid='xl'>
-      <div className="recipe-overview-underlay" />
-      <RecipeHeader />
-      <RecipeContent />
-    </Container>
+    <>
+      <Container className='recipe-overview' fluid='xl'>
+        <div className="recipe-overview-underlay" />
+        <RecipeHeader />
+        <RecipeContent />
+      </Container>
+      {
+        singleRecipe &&
+        <Container className='recipes-slider px-0 mb-5' fluid='xl'>
+          <SectionTitle title={`Related ${singleRecipe.strCategory} recipes`} />
+          <RelatedRecipes />
+        </Container>
+      }
+    </>
   )
 }
 

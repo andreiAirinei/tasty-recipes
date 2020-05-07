@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import SIdebarLatestItem from './SidebarLatestItem';
+import SidebarLatestItem from './SidebarLatestItem';
 
 const SidebarLatestRecipes = ({ latestRecipes, otherClasses = '' }) => {
-  latestRecipes && console.log(latestRecipes);
 
   return (
     <div className={`sidebar-latest ${otherClasses}`}>
@@ -14,7 +13,7 @@ const SidebarLatestRecipes = ({ latestRecipes, otherClasses = '' }) => {
         {
           latestRecipes.data && latestRecipes.data.map(recipe => (
             <li key={recipe.idMeal}>
-              <SIdebarLatestItem
+              <SidebarLatestItem
                 recipeID={recipe.idMeal}
                 name={recipe.strMeal}
                 category={recipe.strCategory}

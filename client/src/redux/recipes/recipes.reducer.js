@@ -4,18 +4,24 @@ import {
   GET_LATEST_RECIPES,
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
+  GET_RECIPES_BY_CATEGORY,
   CLEAR_SINGLE_RECIPE,
   SET_LOADING
 } from './recipes.types';
 
 import {
-  setRecipesList
+  setRecipesList,
+  setListOfRecipesByCategory
 } from './recipes.utils';
 
 const INITIAL_STATE = {
   allRecipes: null,
   singleRecipe: null,
   latestRecipes: {
+    data: null,
+    isLoading: false
+  },
+  recipesByCategory: {
     data: null,
     isLoading: false
   },
@@ -44,7 +50,6 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
     case GET_LATEST_RECIPES:
       return {
         ...state,
-        // latestRecipes: action.payload
         latestRecipes: {
           data: action.payload.data,
           isLoading: action.payload.isLoading
@@ -63,6 +68,15 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         randomMultiple: {
           data: action.payload.data,
+          isLoading: action.payload.isLoading
+        }
+      }
+
+    case GET_RECIPES_BY_CATEGORY:
+      return {
+        ...state,
+        recipesByCategory: {
+          data: setListOfRecipesByCategory(action.payload.data),
           isLoading: action.payload.isLoading
         }
       }

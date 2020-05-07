@@ -4,6 +4,7 @@ import {
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_SINGLE_RECIPE,
+  GET_RECIPES_BY_CATEGORY,
   SET_LOADING,
   CLEAR_SINGLE_RECIPE
 } from './recipes.types';
@@ -114,6 +115,31 @@ export const getRecipeByID = (recipeID) => async dispatch => {
     });
   } catch (err) {
     console.error(err.message);
+  }
+}
+
+// Get recipes by category
+export const getRecipesByCategory = (category) => async dispatch => {
+  try {
+    dispatch({
+      type: GET_RECIPES_BY_CATEGORY,
+      payload: {
+        data: null,
+        isLoading: true
+      }
+    });
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/filter.php?c=${category}`);
+    const data = await res.json();
+
+    dispatch({
+      type: GET_RECIPES_BY_CATEGORY,
+      payload: {
+        data: data.meals,
+        isLoading: false
+      }
+    });
+  } catch (err) {
+    console.log(err.message);
   }
 }
 
