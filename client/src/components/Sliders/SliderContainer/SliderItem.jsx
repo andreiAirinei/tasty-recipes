@@ -31,7 +31,7 @@ const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
                   <Card.Text className='text-danger mb-1 l-spacing-2'>{category}</Card.Text>
                   : <hr />
               }
-              <Card.Text className='pr-1  color-1'>{shortenTitle(name)}</Card.Text>
+              <Card.Text className='card-title pr-1 color-1'>{shortenTitle(name)}</Card.Text>
             </Card.Body>
           </div>
           <div className="card-layout-footer">

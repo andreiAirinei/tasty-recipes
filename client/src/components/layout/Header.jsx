@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 const Header = () => {
   return (
     <Fragment>
-      <nav className='header-navbar'>
+      <nav className='header-navbar sticky-top bg-light shadow-sm'>
         <Container fluid='xl'>
           <div className="navbar-content d-flex align-items-center justify-content-between pt-2 ">
             <div></div>

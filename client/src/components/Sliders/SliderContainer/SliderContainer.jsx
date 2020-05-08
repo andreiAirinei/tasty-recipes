@@ -36,7 +36,7 @@ const SliderContainer = ({ toShow }) => {
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 4.5,
+  slidesToShow: 3,
   slidesToScroll: 1,
   centerMode: true,
   nextArrow: <CustomNextArrow />,

@@ -1,7 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-const RecipeInstructions = ({ singleRecipe }) => {
+// Redux
+import { connect } from 'react-redux';
+import { modalOpen, setVideoURL } from '../../../redux/videoModal/videoModal.actions';
+
+const RecipeInstructions = ({ singleRecipe, setVideoURL, modalOpen }) => {
 
   const handleInstructions = (instructions) => {
     let stepCount = 1;
@@ -18,16 +21,30 @@ const RecipeInstructions = ({ singleRecipe }) => {
     return { __html: newInstructions };
   }
 
+  const handleVideoButton = () => {
+    setVideoURL(singleRecipe.strYoutube);
+    modalOpen();
+  }
+
   return (
     <div className="recipe-steps mb-5">
       {singleRecipe &&
         <>
-          <h2 className='mb-4 text-center text-sm-left'>How to make it</h2>
+          <div className="how-to d-flex flex-column flex-sm-row align-items-center justify-content-between mb-4">
+            <h2 className='mb-2 m-sm-0 text-center text-sm-left'>How to make it</h2>
+            {
+              singleRecipe.strYoutube &&
+              <button className="youtube-link" onClick={handleVideoButton}>
+                <img src={require('../../../assets/youtube.svg')} alt="Youtube Link" />
+              </button>
+            }
+
+          </div>
+
           <div className="step my-4">
             <h5 className='d-inline bg-white pr-3 text-info'>Step 1</h5>
           </div>
-          <div className="instructions text-justify "
-            dangerouslySetInnerHTML={handleInstructions(singleRecipe.strInstructions)} />
+          <div className="instructions text-justify mb-5" dangerouslySetInnerHTML={handleInstructions(singleRecipe.strInstructions)} />
         </>
       }
     </div>
@@ -38,4 +55,9 @@ const mapStateToProps = state => ({
   singleRecipe: state.recipes.singleRecipe
 });
 
-export default connect(mapStateToProps)(RecipeInstructions);
+const mapDispatchToProps = dispatch => ({
+  setVideoURL: video => dispatch(setVideoURL(video)),
+  modalOpen: () => dispatch(modalOpen())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeInstructions);

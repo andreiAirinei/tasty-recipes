@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
@@ -7,6 +7,9 @@ import VideoBanner from '../components/VideoBanner/VideoBanner';
 import CategoriesContainer from '../components/CategoriesSection/CategoriesContainer';
 
 const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <main className='homepage'>

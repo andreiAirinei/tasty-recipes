@@ -43,7 +43,7 @@ const RecipeIngredients = ({ singleRecipe }) => {
 
   return (
     <div className="recipe-ingredients ml-sm-5 mb-5">
-      <h2 className='mb-4 text-center text-sm-left'>Ingredients</h2>
+      <h2 className='ingredients-title mb-4 text-center text-sm-left'>Ingredients</h2>
       <ul className="ingredients-list list-unstyled">
         {state &&
           state.map(item => (

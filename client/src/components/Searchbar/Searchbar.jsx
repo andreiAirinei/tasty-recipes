@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
 import ReactLogo from '../../assets/svgs/solid/search.svg';
 
@@ -13,9 +13,15 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
 
   const handleKeyDown = (e) => {
     // Execute history push only if parameters are not empty
-    if (e.key === 'Enter' && parameters !== '') {
+    if (e.key === 'Enter' && parameters !== '' && parameters !== null) {
       history.push(`/recipe/${parameters.value}`);
     };
+  }
+
+  const handleSearchButton = () => {
+    if (parameters !== '' && parameters !== null) {
+      history.push(`/recipe/${parameters.value}`);
+    }
   }
 
   const customTheme = (theme) => {
@@ -46,10 +52,14 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
         onChange={setParameters}
         onKeyDown={handleKeyDown}
       />
-      <Link to={`/recipe/${parameters.value}`} variant="danger" className="btn btn-danger search-icon p-0">
+
+      {/* <Link to={`/recipe/${parameters.value}`} > */}
+      <button variant="danger" className="btn btn-danger search-icon p-0" onClick={handleSearchButton}>
         <img src={ReactLogo} alt="Search Icon" />
-      </Link>
-    </div>
+      </button>
+      {/* </Link> */}
+
+    </div >
   )
 }
 

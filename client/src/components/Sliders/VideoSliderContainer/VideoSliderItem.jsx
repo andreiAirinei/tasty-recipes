@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactLogo from '../../../assets/play-button.svg'
+import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
@@ -13,6 +14,7 @@ import Image from 'react-bootstrap/Image';
 
 const VideoSliderItem = ({
   youtubeURL,
+  recipeID,
   title,
   category,
   imageURL,
@@ -48,7 +50,9 @@ const VideoSliderItem = ({
       </div>
       <div className="body mt-3">
         <p className='text-danger l-spacing-2 mb-1'>{category}</p>
-        <p className='text-size-1 mb-1'>{title}</p>
+        <Link to={`/recipe/${recipeID}`} className='card-link'>
+          <p className='card-title color-1 text-size-1 mb-1'>{title}</p>
+        </Link>
       </div>
     </div>
   )

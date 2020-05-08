@@ -274,6 +274,14 @@ body {
     .slider-item {
       max-width: inherit;
       overflow: hidden;
+
+      &:hover {
+        .card-title { color: var(--dark);}     
+
+        .slider-item-img img {
+        opacity: 0.9;
+        transform: scale(1.1) translateX(-10%);
+      }}
     
       .slider-item-img {
         position: relative;
@@ -309,11 +317,6 @@ body {
           opacity: 0.7;
           border-radius: 10px;
         }
-      }
-    
-      &:hover .slider-item-img img {
-        opacity: 0.9;
-        transform: scale(1.1) translateX(-10%);
       }
 
       .card-layout {
@@ -478,6 +481,12 @@ body {
         }
       }
     }
+
+    .body {
+      .card-link:hover .card-title{
+        color: var(--dark);
+      }
+    }
   }
 }
 
@@ -605,7 +614,14 @@ body {
 .recipe-content {
   .recipe-steps {
     line-height: 2rem;
-
+    .how-to {
+      .youtube-link { 
+        border: none;
+        background: inherit;
+        padding: 0;
+        width: 40px;
+      }
+    }
     .instructions {
       .step {
         position: relative;

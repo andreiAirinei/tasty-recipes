@@ -20,6 +20,7 @@ const VideoSliderContainer = ({ toShow }) => {
         toShow.data && toShow.data.map(recipe =>
           recipe.strYoutube && <VideoSliderItem
             key={recipe.idMeal}
+            recipeID={recipe.idMeal}
             youtubeURL={recipe.strYoutube}
             title={recipe.strMeal}
             category={recipe.strCategory}
