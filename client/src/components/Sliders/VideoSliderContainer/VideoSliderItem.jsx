@@ -50,7 +50,7 @@ const VideoSliderItem = ({
       </div>
       <div className="body mt-3">
         <p className='text-danger l-spacing-2 mb-1'>{category}</p>
-        <Link to={`/recipe/${recipeID}`} className='card-link'>
+        <Link to={`/recipes/recipe/${recipeID}`} className='card-link'>
           <p className='card-title color-1 text-size-1 mb-1'>{title}</p>
         </Link>
       </div>

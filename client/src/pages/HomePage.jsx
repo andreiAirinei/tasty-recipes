@@ -1,28 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
 import RecipesSlider from '../components/Sliders/RecipesSlider';
-import VideoBanner from '../components/VideoBanner/VideoBanner';
-import CategoriesContainer from '../components/CategoriesSection/CategoriesContainer';
+import LoadingSpinner from '../components/layout/LoadingSpinner';
+
+const CategoriesContainer = lazy(() =>
+  import("../components/CategoriesSection/CategoriesContainer")
+);
+const VideoBanner = lazy(() =>
+  import("../components/VideoBanner/VideoBanner")
+);
 
 const HomePage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [])
 
   return (
-    <main className='homepage'>
+    <div className='homepage'>
       <Jumbotron
         title='Looking for a tasty recipe?'
         imgURL='site1.jpg'
         underlay='tomatoes.jpg'
         withSearchbar />
       <RecipesSlider />
-      <CategoriesContainer />
-      <VideoBanner />
+      <Suspense fallback={<LoadingSpinner />}>
+        <CategoriesContainer />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <VideoBanner />
+      </Suspense>
       <RecipesSlider title='Video Recipes' isVideo />
-    </main>
+    </div>
   )
 }
 

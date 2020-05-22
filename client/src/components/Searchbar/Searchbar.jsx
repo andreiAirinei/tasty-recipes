@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
@@ -9,18 +9,20 @@ import { getAllRecipes } from '../../redux/recipes/recipes.actions';
 const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
   const [parameters, setParameters] = useState('');
 
-  const handleClick = () => allRecipes === null && getAllRecipes();
+  useEffect(() => {
+    !allRecipes && getAllRecipes();
+  })
 
   const handleKeyDown = (e) => {
     // Execute history push only if parameters are not empty
     if (e.key === 'Enter' && parameters !== '' && parameters !== null) {
-      history.push(`/recipe/${parameters.value}`);
+      history.push(`recipes/recipe/${parameters.value}`);
     };
   }
 
   const handleSearchButton = () => {
     if (parameters !== '' && parameters !== null) {
-      history.push(`/recipe/${parameters.value}`);
+      history.push(`recipes/recipe/${parameters.value}`);
     }
   }
 
@@ -36,12 +38,12 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
   }
 
   return (
-    <div className='searchbar mt-3 d-flex bg-white p-1' onClick={handleClick}>
+    <div className='searchbar mt-3 d-flex bg-white p-1'>
       <Select
         theme={customTheme}
         // Empty array as 'options' if recipes list is not ready
         options={allRecipes ? allRecipes : []}
-        placeholder='Search...'
+        placeholder='Find it here...'
         isClearable
         isSearchable
         openMenuOnClick={false}

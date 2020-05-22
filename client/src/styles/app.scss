@@ -94,6 +94,8 @@ body {
 
 // Header.jsx
 .header-navbar {
+  // transition: 0.5s;
+  border-bottom: 1px solid var(--white);
   .brand {
     max-width: 250px;
 
@@ -102,25 +104,19 @@ body {
       height: auto;
     }
   }
+}
 
-  .navbar-content {
-    position: relative;
+.header-on-scroll {
+  background: var(--light) !important;
+  border-bottom: 1px solid var(--secondary);
+  transition: .7s;
+}
 
-    &::before {
-      position: absolute;
-      content: '';
-      bottom: -48px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: url('../assets/curved-line.svg');
-      background-repeat: no-repeat; 
-      background-size: contain;
-      width: 40%;
-      min-width: 300px;
-      height: 50px;
-      z-index: 1;
-    }
+.logo-on-scroll {
+  img {
+    height: 35px !important;
   }
+  
 }
 
 // Homepage.jsx
@@ -129,7 +125,6 @@ body {
 }
 
 // Jumbotron.jsx
-
 .hero {
   position: relative;
   height: 400px;
@@ -151,6 +146,25 @@ body {
     bottom: -100px;
     right: -300px;
     z-index: -1;
+  }
+}
+
+.curved-line {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('../assets/curved-line.svg');
+    background-repeat: no-repeat; 
+    background-size: contain;
+    width: 40%;
+    min-width: 300px;
+    height: 50px;
+    z-index: 1;
   }
 }
 
@@ -667,18 +681,18 @@ body {
   margin-top: 100px;
   overflow: hidden;
 
-  &::before {
-    position: absolute;
-    content: url('../assets/grass2.png');
-    top: 0;
-    left: 0;
-    right: 0;
-    display: inline-block;
-    width: 100vw;
-    height: 120px;
-    transform: translateY(-97%);
-    z-index: 1;
-  }
+  // &::before {
+  //   position: absolute;
+  //   content: url('../assets/grass2.png');
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   display: inline-block;
+  //   width: 100vw;
+  //   height: 120px;
+  //   transform: translateY(-97%);
+  //   z-index: 1;
+  // }
 }
 
 // ############## MEDIA QUERIES #############

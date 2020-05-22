@@ -12,6 +12,7 @@ const Jumbotron = ({ imgURL, title, underlay, withSearchbar = false }) => {
 
   return (
     <Container fluid='xl' className='px-0'>
+      <div className="curved-line"></div>
       <div className="hero d-flex justify-content-center align-items-center"
         style={divStyle}>
         <div className="hero-content px-2">

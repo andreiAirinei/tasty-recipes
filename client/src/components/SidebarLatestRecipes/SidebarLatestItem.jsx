@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 
 const SidebarLatestItem = ({ recipeID, name, category, imageURL }) => {
   return (
-    <Link to={`/recipe/${recipeID}`} className='text-decoration-none text-dark'>
+    <Link to={`/recipes/recipe/${recipeID}`} className='text-decoration-none text-dark'>
       <div className='latest-list-item d-flex align-items-center mb-1'>
         <div className="image-holder">
           <Image src={`${imageURL}/preview`} alt={name} thumbnail />

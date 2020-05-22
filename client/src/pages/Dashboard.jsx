@@ -7,11 +7,16 @@ import Jumbotron from '../components/Jumbotron/Jumbotron';
 import Container from 'react-bootstrap/Container';
 
 const Dashboard = () => {
+
+  console.log('DASHBOARD');
+
   return (
-    <Container className='dashboard'>
-      <Jumbotron fluid imgUrl='site2.jpg' />
-      <h1>Dashboard</h1>
-    </Container>
+    <>
+      <Jumbotron imgURL='site2.jpg' />
+      <Container className='directory'>
+        <h1>Recipes</h1>
+      </Container>
+    </>
   )
 }
 

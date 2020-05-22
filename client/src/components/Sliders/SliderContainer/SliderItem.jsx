@@ -14,7 +14,7 @@ const SliderItem = ({ recipeID, name, category, imgURL, onClick }) => {
   const handleImageLoaded = () => setImageLoading(false);
 
   return (
-    <Link to={`/recipe/${recipeID}`} className='text-decoration-none text-dark'>
+    <Link to={`/recipes/recipe/${recipeID}`} className='text-decoration-none text-dark'>
       <Card className='slider-item mx-1 border-0' onClick={onClick}>
         <div className="slider-item-img">
           <Card.Img

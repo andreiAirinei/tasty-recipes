@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.actions';
 
 // Components
-import LoadingSpinner from '../layout/LoadingSpinner';
 import RecipeHeader from './RecipeHeader';
 import RecipeContent from './RecipeContent/RecipeContent';
 import RelatedRecipes from '../Sliders/RelatedRecipes';
@@ -14,6 +13,7 @@ import Container from 'react-bootstrap/Container'
 
 const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe }) => {
   useEffect(() => {
+    console.log(match.params.recipeID);
     getRecipeByID(match.params.recipeID);
 
     return () => {
