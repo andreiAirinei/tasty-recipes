@@ -11,8 +11,6 @@ const Header = () => {
     header: '',
     logo: ''
   });
-  // const [headerClasses, setHeaderClasses] = useState('');
-  // const [logoClasses, setLogoClasses] = useState('');
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -24,15 +22,11 @@ const Header = () => {
         header: 'header-on-scroll',
         logo: 'logo-on-scroll'
       });
-      // setHeaderClasses('header-on-scroll');
-      // setLogoClasses('logo-on-scroll');
     } else {
       setClasses({
         header: '',
         logo: ''
       });
-      // setHeaderClasses('');
-      // setLogoClasses('');
     }
   }
 
@@ -49,7 +43,6 @@ const Header = () => {
                   alt="Tasty Recipes Brand Logo"
                 />
               </Link>
-              {/* </div> */}
             </Col>
             <Col xs='4' className='py-3'>
               <Link to='/recipes' className='text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>

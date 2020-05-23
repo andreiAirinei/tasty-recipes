@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Components
 import RecipePage from './RecipePage';
-import Dashboard from './Dashboard';
+import CollectionDashboard from './CollectionDashboard';
 
 
 const RecipesDirectory = ({ match }) => {
@@ -16,7 +16,7 @@ const RecipesDirectory = ({ match }) => {
           path={`${match.path}`}
           render={() => <Redirect to='/' />}
         /> */}
-        <Route exact path={`${match.path}`} component={Dashboard} />
+        <Route exact path={`${match.path}`} component={CollectionDashboard} />
         <Route path={`${match.path}/recipe`} component={RecipePage} />
       </Switch>
     </>

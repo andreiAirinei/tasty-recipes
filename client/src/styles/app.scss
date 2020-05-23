@@ -12,12 +12,21 @@ body {
 }
 
 // Utility classes
+
+.white-space {
+  height: 2000px;
+}
+
 .min-vh-100 {
   min-height: 100vh;
 }
 
 .text-size-08 {
   font-size: 0.8rem;
+}
+
+.text-size-09 {
+  font-size: 0.9rem;
 }
 
 .text-size-1 {
@@ -94,7 +103,6 @@ body {
 
 // Header.jsx
 .header-navbar {
-  // transition: 0.5s;
   border-bottom: 1px solid var(--white);
   .brand {
     max-width: 250px;
@@ -114,9 +122,9 @@ body {
 
 .logo-on-scroll {
   img {
-    height: 35px !important;
+    transform: scale(0.7);
+    transition: .3s;
   }
-  
 }
 
 // Homepage.jsx
@@ -674,6 +682,32 @@ body {
   }
 }
 
+// CollectionDashboard.jsx
+.collection {
+  // &-dashboard {
+  //   height: 2000px;
+  // }
+
+  &-hero {
+    position: relative;
+    margin-bottom: 150px;
+  
+    .cta-card {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+  }
+
+  &-navbar {
+    margin-top: 100px;
+  }
+
+}
+
+
 // Footer.jsx
 .footer {
   position: relative;
@@ -724,6 +758,10 @@ body {
 }
 
 @media only screen and (max-width: 576px) {
+  h1, h2 {
+    font-size: 190%;
+  }
+
   .recipe-header {
     padding-top: 50px;
 

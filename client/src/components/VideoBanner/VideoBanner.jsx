@@ -11,7 +11,7 @@ const VideoBanner = () => {
           <source src={require('../../assets/videos/tasty-marshmallows.mp4')} type='video/mp4' />
         </video>
       </div>
-      <CallToActionCard />
+      <CallToActionCard withLogo />
     </div>
   )
 }
