@@ -7,7 +7,7 @@ import CallToAction from '../CallToActionCard/CallToActionCard';
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const Jumbotron = ({ imgURL, title, underlay, withSearchbar = false }) => {
+const Jumbotron = ({ imgURL, title, withSearchbar = false }) => {
   const divStyle = { backgroundImage: 'url(' + require(`../../assets/${imgURL}`) + ')' };
 
   return (
@@ -20,12 +20,6 @@ const Jumbotron = ({ imgURL, title, underlay, withSearchbar = false }) => {
           {withSearchbar && <Searchbar />}
           {/* <CallToAction /> */}
         </div>
-        {
-          underlay && <div className="underlay-image d-none d-md-block">
-            <img src={require(`../../assets/ingredients/${underlay}`)} alt="Tomatoes" />
-          </div>
-        }
-
       </div>
     </Container>
 

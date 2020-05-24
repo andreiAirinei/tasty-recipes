@@ -148,13 +148,6 @@ body {
   &-text {
     text-shadow: 1px 1px 9px #0a0a0a;
   }
-
-  .underlay-image {
-    position: absolute;
-    bottom: -100px;
-    right: -300px;
-    z-index: -1;
-  }
 }
 
 .curved-line {
@@ -682,15 +675,11 @@ body {
   }
 }
 
-// CollectionDashboard.jsx
+// CollectionPage.jsx
 .collection {
-  // &-dashboard {
-  //   height: 2000px;
-  // }
-
   &-hero {
     position: relative;
-    margin-bottom: 150px;
+    margin-bottom: 220px;
   
     .cta-card {
       position: absolute;
@@ -700,13 +689,21 @@ body {
       transform: translate(-50%, 50%);
     }
   }
-
-  &-navbar {
-    margin-top: 100px;
-  }
-
 }
 
+.custom-dropdown-button {
+  cursor: pointer;
+
+  // sibling selector
+  &:hover ~ .custom-dropdown-list {
+      height: auto;
+  }
+}
+
+.custom-dropdown-list {
+  overflow: hidden;
+  height: 0px;
+}
 
 // Footer.jsx
 .footer {

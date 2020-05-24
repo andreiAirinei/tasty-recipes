@@ -19,7 +19,6 @@ const HomePage = () => {
       <Jumbotron
         title='Looking for a tasty recipe?'
         imgURL='site1.jpg'
-        underlay='tomatoes.jpg'
         withSearchbar />
       <RecipesSlider />
       <Suspense fallback={<LoadingSpinner />}>
