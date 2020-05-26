@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import CollectionList from './CollectionList';
+
 const CollectionContent = () => {
   return (
     <div className='collection-content'>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil modi rerum, facere optio adipisci veniam quaerat ad eos praesentium? Quo deleniti vitae nam voluptate laudantium veritatis porro repudiandae omnis id repellendus error quasi beatae labore suscipit eligendi inventore veniam soluta atque laborum architecto, iusto excepturi rerum sint! Rem, obcaecati illo laudantium ex quasi est, deleniti consequatur perspiciatis iusto, natus error neque architecto adipisci vitae molestias aliquid hic quas quos culpa praesentium voluptatibus id facere dolore laboriosam! Molestias modi aliquid vitae voluptate cum laboriosam similique quaerat ipsum. Dolore esse velit veritatis obcaecati sapiente ad eos, laudantium deserunt beatae! Corporis aperiam libero veritatis non nihil nulla pariatur dolorem, Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem perspiciatis iure reiciendis consequatur eligendi reprehenderit atque praesentium maiores numquam, minus perferendis soluta nulla blanditiis, tenetur sed, aspernatur id hic! Libero repudiandae perspiciatis dignissimos eum, ex ea officiis! Perspiciatis nihil, minus error quos repellendus animi qui! Omnis iure repellat provident accusamus? Similique laboriosam esse quis at dicta debitis suscipit sapiente blanditiis quam accusamus, eaque delectus est tenetur libero fuga obcaecati velit, dolor assumenda! Eligendi ex quis mollitia cupiditate qui harum, laborum voluptate dicta deserunt magnam commodi maxime accusamus quos iste officia rem recusandae eveniet impedit similique rerum doloribus quia animi esse? Sapiente sequi eveniet explicabo cum, nulla neque animi corporis ipsa veniam est magnam illum nihil, ab, eligendi asperiores quasi dignissimos. Placeat nulla commodi voluptates deserunt, asperiores illum excepturi facere qui accusamus, eligendi dolores ipsam odio perferendis assumenda! Illo in ad ratione assumenda, corporis ducimus voluptatibus consequatur, consectetur sed autem officia aut vel cupiditate ab eos sunt? Quo impedit necessitatibus, qui vel aspernatur modi debitis quidem, illo, assumenda sunt voluptatem non aliquid. Maxime soluta perspiciatis autem exercitationem dolor quos corrupti distinctio reiciendis, illum aliquid cupiditate, dolorem, atque praesentium quod amet. Tenetur magnam assumenda aspernatur corrupti consequuntur quis repellendus numquam iure tempore!
+      <CollectionList />
     </div>
   )
 }

@@ -1,32 +1,40 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sticky } from 'react-sticky';
 
+// Redux
+import { connect } from 'react-redux';
+import {
+  fetchCountries,
+  fetchDishTypes
+} from '../../../redux/category/category.actions';
+
 // Components
-import ButtonSecondary from '../../layout/ButtonSecondary';
+import SidebarButton from './SidebarButton';
+import ExpandableList from '../../ExpandableList/ExpandableList';
 
-const CollectionSidebar = () => {
-
+const CollectionSidebar = ({
+  fetchCountries,
+  fetchDishTypes,
+  countriesList,
+  dishTypes
+}) => {
   const [currentButton, setCurrentButton] = useState(null);
-  const [dropdownToggle, setDropdownToggle] = useState(false);
-  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    fetchCountries();
+    fetchDishTypes();
+  }, []);
+
+  // The 'currentTarget' read-only property of the Event interface identifies the current target for the event, as the event traverses the DOM. It always refers to the element to which the event handler has been attached, as opposed to Event.target, which identifies the element on which the event occurred and which may be its descendant.
   const handleSidebarButton = e => {
-    if (e.target !== currentButton) {
-      console.log(e.target.dataset.name);
-      e.target.classList.add('btn-category--active');
+    if (e.currentTarget !== currentButton) {
+      console.log(e.currentTarget.dataset.name);
+      e.currentTarget.classList.add('btn-category--active');
       if (currentButton) currentButton.classList.remove('btn-category--active');
-      setCurrentButton(e.target);
-    }
-  }
+      setCurrentButton(e.currentTarget);
 
-  const handleButtonExpand = () => {
-    console.log('Dropdown');
-    if (!dropdownToggle) {
-      dropdownRef.current.classList.add('category-dropdown--expanded');
-    } else {
-      dropdownRef.current.classList.remove('category-dropdown--expanded');
+      // do data fetching
     }
-    setDropdownToggle(!dropdownToggle);
   }
 
   return (
@@ -37,26 +45,47 @@ const CollectionSidebar = () => {
             className='sidebar-category'
             style={{ ...style, marginTop: isSticky ? '150px' : '0px' }}
           >
-            <ButtonSecondary handleClick={handleSidebarButton} text='All' />
-            <ButtonSecondary handleClick={handleSidebarButton} text='Latest' />
-            <ButtonSecondary handleClick={handleSidebarButton} text='Dish types' />
-            <ButtonSecondary handleClick={handleSidebarButton} text='Country' />
-            <button onClick={handleButtonExpand} className='btn-category w-100 text-left text-decoration-none border-0 px-2 py-1 text-dk'>
-              Other
-                        <img src={require('../../../assets/angle-down.svg')} alt="Dropdown" className='ml-2' />
-              <img src={require('../../../assets/angle-up.svg')} alt="Dropdown" className='ml-2' />
-            </button>
-            <div ref={dropdownRef} className="category-dropdown ml-3">
-              <ButtonSecondary handleClick={handleSidebarButton} text='Item1' />
-              <ButtonSecondary handleClick={handleSidebarButton} text='Item2' />
-              <ButtonSecondary handleClick={handleSidebarButton} text='Item3' />
-              <ButtonSecondary handleClick={handleSidebarButton} text='Item4' />
-              <ButtonSecondary handleClick={handleSidebarButton} text='Item5' />
-            </div>
+            <SidebarButton handleClick={handleSidebarButton} text='All' />
+            <SidebarButton handleClick={handleSidebarButton} text='Latest' />
+            <ExpandableList listName='Dish Type'>
+              {
+                dishTypes && dishTypes.map(dish => (
+                  <SidebarButton
+                    key={dish.strCategory}
+                    text={dish.strCategory}
+                    handleClick={handleSidebarButton}
+                    isListItem
+                  />
+                ))
+              }
+            </ExpandableList>
+            <ExpandableList listName='World Cuisine'>
+              {
+                countriesList && countriesList.map(country => (
+                  <SidebarButton
+                    key={country.strArea}
+                    text={country.strArea}
+                    iconName={country.strArea}
+                    handleClick={handleSidebarButton}
+                    isListItem
+                  />
+                ))
+              }
+            </ExpandableList>
           </div>)
       }
     </Sticky>
   )
 }
 
-export default CollectionSidebar
+const mapStateToProps = state => ({
+  countriesList: state.category.countriesList,
+  dishTypes: state.category.dishTypes
+})
+
+const maDispatchToProps = dispatch => ({
+  fetchCountries: () => dispatch(fetchCountries()),
+  fetchDishTypes: () => dispatch(fetchDishTypes())
+});
+
+export default connect(mapStateToProps, maDispatchToProps)(CollectionSidebar);

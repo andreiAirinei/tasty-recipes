@@ -24,7 +24,8 @@ export const getAllRecipes = () => async dispatch => {
       payload: data.meals
     });
   } catch (err) {
-    console.log(err.response.statusText);
+    // console.log(err.response.statusText);
+    console.log('API fetching error!');
   }
 }
 
@@ -50,7 +51,7 @@ export const getLatestRecipes = () => async dispatch => {
       }
     });
   } catch (err) {
-    console.log(err.response.statusText);
+    console.log('API fetching error!');
   }
 }
 
@@ -69,7 +70,7 @@ export const getRandomSingleRecipe = () => async dispatch => {
       payload: data.meals[0]
     });
   } catch (err) {
-    console.log(err.response.statusText);
+    console.log('API fetching error!');
   }
 }
 
@@ -95,7 +96,7 @@ export const getRandomMultipleRecipes = () => async dispatch => {
       }
     });
   } catch (err) {
-    console.log(err.response.statusText);
+    console.log('API fetching error!');
   }
 }
 
@@ -114,7 +115,7 @@ export const getRecipeByID = (recipeID) => async dispatch => {
       payload: data.meals[0]
     });
   } catch (err) {
-    console.error(err.message);
+    console.log('API fetching error!');
   }
 }
 
@@ -139,7 +140,7 @@ export const getRecipesByCategory = (category) => async dispatch => {
       }
     });
   } catch (err) {
-    console.log(err.message);
+    console.log('API fetching error!');
   }
 }
 

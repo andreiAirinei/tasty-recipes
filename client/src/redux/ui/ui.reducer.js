@@ -1,7 +1,8 @@
 import { SET_TAB_TITLE } from './ui.types';
 
 const INITIAL_STATE = {
-  title: null
+  title: null,
+  activeCollection: 'All'
 };
 
 const uiReducer = (state = INITIAL_STATE, action) => {

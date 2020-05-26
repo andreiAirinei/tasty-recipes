@@ -22,7 +22,6 @@ const CollectionOverview = () => {
           </Col>
         </Row>
       </StickyContainer>
-
     </div>
   )
 }
