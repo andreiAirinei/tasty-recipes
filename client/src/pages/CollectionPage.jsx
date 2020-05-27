@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // Redux
 import { connect } from 'react-redux';
@@ -12,13 +12,7 @@ import CollectionOverview from '../components/CollectionOverview/CollectionOverv
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 
-
 const CollectionPage = ({ categories }) => {
-
-
-  useEffect(() => {
-    console.log(categories);
-  });
 
   return (
     <>
@@ -28,7 +22,6 @@ const CollectionPage = ({ categories }) => {
           <CallToActionCard />
         </div>
         <Container className='collection-navbar' fluid='xl'>
-          <SectionTitle title='Recipes' />
           <CollectionOverview />
         </Container>
       </div>

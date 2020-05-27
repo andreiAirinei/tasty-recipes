@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+// Redux
+import { connect } from 'react-redux';
+import { getRecipesByCategory } from '../../../redux/recipes/recipes.actions';
 
 // Components
 import CollectionList from './CollectionList';
 
-const CollectionContent = () => {
+const CollectionContent = ({ getRecipesByCategory }) => {
+  useEffect(() => {
+    getRecipesByCategory('Seafood');
+  }, [])
+
   return (
     <div className='collection-content'>
       <CollectionList />
@@ -11,4 +19,4 @@ const CollectionContent = () => {
   )
 }
 
-export default CollectionContent;
+export default connect(null, { getRecipesByCategory })(CollectionContent);

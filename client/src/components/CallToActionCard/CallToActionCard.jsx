@@ -8,7 +8,8 @@ const CallToActionCard = ({ withLogo = false }) => {
   return (
     <div className="cta-card p-3 mx-auto box-shadow">
       <div className="inner-box p-5 text-center">
-        <h4><span className='font-weight-bold'>Create</span> your own</h4>
+        <h5><span className='font-weight-bold  text-danger'>Create</span> your own</h5>
+        {!withLogo && <h5>tasty recipes</h5>}
         {
           withLogo &&
           <img src={ReactLogo} alt="Chef Hat" className='d-block mx-auto tasty-logo my-3' />

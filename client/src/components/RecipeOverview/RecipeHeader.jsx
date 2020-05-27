@@ -15,7 +15,6 @@ const RecipeHeader = ({ singleRecipe }) => {
 
   return (
     <div className='recipe-header mb-5'>
-      <div className="curved-line" />
       {singleRecipe &&
         <Row >
           <Col xs={12} sm={5}>

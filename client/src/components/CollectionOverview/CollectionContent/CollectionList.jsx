@@ -1,95 +1,31 @@
 import React from 'react';
 
+// Redux
+import { connect } from 'react-redux';
+
 // Components
 import CollectionListItem from './CollectionListItem';
 
 // Bootstrap
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
-const CollectionList = () => {
+const CollectionList = ({ recipesByCategory }) => {
   return (
     <Row className='collection-list'>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-      <Col xs={4}>
-        <CollectionListItem />
-      </Col>
-    </Row>
+      {
+        recipesByCategory.data && recipesByCategory.data.map(recipe => (
+          <CollectionListItem
+            name={recipe.strMeal}
+            imageURL={recipe.strMealThumb}
+          />
+        ))
+      }
+    </Row >
   )
-}
+};
 
-export default CollectionList;
+const mapStateToProps = state => ({
+  recipesByCategory: state.recipes.recipesByCategory
+});
+
+export default connect(mapStateToProps)(CollectionList);
