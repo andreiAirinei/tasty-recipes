@@ -750,13 +750,13 @@ body {
       cursor: pointer;
 
       .item-thumbnail {
-        -webkit-box-shadow: 0px 0px 9px 1px rgba(136,136,136,1);
-        -moz-box-shadow: 0px 0px 9px 1px rgba(136,136,136,1);
-        box-shadow: 0px 0px 9px 1px rgba(136,136,136,1);
+        -webkit-box-shadow: 0px 0px 5px 1px rgba(136,136,136,1);
+        -moz-box-shadow: 0px 0px 5px 1px rgba(136,136,136,1);
+        box-shadow: 0px 0px 5px 1px rgba(136,136,136,1);
       }
       
       .item-name {
-        font-weight: bold !important;
+        text-shadow: 1px 0px var(--dark);
       }
     }
   }
@@ -765,13 +765,33 @@ body {
 // ExpandableList.jsx
 .expandable-list {
   .list-area {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     height: 0px;
     transition: height .2s;
   }
-  
+
+  .list-area::-webkit-scrollbar {
+    width: 3px !important; 
+    height: 0px;
+  }
+
+  .list-area::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 3px;
+    margin: 5px 0;
+  }
+
+  .list-area::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--secondary);
+  }
+
   .list-area--expanded {
     height: auto;
+    max-height: 420px;
+    // overflow-y: scroll;
     padding: 5px 0;
     border-top: 1px dotted #888;
     border-bottom: 1px dotted #888;

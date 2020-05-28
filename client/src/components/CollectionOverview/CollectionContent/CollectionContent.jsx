@@ -7,10 +7,11 @@ import { getRecipesByCategory } from '../../../redux/recipes/recipes.actions';
 // Components
 import CollectionList from './CollectionList';
 
-const CollectionContent = ({ getRecipesByCategory }) => {
+const CollectionContent = ({ getRecipesByCategory, activeCategory }) => {
   useEffect(() => {
-    getRecipesByCategory('Seafood');
-  }, [])
+    console.log('ACTIVE CAT -> ', activeCategory);
+    getRecipesByCategory(activeCategory);
+  }, [getRecipesByCategory, activeCategory]);
 
   return (
     <div className='collection-content'>
@@ -19,4 +20,12 @@ const CollectionContent = ({ getRecipesByCategory }) => {
   )
 }
 
-export default connect(null, { getRecipesByCategory })(CollectionContent);
+const mapStateToProps = state => ({
+  activeCategory: state.category.activeCategory
+});
+
+const mapDispatchToProps = dispatch => ({
+  getRecipesByCategory: (category) => dispatch(getRecipesByCategory(category))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionContent);

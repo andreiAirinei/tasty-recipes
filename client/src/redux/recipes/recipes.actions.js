@@ -120,7 +120,8 @@ export const getRecipeByID = (recipeID) => async dispatch => {
 }
 
 // Get recipes by category
-export const getRecipesByCategory = (category) => async dispatch => {
+export const getRecipesByCategory = ({ type, isCountry }) => async dispatch => {
+  console.log('STARTED FETCHING CATEGORY TYPE -> ', type);
   try {
     dispatch({
       type: GET_RECIPES_BY_CATEGORY,
@@ -129,7 +130,20 @@ export const getRecipesByCategory = (category) => async dispatch => {
         isLoading: true
       }
     });
-    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/filter.php?c=${category}`);
+
+    let apiURL = `${process.env.REACT_APP_API_ENDPOINT}`;
+    console.log(isCountry);
+
+    // URL fetch All recipes
+    if (type === 'All') apiURL = `${apiURL}/search.php?s=`;
+    // filter Latest recipes
+    else if (type === 'Latest') apiURL = `${apiURL}/latest.php`;
+    // filter by country
+    else if (isCountry) apiURL = `${apiURL}/filter.php?a=${type}`;
+    // filter by dish type
+    else apiURL = `${apiURL}/filter.php?c=${type}`;
+
+    const res = await fetch(apiURL);
     const data = await res.json();
 
     dispatch({

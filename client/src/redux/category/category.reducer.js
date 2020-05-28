@@ -4,7 +4,10 @@ import {
 } from './category.types';
 
 const INITIAL_STATE = {
-  categories: 'muuuulte',
+  activeCategory: {
+    type: 'British',
+    isCountry: true
+  },
   countriesList: null,
   dishTypes: null
 }

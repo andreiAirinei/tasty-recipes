@@ -24,7 +24,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRecipesByCategory: categ => dispatch(getRecipesByCategory(categ))
+  getRecipesByCategory: category => dispatch(getRecipesByCategory(category))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RelatedRecipes);

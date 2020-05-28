@@ -21,9 +21,10 @@ const CollectionSidebar = ({
   const [currentButton, setCurrentButton] = useState(null);
 
   useEffect(() => {
+    console.log('CollectionSidebar');
     fetchCountries();
     fetchDishTypes();
-  }, []);
+  }, [fetchCountries, fetchDishTypes]);
 
   // The 'currentTarget' read-only property of the Event interface identifies the current target for the event, as the event traverses the DOM. It always refers to the element to which the event handler has been attached, as opposed to Event.target, which identifies the element on which the event occurred and which may be its descendant.
   const handleSidebarButton = e => {

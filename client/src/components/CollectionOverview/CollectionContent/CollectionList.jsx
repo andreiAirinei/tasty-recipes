@@ -10,11 +10,13 @@ import CollectionListItem from './CollectionListItem';
 import Row from 'react-bootstrap/Row';
 
 const CollectionList = ({ recipesByCategory }) => {
+  console.log(recipesByCategory);
   return (
     <Row className='collection-list'>
       {
         recipesByCategory.data && recipesByCategory.data.map(recipe => (
           <CollectionListItem
+            key={recipe.idMeal}
             name={recipe.strMeal}
             imageURL={recipe.strMealThumb}
           />

@@ -2,7 +2,6 @@ import React from 'react';
 
 // Components
 import Searchbar from '../Searchbar/Searchbar';
-import CallToAction from '../CallToActionCard/CallToActionCard';
 
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
@@ -18,7 +17,6 @@ const Jumbotron = ({ imgURL, title, withSearchbar = false }) => {
         <div className="hero-content px-2">
           <h1 className='hero-text text-white text-center'>{title}</h1>
           {withSearchbar && <Searchbar />}
-          {/* <CallToAction /> */}
         </div>
       </div>
     </Container>
