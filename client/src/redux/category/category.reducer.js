@@ -1,12 +1,13 @@
 import {
+  SET_ACTIVE_CATEGORY,
   FETCH_COUNTRIES,
   FETCH_DISH_TYPES
 } from './category.types';
 
 const INITIAL_STATE = {
   activeCategory: {
-    type: 'British',
-    isCountry: true
+    type: 'All',
+    isCountry: false
   },
   countriesList: null,
   dishTypes: null
@@ -14,6 +15,12 @@ const INITIAL_STATE = {
 
 const categoryReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case SET_ACTIVE_CATEGORY:
+      return {
+        ...state,
+        activeCategory: action.payload
+      }
+
     case FETCH_COUNTRIES:
       return {
         ...state,

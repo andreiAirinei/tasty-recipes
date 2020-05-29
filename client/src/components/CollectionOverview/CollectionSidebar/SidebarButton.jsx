@@ -1,16 +1,24 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 const SidebarButton = ({
   text,
   handleClick,
   iconName = null,
-  isListItem = false
+  isListItem = false,
+  isCountry,
+  activeCategory
 }) => {
+
   return (
     <button
       data-name={text}
+      data-iscountry={isCountry}
       onClick={handleClick}
-      className={`btn-category w-100 text-left text-decoration-none border-0 px-2 py-1 d-flex align-items-center justify-content-between ${isListItem && `btn-category--secondary`}
+      className={`btn-category w-100 text-left text-decoration-none border-0 px-2 py-1 d-flex align-items-center justify-content-between 
+      ${isListItem && `btn-category--secondary`}
+      ${activeCategory.type === text && `btn-category--active`}
       `}
     >
       {text}
@@ -21,4 +29,8 @@ const SidebarButton = ({
   )
 }
 
-export default SidebarButton;
+const mapStateToProps = state => ({
+  activeCategory: state.category.activeCategory
+})
+
+export default connect(mapStateToProps)(SidebarButton);

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Sticky } from 'react-sticky';
 
 // Redux
 import { connect } from 'react-redux';
 import {
+  setActiveCategory,
   fetchCountries,
   fetchDishTypes
 } from '../../../redux/category/category.actions';
@@ -13,29 +14,24 @@ import SidebarButton from './SidebarButton';
 import ExpandableList from '../../ExpandableList/ExpandableList';
 
 const CollectionSidebar = ({
+  setActiveCategory,
   fetchCountries,
   fetchDishTypes,
   countriesList,
   dishTypes
 }) => {
-  const [currentButton, setCurrentButton] = useState(null);
 
   useEffect(() => {
-    console.log('CollectionSidebar');
     fetchCountries();
     fetchDishTypes();
   }, [fetchCountries, fetchDishTypes]);
 
   // The 'currentTarget' read-only property of the Event interface identifies the current target for the event, as the event traverses the DOM. It always refers to the element to which the event handler has been attached, as opposed to Event.target, which identifies the element on which the event occurred and which may be its descendant.
   const handleSidebarButton = e => {
-    if (e.currentTarget !== currentButton) {
-      console.log(e.currentTarget.dataset.name);
-      e.currentTarget.classList.add('btn-category--active');
-      if (currentButton) currentButton.classList.remove('btn-category--active');
-      setCurrentButton(e.currentTarget);
-
-      // do data fetching
-    }
+    setActiveCategory({
+      type: e.currentTarget.dataset.name,
+      isCountry: e.currentTarget.dataset.iscountry
+    });
   }
 
   return (
@@ -46,7 +42,10 @@ const CollectionSidebar = ({
             className='sidebar-category'
             style={{ ...style, marginTop: isSticky ? '150px' : '0px' }}
           >
-            <SidebarButton handleClick={handleSidebarButton} text='All' />
+            <SidebarButton
+              handleClick={handleSidebarButton}
+              text='All'
+            />
             <SidebarButton handleClick={handleSidebarButton} text='Latest' />
             <ExpandableList listName='Dish Type'>
               {
@@ -68,6 +67,7 @@ const CollectionSidebar = ({
                     text={country.strArea}
                     iconName={country.strArea}
                     handleClick={handleSidebarButton}
+                    isCountry
                     isListItem
                   />
                 ))
@@ -85,6 +85,7 @@ const mapStateToProps = state => ({
 })
 
 const maDispatchToProps = dispatch => ({
+  setActiveCategory: category => dispatch(setActiveCategory(category)),
   fetchCountries: () => dispatch(fetchCountries()),
   fetchDishTypes: () => dispatch(fetchDishTypes())
 });

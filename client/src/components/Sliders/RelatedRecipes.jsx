@@ -8,7 +8,7 @@ import SliderContainer from '../Sliders/SliderContainer/SliderContainer';
 
 const RelatedRecipes = ({ singleRecipe, getRecipesByCategory, recipesByCategory }) => {
   useEffect(() => {
-    if (singleRecipe) getRecipesByCategory(singleRecipe.strCategory);
+    if (singleRecipe) getRecipesByCategory({ type: singleRecipe.strCategory, isCountry: false });
   }, [singleRecipe, getRecipesByCategory])
 
   return (
