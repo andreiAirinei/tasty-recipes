@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Components
 import RecipeOverview from '../components/RecipeOverview/RecipeOverview';
@@ -9,15 +9,18 @@ const RecipePage = ({ match }) => {
   console.log(match);
   return (
     <div className='recipe-page'>
-      <Route
-        exact
-        path={`${match.path}`}
-        render={() => <Redirect to='/' />}
-      />
-      <Route
-        path={`${match.path}/:recipeID`}
-        component={RecipeOverview}
-      />
+      <Switch>
+        <Route
+          exact
+          path={`${match.url}`}
+          render={() => <Redirect to='/' />}
+        />
+        <Route
+          exact
+          path={`${match.url}/:recipeID`}
+          component={RecipeOverview}
+        />
+      </Switch>
     </div>
   )
 };

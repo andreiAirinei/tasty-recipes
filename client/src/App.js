@@ -11,7 +11,6 @@ import VideoModal from './components/VideoModal/VideoModal';
 
 // Pages
 import HomePage from './pages/HomePage';
-// import RecipePage from './pages/RecipePage';
 import RecipesDirectory from './pages/RecipesDirectory';
 
 const App = ({ getLatestRecipes }) => {
@@ -24,7 +23,6 @@ const App = ({ getLatestRecipes }) => {
       <Layout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          {/* <Route path='/recipe' component={RecipePage} /> */}
           <Route path='/recipes' component={RecipesDirectory} />
         </Switch>
       </Layout>

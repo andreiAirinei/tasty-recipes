@@ -26,8 +26,8 @@ const CollectionList = ({ recipesByCategory }) => {
   )
 };
 
-const mapStateToProps = state => ({
-  recipesByCategory: state.recipes.recipesByCategory
+const mapStateToProps = ({ recipes: { recipesByCategory } }) => ({
+  recipesByCategory
 });
 
 export default connect(mapStateToProps)(CollectionList);

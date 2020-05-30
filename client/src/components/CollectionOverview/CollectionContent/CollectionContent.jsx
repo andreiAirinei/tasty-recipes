@@ -9,7 +9,6 @@ import CollectionList from './CollectionList';
 
 const CollectionContent = ({ getRecipesByCategory, activeCategory }) => {
   useEffect(() => {
-    console.log('ACTIVE CAT -> ', activeCategory);
     getRecipesByCategory(activeCategory);
   }, [getRecipesByCategory, activeCategory]);
 
@@ -20,8 +19,8 @@ const CollectionContent = ({ getRecipesByCategory, activeCategory }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  activeCategory: state.category.activeCategory
+const mapStateToProps = ({ category }) => ({
+  activeCategory: category.activeCategory
 });
 
 const mapDispatchToProps = dispatch => ({

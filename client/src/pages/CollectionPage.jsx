@@ -1,18 +1,14 @@
 import React from 'react';
 
-// Redux
-import { connect } from 'react-redux';
-
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
-import SectionTitle from '../components/layout/SectionTitle';
 import CallToActionCard from '../components/CallToActionCard/CallToActionCard';
 import CollectionOverview from '../components/CollectionOverview/CollectionOverview';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 
-const CollectionPage = ({ categories }) => {
+const CollectionPage = () => {
 
   return (
     <>
@@ -30,8 +26,4 @@ const CollectionPage = ({ categories }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  categories: state.category.categories
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;

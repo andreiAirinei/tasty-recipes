@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
 const CollectionListItem = ({ recipeID, imageURL, name }) => {
+
   return (
     <Col xs={3}>
       <Link to={`/recipes/recipe/${recipeID}`} className='text-decoration-none'>

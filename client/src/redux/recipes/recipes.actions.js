@@ -24,7 +24,6 @@ export const getAllRecipes = () => async dispatch => {
       payload: data.meals
     });
   } catch (err) {
-    // console.log(err.response.statusText);
     console.log('API fetching error!');
   }
 }
@@ -121,7 +120,6 @@ export const getRecipeByID = (recipeID) => async dispatch => {
 
 // Get recipes by category
 export const getRecipesByCategory = ({ type, isCountry }) => async dispatch => {
-  console.log('STARTED FETCHING CATEGORY TYPE -> ', type);
   try {
     dispatch({
       type: GET_RECIPES_BY_CATEGORY,
@@ -132,7 +130,6 @@ export const getRecipesByCategory = ({ type, isCountry }) => async dispatch => {
     });
 
     let apiURL = `${process.env.REACT_APP_API_ENDPOINT}`;
-    console.log(isCountry);
 
     // URL fetch All recipes
     if (type === 'All') apiURL = `${apiURL}/search.php?s=`;
