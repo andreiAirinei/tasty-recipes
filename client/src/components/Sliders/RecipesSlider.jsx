@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
+import { getLatestRecipes } from '../../redux/recipes/recipes.actions';
 
 // Components
 import SliderNavbar from './SliderNavbar';
@@ -12,27 +13,29 @@ import SectionTitle from '../layout/SectionTitle';
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const RecipesSlider = ({ latestRecipes, title, isVideo = false }) => {
+const RecipesSlider = ({ latestRecipes, getLatestRecipes, title, isVideo = false }) => {
+  const [showRandomRecipes, setShowRandomRecipes] = useState(false);
   const [state, setState] = useState({
-    showRandomRecipes: null,
     data: null,
     isLoading: false
   });
 
   useEffect(() => {
-    if (state.showRandomRecipes) fetchRandomRecipes();
-  }, [state.isLoading]);
+
+  });
 
   const handleSelect = (eventKey) => {
     if (eventKey === 'showLatest') {
-      setState({ ...state, showRandomRecipes: false });
+      getLatestRecipes();
+      setShowRandomRecipes(false);
     } else if (eventKey === 'showRandom') {
-      setState({ ...state, showRandomRecipes: true, isLoading: true });
+      setShowRandomRecipes(true);
+      fetchRandomRecipes();
     }
   }
 
   const fetchRandomRecipes = async () => {
-    console.log(state.showRandomRecipes, state.isLoading);
+    setState({ ...state, isLoading: true });
     try {
       const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/randomselection.php`);
       const jsonData = await res.json();
@@ -53,18 +56,22 @@ const RecipesSlider = ({ latestRecipes, title, isVideo = false }) => {
       <SliderNavbar
         handleSelect={handleSelect}
         activeKey={
-          state.showRandomRecipes ? 'showRandom' : 'showLatest'
+          showRandomRecipes ? 'showRandom' : 'showLatest'
         } />
       {
-        isVideo ? <VideoSliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} /> :
-          <SliderContainer toShow={state.showRandomRecipes ? state : latestRecipes} />
+        isVideo ? <VideoSliderContainer toShow={showRandomRecipes ? state : latestRecipes} /> :
+          <SliderContainer toShow={showRandomRecipes ? state : latestRecipes} />
       }
     </Container>
   )
 }
 
-const mapStateToProps = state => ({
-  latestRecipes: state.recipes.latestRecipes
+const mapStateToProps = ({ recipes }) => ({
+  latestRecipes: recipes.latestRecipes
 });
 
-export default connect(mapStateToProps)(RecipesSlider);
+const mapDispatchToProps = dispatch => ({
+  getLatestRecipes: () => dispatch(getLatestRecipes())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesSlider);
