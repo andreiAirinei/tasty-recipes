@@ -45,7 +45,8 @@ const Header = () => {
               </Link>
             </Col>
             <Col xs='4' className='py-3'>
-              <Link to='/recipes' className='text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
+              <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
+              <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4'>Ingredients</Link>
             </Col>
           </Row>
         </Container>

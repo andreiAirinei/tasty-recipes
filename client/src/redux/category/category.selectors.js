@@ -18,3 +18,8 @@ export const selectDishTypes = createSelector(
   [selectCategory],
   category => category.dishTypes
 );
+
+export const selectPopular = createSelector(
+  [selectCategory],
+  category => category.popular
+)

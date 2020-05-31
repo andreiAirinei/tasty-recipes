@@ -1,5 +1,11 @@
 import React from 'react';
 
+// Redux
+import { connect } from 'react-redux';
+
+// Selectors
+import { selectPopular } from '../../redux/category/category.selectors';
+
 // Components
 import CategoriesItem from './CategoriesItem';
 
@@ -8,14 +14,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import SectionTitle from '../layout/SectionTitle';
 
-const CategoriesContainer = () => {
+const CategoriesContainer = ({ popularCategories }) => {
   return (
     <Container className='categories-container' fluid='xl'>
       <SectionTitle title='Popular Categories' />
       <Row>
         {
-          categoryData.map(category =>
-            <CategoriesItem key={category.id} name={category.name} imgURL={category.imgURL} />)
+          popularCategories.map(category =>
+            <CategoriesItem key={category.id} name={category.name} imgURL={category.icon} />)
         }
       </Row>
       <div className="underlay-image">
@@ -23,49 +29,10 @@ const CategoriesContainer = () => {
       </div>
     </Container>
   )
-}
+};
 
-const categoryData = [
-  {
-    id: 0,
-    name: 'Chicken',
-    imgURL: 'https://i.ibb.co/h7xdkrN/chicken.jpg'
-  },
-  {
-    id: 1,
-    name: 'Beef',
-    imgURL: 'https://i.ibb.co/4WNt4Tb/beef.jpg'
-  },
-  {
-    id: 2,
-    name: 'Pork',
-    imgURL: 'https://i.ibb.co/RSmCF8S/pork.jpg'
-  },
-  {
-    id: 3,
-    name: 'Lamb',
-    imgURL: 'https://i.ibb.co/rGq51ZC/lamb.jpg'
-  },
-  {
-    id: 4,
-    name: 'Seafood',
-    imgURL: 'https://i.ibb.co/4JMy4CP/seafood.jpg'
-  },
-  {
-    id: 5,
-    name: 'Pasta',
-    imgURL: 'https://i.ibb.co/xFBTyfW/pasta.jpg'
-  },
-  {
-    id: 6,
-    name: 'Desserts',
-    imgURL: 'https://i.ibb.co/FsSq1cw/dessert.jpg'
-  },
-  {
-    id: 7,
-    name: 'Vegetarian',
-    imgURL: 'https://i.ibb.co/4sx5Fph/vegetarian.jpg'
-  }
-];
+const mapStateToProps = state => ({
+  popularCategories: selectPopular(state)
+})
 
-export default CategoriesContainer;
+export default connect(mapStateToProps)(CategoriesContainer);

@@ -12,6 +12,7 @@ import VideoModal from './components/VideoModal/VideoModal';
 // Pages
 import HomePage from './pages/HomePage';
 import RecipesDirectory from './pages/RecipesDirectory';
+import IngredientsPage from './pages/IngredientsPage';
 
 const App = ({ getLatestRecipes }) => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const App = ({ getLatestRecipes }) => {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/recipes' component={RecipesDirectory} />
+          <Route path='/ingredients' component={IngredientsPage} />
         </Switch>
       </Layout>
       <VideoModal />

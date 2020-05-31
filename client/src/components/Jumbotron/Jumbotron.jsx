@@ -6,7 +6,7 @@ import Searchbar from '../Searchbar/Searchbar';
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 
-const Jumbotron = ({ imgURL, title, withSearchbar = false }) => {
+const Jumbotron = ({ children, imgURL, title, withSearchbar = false }) => {
   const divStyle = { backgroundImage: 'url(' + require(`../../assets/${imgURL}`) + ')' };
 
   return (
@@ -16,6 +16,7 @@ const Jumbotron = ({ imgURL, title, withSearchbar = false }) => {
         style={divStyle}>
         <div className="hero-content px-2">
           <h1 className='hero-text text-white text-center'>{title}</h1>
+          {children}
           {withSearchbar && <Searchbar />}
         </div>
       </div>
