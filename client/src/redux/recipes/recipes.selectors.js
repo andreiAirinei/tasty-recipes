@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { selectInfinityListSettings } from '../ui/ui.selectors';
 
 const selectRecipes = state => state.recipes;
 
@@ -35,6 +36,28 @@ export const selectLatestRecipes = createSelector(
 export const selectRecipesByCategory = createSelector(
   [selectRecipes],
   recipes => recipes.recipesByCategory
+);
+
+export const selectInfinityList = createSelector(
+  [selectRecipesByCategory, selectInfinityListSettings],
+  (recipes, listSettings) => {
+
+    if (!recipes.data) return [];
+
+    let startPoint = listSettings.idxStart;
+    let endPoint = listSettings.idxEnd;
+    let hasMore = true;
+
+    if (listSettings.idxEnd > recipes.data.length) {
+      endPoint = recipes.data.length;
+      hasMore = false;
+    }
+
+    return {
+      data: recipes.data.slice(startPoint, endPoint),
+      hasMore
+    };
+  }
 );
 
 export const selectLimitedRecipesList = size => createSelector(

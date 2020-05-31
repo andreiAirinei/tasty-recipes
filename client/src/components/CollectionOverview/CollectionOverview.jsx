@@ -1,6 +1,12 @@
 import React from 'react';
 import { StickyContainer } from 'react-sticky';
 
+// Redux
+import { connect } from 'react-redux';
+
+// Selectors
+import { selectActiveCategory } from '../../redux/category/category.selectors';
+
 // Components
 import SectionTitle from '../layout/SectionTitle';
 import CollectionSidebar from './CollectionSidebar/CollectionSidebar';
@@ -10,10 +16,10 @@ import CollectionContent from './CollectionContent/CollectionContent';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const CollectionOverview = () => {
+const CollectionOverview = ({ activeCategory }) => {
   return (
     <div className='collection-overview'>
-      <SectionTitle title='All Recipes' />
+      <SectionTitle title={`${activeCategory.type} Recipes`} />
       <StickyContainer className='mb-5'>
         <Row>
           <Col xs={2}>
@@ -28,4 +34,8 @@ const CollectionOverview = () => {
   )
 }
 
-export default CollectionOverview;
+const mapStateToProps = state => ({
+  activeCategory: selectActiveCategory(state)
+});
+
+export default connect(mapStateToProps)(CollectionOverview);

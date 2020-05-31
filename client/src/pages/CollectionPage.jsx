@@ -21,7 +21,7 @@ const CollectionPage = () => {
           <CollectionOverview />
         </Container>
       </div>
-      <div className="white-space"></div>
+      {/* <div className="white-space"></div> */}
     </>
   )
 }

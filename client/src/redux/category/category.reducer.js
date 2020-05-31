@@ -6,8 +6,8 @@ import {
 
 const INITIAL_STATE = {
   activeCategory: {
-    type: 'All',
-    isCountry: false
+    type: 'American',
+    isCountry: true
   },
   countriesList: null,
   dishTypes: null

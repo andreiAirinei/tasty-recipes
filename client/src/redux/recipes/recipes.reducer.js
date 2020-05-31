@@ -76,6 +76,14 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
         }
       }
 
+    // case SET_INFINITY_LIST_POSITION:
+    //   return {
+    //     ...state,
+    //     allMeals: {
+
+    //     }
+    //   }
+
     case CLEAR_SINGLE_RECIPE:
       return {
         ...state,

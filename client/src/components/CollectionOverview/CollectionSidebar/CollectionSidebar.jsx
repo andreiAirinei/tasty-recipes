@@ -8,6 +8,7 @@ import {
   fetchCountries,
   fetchDishTypes
 } from '../../../redux/category/category.actions';
+import { setInfinityListSettings } from '../../../redux/ui/ui.actions';
 
 // Selectors
 import { createStructuredSelector } from 'reselect';
@@ -39,7 +40,18 @@ const CollectionSidebar = ({
       type: e.currentTarget.dataset.name,
       isCountry: e.currentTarget.dataset.iscountry
     });
+
+    setInfinityListSettings({
+      idxStart: 0,
+      idxEnd: 12
+    })
+
+    scrollToCustomY(580);
   }
+
+  const scrollToCustomY = (posY) => {
+    if (window.scrollY > posY) window.scrollTo(0, posY);
+  };
 
   return (
     <Sticky topOffset={-150} bottomOffset={150}>
