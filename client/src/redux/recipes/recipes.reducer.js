@@ -9,11 +9,6 @@ import {
   SET_LOADING
 } from './recipes.types';
 
-import {
-  setRecipesList,
-  setListOfRecipesByCategory
-} from './recipes.utils';
-
 const INITIAL_STATE = {
   allRecipes: null,
   singleRecipe: null,
@@ -37,7 +32,7 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
     case GET_ALL_RECIPES:
       return {
         ...state,
-        allRecipes: setRecipesList(action.payload),
+        allRecipes: action.payload,
         isLoading: false
       }
     case GET_SINGLE_RECIPE:
@@ -76,7 +71,7 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         recipesByCategory: {
-          data: setListOfRecipesByCategory(action.payload.data),
+          data: action.payload.data,
           isLoading: action.payload.isLoading
         }
       }

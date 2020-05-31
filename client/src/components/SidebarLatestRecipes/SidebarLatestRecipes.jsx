@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// Selectors
+import { selectLatestRecipes } from '../../redux/recipes/recipes.selectors';
+
 // Components
 import SidebarLatestItem from './SidebarLatestItem';
 
@@ -27,7 +30,7 @@ const SidebarLatestRecipes = ({ latestRecipes, otherClasses = '' }) => {
 }
 
 const mapStateToProps = state => ({
-  latestRecipes: state.recipes.latestRecipes
+  latestRecipes: selectLatestRecipes(state)
 });
 
 export default connect(mapStateToProps)(SidebarLatestRecipes);

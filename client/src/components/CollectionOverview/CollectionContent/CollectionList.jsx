@@ -3,6 +3,10 @@ import React from 'react';
 // Redux
 import { connect } from 'react-redux';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectRecipesByCategory } from '../../../redux/recipes/recipes.selectors';
+
 // Components
 import CollectionListItem from './CollectionListItem';
 
@@ -26,8 +30,8 @@ const CollectionList = ({ recipesByCategory }) => {
   )
 };
 
-const mapStateToProps = ({ recipes: { recipesByCategory } }) => ({
-  recipesByCategory
+const mapStateToProps = createStructuredSelector({
+  recipesByCategory: selectRecipesByCategory
 });
 
 export default connect(mapStateToProps)(CollectionList);

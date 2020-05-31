@@ -5,20 +5,27 @@ import YouTubePlayer from 'react-player/lib/players/YouTube';
 import { connect } from 'react-redux';
 import { modalClose } from '../../redux/videoModal/videoModal.actions';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import {
+  selectVideoActive,
+  selectVideoURL
+} from '../../redux/videoModal/videoModal.selectors';
+
 // Components
 import ReactLogo from '../../assets/close-button.svg';
 
 // Bootstrap Components
 import Modal from 'react-bootstrap/Modal';
 
-const VideoModal = ({ active, videoURL, modalClose }) => {
+const VideoModal = ({ isActive, videoURL, modalClose }) => {
 
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      show={active}
+      show={isActive}
       onHide={modalClose}
     >
       <Modal.Body className='video-modal-body p-0'>
@@ -40,9 +47,9 @@ const VideoModal = ({ active, videoURL, modalClose }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  active: state.videoModal.active,
-  videoURL: state.videoModal.videoURL
+const mapStateToProps = createStructuredSelector({
+  isActive: selectVideoActive,
+  videoURL: selectVideoURL
 });
 
 const mapDispatchToProps = dispatch => ({

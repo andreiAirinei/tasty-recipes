@@ -4,6 +4,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from '../../../redux/recipes/recipes.actions';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectActiveCategory } from '../../../redux/category/category.selectors';
+
 // Components
 import CollectionList from './CollectionList';
 
@@ -19,8 +23,8 @@ const CollectionContent = ({ getRecipesByCategory, activeCategory }) => {
   )
 }
 
-const mapStateToProps = ({ category }) => ({
-  activeCategory: category.activeCategory
+const mapStateToProps = createStructuredSelector({
+  activeCategory: selectActiveCategory
 });
 
 const mapDispatchToProps = dispatch => ({

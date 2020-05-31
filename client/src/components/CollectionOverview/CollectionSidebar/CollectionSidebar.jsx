@@ -9,6 +9,13 @@ import {
   fetchDishTypes
 } from '../../../redux/category/category.actions';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import {
+  selectCountriesList,
+  selectDishTypes
+} from '../../../redux/category/category.selectors';
+
 // Components
 import SidebarButton from './SidebarButton';
 import ExpandableList from '../../ExpandableList/ExpandableList';
@@ -18,7 +25,7 @@ const CollectionSidebar = ({
   fetchCountries,
   fetchDishTypes,
   countriesList,
-  dishTypes
+  dishTypes,
 }) => {
 
   useEffect(() => {
@@ -79,9 +86,9 @@ const CollectionSidebar = ({
   )
 }
 
-const mapStateToProps = state => ({
-  countriesList: state.category.countriesList,
-  dishTypes: state.category.dishTypes
+const mapStateToProps = createStructuredSelector({
+  countriesList: selectCountriesList,
+  dishTypes: selectDishTypes
 })
 
 const maDispatchToProps = dispatch => ({

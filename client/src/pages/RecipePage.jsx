@@ -6,7 +6,6 @@ import RecipeOverview from '../components/RecipeOverview/RecipeOverview';
 
 // We don't need withRouter as we have 'match' prop from the App.jsx Route
 const RecipePage = ({ match }) => {
-  console.log(match);
   return (
     <div className='recipe-page'>
       <Switch>

@@ -5,7 +5,7 @@ import {
 } from './videoModal.types';
 
 const INITIAL_STATE = {
-  active: false,
+  isActive: false,
   videoURL: null
 };
 
@@ -14,13 +14,13 @@ const videoModalReducer = (state = INITIAL_STATE, action) => {
     case MODAL_OPEN:
       return {
         ...state,
-        active: true
+        isActive: true
       }
 
     case MODAL_CLOSE:
       return {
         ...state,
-        active: false
+        isActive: false
       }
 
     case SET_VIDEO_URL:

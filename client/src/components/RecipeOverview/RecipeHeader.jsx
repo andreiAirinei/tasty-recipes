@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectSingleRecipe } from '../../redux/recipes/recipes.selectors';
+
 // Components
 import ShareButtons from '../layout/ShareButtons';
 import TimeAndDifficulty from '../TimeAndDifficulty/TimeAndDifficulty';
@@ -58,8 +62,8 @@ const RecipeHeader = ({ singleRecipe }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  singleRecipe: state.recipes.singleRecipe
+const mapStateToProps = createStructuredSelector({
+  singleRecipe: selectSingleRecipe
 });
 
 export default connect(mapStateToProps)(RecipeHeader);

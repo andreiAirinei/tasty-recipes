@@ -23,7 +23,6 @@ const VideoSliderItem = ({
 }) => {
 
   const handleImageError = (e) => {
-    console.log('error');
     e.target.src = 'https://i.ibb.co/9sYvpxK/logo.png';
   }
 
@@ -58,13 +57,9 @@ const VideoSliderItem = ({
   )
 }
 
-const mapStateToProps = state => ({
-  videoURL: state.videoModal.videoURL
-});
-
 const mapDispatchToProps = dispatch => ({
   modalOpen: () => dispatch(modalOpen()),
   setVideoURL: url => dispatch(setVideoURL(url))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoSliderItem);
+export default connect(null, mapDispatchToProps)(VideoSliderItem);

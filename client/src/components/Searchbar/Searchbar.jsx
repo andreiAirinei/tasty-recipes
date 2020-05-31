@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
 import ReactLogo from '../../assets/svgs/solid/search.svg';
 
+// Redux
+import { connect } from 'react-redux';
 import { getAllRecipes } from '../../redux/recipes/recipes.actions';
 
-const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
+// Selectors
+import { selectSearchList } from '../../redux/recipes/recipes.selectors';
+
+const Searchbar = ({ history, getAllRecipes, searchList }) => {
   const [parameters, setParameters] = useState('');
 
   useEffect(() => {
-    !allRecipes && getAllRecipes();
+    !searchList && getAllRecipes();
   })
 
   const handleKeyDown = (e) => {
@@ -42,7 +46,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
       <Select
         theme={customTheme}
         // Empty array as 'options' if recipes list is not ready
-        options={allRecipes ? allRecipes : []}
+        options={searchList ? searchList : []}
         placeholder='Find it here...'
         isClearable
         isSearchable
@@ -66,7 +70,7 @@ const Searchbar = ({ history, getAllRecipes, allRecipes }) => {
 }
 
 const mapStateToProps = state => ({
-  allRecipes: state.recipes.allRecipes
+  searchList: selectSearchList(state)
 });
 
 const mapDispatchToProps = dispatch => ({

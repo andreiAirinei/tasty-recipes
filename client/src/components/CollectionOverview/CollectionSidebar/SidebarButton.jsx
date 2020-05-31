@@ -1,6 +1,11 @@
 import React from 'react';
 
+// Redux
 import { connect } from 'react-redux';
+
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectActiveCategory } from '../../../redux/category/category.selectors';
 
 const SidebarButton = ({
   text,
@@ -29,8 +34,8 @@ const SidebarButton = ({
   )
 }
 
-const mapStateToProps = state => ({
-  activeCategory: state.category.activeCategory
+const mapStateToProps = createStructuredSelector({
+  activeCategory: selectActiveCategory
 })
 
 export default connect(mapStateToProps)(SidebarButton);

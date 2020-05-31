@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatestRecipes } from '../../redux/recipes/recipes.actions';
 
+// Selectors
+import { selectLatestRecipes } from '../../redux/recipes/recipes.selectors';
+
 // Components
 import SliderNavbar from './SliderNavbar';
 import SliderContainer from './SliderContainer/SliderContainer';
@@ -66,8 +69,8 @@ const RecipesSlider = ({ latestRecipes, getLatestRecipes, title, isVideo = false
   )
 }
 
-const mapStateToProps = ({ recipes }) => ({
-  latestRecipes: recipes.latestRecipes
+const mapStateToProps = (state) => ({
+  latestRecipes: selectLatestRecipes(state)
 });
 
 const mapDispatchToProps = dispatch => ({

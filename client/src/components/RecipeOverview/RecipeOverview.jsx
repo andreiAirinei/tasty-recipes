@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { getRecipeByID, clearSingleRecipe } from '../../redux/recipes/recipes.actions';
+
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectSingleRecipe } from '../../redux/recipes/recipes.selectors';
 
 // Components
 import RecipeHeader from './RecipeHeader';
@@ -13,7 +19,6 @@ import Container from 'react-bootstrap/Container'
 
 const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe }) => {
   useEffect(() => {
-    console.log(match.params.recipeID);
     getRecipeByID(match.params.recipeID);
 
     return () => {
@@ -40,8 +45,8 @@ const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe 
   )
 }
 
-const mapStateToProps = state => ({
-  singleRecipe: state.recipes.singleRecipe
+const mapStateToProps = createStructuredSelector({
+  singleRecipe: selectSingleRecipe
 });
 
 const mapDispatchToProps = dispatch => ({

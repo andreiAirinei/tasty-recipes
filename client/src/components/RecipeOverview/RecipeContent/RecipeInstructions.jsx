@@ -4,6 +4,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { modalOpen, setVideoURL } from '../../../redux/videoModal/videoModal.actions';
 
+// Selectors
+import { createStructuredSelector } from 'reselect';
+import { selectSingleRecipe } from '../../../redux/recipes/recipes.selectors';
+
 const RecipeInstructions = ({ singleRecipe, setVideoURL, modalOpen }) => {
 
   const handleInstructions = (instructions) => {
@@ -51,8 +55,8 @@ const RecipeInstructions = ({ singleRecipe, setVideoURL, modalOpen }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  singleRecipe: state.recipes.singleRecipe
+const mapStateToProps = createStructuredSelector({
+  singleRecipe: selectSingleRecipe
 });
 
 const mapDispatchToProps = dispatch => ({
