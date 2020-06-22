@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Selectors
-import { selectPopular } from '../../redux/category/category.selectors';
+import { selectPopularCategories } from '../../redux/category/category.selectors';
 
 // Components
 import CategoriesItem from './CategoriesItem';
@@ -32,7 +32,7 @@ const CategoriesContainer = ({ popularCategories }) => {
 };
 
 const mapStateToProps = state => ({
-  popularCategories: selectPopular(state)
+  popularCategories: selectPopularCategories(state)
 })
 
 export default connect(mapStateToProps)(CategoriesContainer);
