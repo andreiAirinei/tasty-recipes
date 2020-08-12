@@ -21,7 +21,7 @@ const CollectionList = ({ infinityList, infinityListSettings, setInfinityListSet
     console.log('Reached Bottom');
     setInfinityListSettings({
       idxStart: infinityListSettings.idxStart + 0,
-      idxEnd: infinityListSettings.idxEnd + 4
+      idxEnd: infinityListSettings.idxEnd + 8
     })
   }
 

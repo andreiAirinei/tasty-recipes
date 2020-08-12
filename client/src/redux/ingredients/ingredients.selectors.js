@@ -2,14 +2,22 @@ import { createSelector } from 'reselect';
 
 const selectIngredients = state => state.ingredients;
 
-// Select all ingredients and sort them alphabetically with a compare function passed to 'sort' method
-export const selectAllIngredients = createSelector(
+export const selectIngredientsGroupedAlphabetically = createSelector(
   [selectIngredients],
-  ingredients => ingredients.list && ingredients.list.sort((a, b) => {
-    const first = a.strIngredient.toUpperCase();
-    const second = b.strIngredient.toUpperCase();
-    if (first > second) return 1;
-    if (first < second) return -1;
-    return 0;
-  })
-);
+  selectIngredients => {
+    // Create an empty object
+    const groupedList = {};
+
+    // Add alphabet letters as object keys and values with empty array
+    // Empty arrays will later be filled with the specific ingredients to the group
+    for (let i = 65; i <= 90; i++) {
+      groupedList[String.fromCharCode(i)] = [];
+    }
+
+    selectIngredients.list && selectIngredients.list.map(ingredient => {
+      groupedList[ingredient.strIngredient.charAt(0).toUpperCase()].push(ingredient);
+    })
+
+    return groupedList;
+  }
+)
