@@ -14,7 +14,7 @@ export const selectIngredientsGroupedAlphabetically = createSelector(
       groupedList[String.fromCharCode(i)] = [];
     }
 
-    selectIngredients.list && selectIngredients.list.map(ingredient => {
+    selectIngredients.list && selectIngredients.list.forEach(ingredient => {
       groupedList[ingredient.strIngredient.charAt(0).toUpperCase()].push(ingredient);
     })
 
