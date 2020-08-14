@@ -3,17 +3,17 @@ import YouTubePlayer from 'react-player/lib/players/YouTube';
 
 // Redux
 import { connect } from 'react-redux';
-import { modalClose } from '../../redux/videoModal/videoModal.actions';
+import { modalClose } from '../../../redux/modals/videoModal/videoModal.actions';
 
 // Selectors
 import { createStructuredSelector } from 'reselect';
 import {
   selectVideoActive,
   selectVideoURL
-} from '../../redux/videoModal/videoModal.selectors';
+} from '../../../redux/modals/videoModal/videoModal.selectors';
 
 // Components
-import ReactLogo from '../../assets/close-button.svg';
+import ReactLogo from '../../../assets/close-button.svg';
 
 // Bootstrap Components
 import Modal from 'react-bootstrap/Modal';

@@ -5,6 +5,7 @@ import {
   GET_RANDOM_SINGLE_RECIPE,
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_RECIPES_BY_CATEGORY,
+  GET_RECIPES_BY_INGREDIENT,
   CLEAR_SINGLE_RECIPE,
   SET_LOADING
 } from './recipes.types';
@@ -17,6 +18,10 @@ const INITIAL_STATE = {
     isLoading: false
   },
   recipesByCategory: {
+    data: null,
+    isLoading: false
+  },
+  recipesByIngredient: {
     data: null,
     isLoading: false
   },
@@ -76,13 +81,14 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
         }
       }
 
-    // case SET_INFINITY_LIST_POSITION:
-    //   return {
-    //     ...state,
-    //     allMeals: {
-
-    //     }
-    //   }
+    case GET_RECIPES_BY_INGREDIENT:
+      return {
+        ...state,
+        recipesByIngredient: {
+          data: action.payload.data,
+          isLoading: action.payload.isLoading
+        }
+      }
 
     case CLEAR_SINGLE_RECIPE:
       return {

@@ -5,6 +5,7 @@ import {
   GET_RANDOM_MULTIPLE_RECIPES,
   GET_SINGLE_RECIPE,
   GET_RECIPES_BY_CATEGORY,
+  GET_RECIPES_BY_INGREDIENT,
   SET_LOADING,
   CLEAR_SINGLE_RECIPE
 } from './recipes.types';
@@ -151,6 +152,32 @@ export const getRecipesByCategory = ({ type, isCountry }) => async dispatch => {
       }
     });
   } catch (err) {
+    console.log('API fetching error!');
+  }
+}
+
+export const getRecipesByIngredient = ingredient => async dispatch => {
+  try {
+    dispatch({
+      type: GET_RECIPES_BY_INGREDIENT,
+      payload: {
+        data: null,
+        isLoading: true
+      }
+    });
+
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/filter.php?i=${ingredient}`);
+    const data = await res.json();
+
+    dispatch({
+      type: GET_RECIPES_BY_INGREDIENT,
+      payload: {
+        data: data.meals,
+        isLoading: false
+      }
+    })
+
+  } catch (error) {
     console.log('API fetching error!');
   }
 }

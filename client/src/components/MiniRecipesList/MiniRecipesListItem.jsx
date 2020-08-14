@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { closeModal } from '../../redux/modals/ingredientModal/ingredientModal.actions';
+
 // Bootstrap
 import Image from 'react-bootstrap/Image';
 
-const SidebarLatestItem = ({ recipeID, name, category, imageURL }) => {
+const MiniRecipesListItem = ({ recipeID, name, category, imageURL, closeModal }) => {
   return (
-    <Link to={`/recipes/recipe/${recipeID}`} className='text-decoration-none text-dark'>
+    <Link
+      to={`/recipes/recipe/${recipeID}`}
+      className='text-decoration-none text-dark'
+      onClick={closeModal}
+    >
       <div className='latest-list-item d-flex align-items-center mb-1'>
         <div className="image-holder">
           <Image src={`${imageURL}/preview`} alt={name} thumbnail />
@@ -20,4 +27,4 @@ const SidebarLatestItem = ({ recipeID, name, category, imageURL }) => {
   )
 }
 
-export default SidebarLatestItem;
+export default connect(null, { closeModal })(MiniRecipesListItem);

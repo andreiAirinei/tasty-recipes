@@ -2,7 +2,7 @@ import React from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { modalOpen, setVideoURL } from '../../../redux/videoModal/videoModal.actions';
+import { modalOpen, setVideoURL } from '../../../redux/modals/videoModal/videoModal.actions';
 
 // Selectors
 import { createStructuredSelector } from 'reselect';

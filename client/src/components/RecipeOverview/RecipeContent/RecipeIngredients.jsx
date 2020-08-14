@@ -15,7 +15,7 @@ const RecipeIngredients = ({ singleRecipe }) => {
     if (singleRecipe) setState(handleIngredients(singleRecipe));
   }, [singleRecipe]);
 
-  // Function will return an array of objects with 'id', ingredient' and 'quantity' properties
+  // Function is returning an array of objects with 'id', ingredient' and 'quantity' properties
   // Reason of this function is because of poorly structured API from TheMealDB.com
   const handleIngredients = (recipe) => {
     const ingredientsList = [];

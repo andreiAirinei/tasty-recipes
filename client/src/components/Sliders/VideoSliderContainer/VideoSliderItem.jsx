@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import {
   modalOpen,
   setVideoURL
-} from '../../../redux/videoModal/videoModal.actions';
+} from '../../../redux/modals/videoModal/videoModal.actions';
 
 // Bootstrap Components
 import Image from 'react-bootstrap/Image';

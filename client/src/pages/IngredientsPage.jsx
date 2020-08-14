@@ -6,7 +6,7 @@ import { fetchAllIngredients } from '../redux/ingredients/ingredients.actions';
 
 // Components
 import Jumbotron from '../components/Jumbotron/Jumbotron';
-import IngredientsList from '../components/IngredientsList/IngredientsList';
+import IngredientsOverview from '../components/IngredientsOverview/IngredientsOverview';
 import CallToActionCard from '../components/CallToActionCard/CallToActionCard';
 
 // Bootstrap
@@ -26,7 +26,7 @@ const IngredientsPage = ({ fetchAllIngredients }) => {
         </h5>
       </Jumbotron>
       <Container fluid='xl'>
-        <IngredientsList />
+        <IngredientsOverview />
       </Container>
     </div>
   )
