@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import ReactLogo from '../../assets/hamburger_menu.svg';
+
 const Header = () => {
   const [classes, setClasses] = useState({
     header: '',
@@ -45,14 +47,27 @@ const Header = () => {
               </Link>
             </Col>
             <Col xs='4' className='py-3'>
-              <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
-              <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4'>Ingredients</Link>
+              <div className="navbar-menu--main d-none d-lg-block ">
+                <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
+                <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4'>Ingredients</Link>
+                <button><img src={ReactLogo} alt='Menu Toggler' /></button>
+
+              </div>
             </Col>
           </Row>
         </Container>
       </nav>
-    </Fragment>
 
+      <div className="navbar-menu--sidebar d-block d-lg-none bg-light pt-5 pl-3">
+        <Link to='/' className='d-block text-decoration-none'><h5 className='text-dark font-weight-bold l-spacing-1'>&rsaquo; HOME</h5></Link>
+        <hr className='mr-3' />
+        <Link to='/recipes' className='d-block text-decoration-none'><h5 className='text-dark l-spacing-1'>&rsaquo; Recipes</h5></Link>
+        <hr className='mr-3' />
+        <Link to='/ingredients' className='d-block text-decoration-none'><h5 className='text-dark l-spacing-1'>&rsaquo; Ingredients</h5></Link>
+        <hr className='mr-3' />
+
+      </div>
+    </Fragment>
   )
 }
 

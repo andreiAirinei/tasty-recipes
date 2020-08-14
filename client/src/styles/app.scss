@@ -128,6 +128,35 @@ body {
   }
 }
 
+.navbar-menu--sidebar {
+  position: fixed;
+  width: 75vw;
+  max-width: 400px;
+  height: 100%;
+  transition: 0.3s;
+  top: 0;
+  // left: -75vw;
+  z-index: 9999;
+  
+  &-close {
+      cursor: pointer;
+  }
+
+  &-active {
+      left: 0;
+  }
+
+  ul {
+      li {
+          border-bottom: 1px solid lightgray;
+          
+          a {
+              letter-spacing: 2px;
+          }   
+      }
+  }
+}
+
 // Homepage.jsx
 .homepage {
   overflow: hidden;
