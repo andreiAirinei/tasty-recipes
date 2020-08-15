@@ -30,7 +30,7 @@ const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe 
     <>
       <Container className='recipe-overview' fluid='xl'>
         <div className="recipe-overview-underlay" />
-        <div className="curved-line" />
+        <div className="curved-line d-none d-lg-block" />
         <RecipeHeader />
         <RecipeContent />
       </Container>

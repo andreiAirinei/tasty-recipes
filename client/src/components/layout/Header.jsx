@@ -45,7 +45,7 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
         <Container fluid='xl'>
           <Row className='align-items-center'>
             <Col xs='0' lg='4'></Col>
-            <Col xs='4' className={`brand ml-auto mx-lg-auto ${classes.logo}`}>
+            <Col xs='8' lg='4' className={`brand px-0 mr-auto mx-lg-auto ${classes.logo}`}>
               <Link to='/'>
                 <img
                   src={require('../../assets/tasty-recipes-logo-orange.svg')}
