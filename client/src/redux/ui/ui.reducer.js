@@ -1,9 +1,12 @@
 import {
+  OPEN_MOBILE_MENU,
+  CLOSE_MOBILE_MENU,
   SET_TAB_TITLE,
   SET_INFINITY_LIST_SETTINGS
 } from './ui.types';
 
 const INITIAL_STATE = {
+  isShowingMobileMenu: false,
   title: null,
   infinityListSettings: {
     idxStart: 0,
@@ -13,6 +16,18 @@ const INITIAL_STATE = {
 
 const uiReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case OPEN_MOBILE_MENU:
+      return {
+        ...state,
+        isShowingMobileMenu: true
+      }
+
+    case CLOSE_MOBILE_MENU:
+      return {
+        ...state,
+        isShowingMobileMenu: false
+      }
+
     case SET_TAB_TITLE:
       return {
         ...state,
