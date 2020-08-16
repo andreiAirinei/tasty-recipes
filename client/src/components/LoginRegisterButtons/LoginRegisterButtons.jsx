@@ -4,11 +4,18 @@ import { ReactComponent as UserIcon } from '../../assets/user_profile.svg';
 // Redux
 import { connect } from 'react-redux';
 import { openModalCredentials } from '../../redux/modals/credentialsModal/credentialsModal.actions';
+import { setBlurredBackground } from '../../redux/ui/ui.actions';
 
 // Bootstrap
 import Button from 'react-bootstrap/Button';
 
-const LoginRegisterButtons = ({ openModalCredentials }) => {
+const LoginRegisterButtons = ({ openModalCredentials, setBlurredBackground }) => {
+
+  const handleClick = () => {
+    setBlurredBackground();
+    openModalCredentials();
+  }
+
   return (
     <Fragment>
       {/* Devices over 992px width*/}
@@ -20,13 +27,14 @@ const LoginRegisterButtons = ({ openModalCredentials }) => {
 
       {/* Devices under 992px width */}
       <div className="login-register--mobile d-block d-lg-none">
-        <Button onClick={openModalCredentials} variant='none'><UserIcon className='icon-large' /></Button>
+        <Button onClick={handleClick} variant='none'><UserIcon className='icon-large' /></Button>
       </div>
     </Fragment>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
+  setBlurredBackground: () => dispatch(setBlurredBackground()),
   openModalCredentials: () => dispatch(openModalCredentials())
 })
 

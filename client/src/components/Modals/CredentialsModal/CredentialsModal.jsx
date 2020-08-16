@@ -2,20 +2,27 @@ import React from 'react';
 
 // Redux
 import { connect } from 'react-redux';
+import { setClearBackground } from '../../../redux/ui/ui.actions';
 import { closeModalCredentials } from '../../../redux/modals/credentialsModal/credentialsModal.actions';
 
 // Bootstrap
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-const CredentialsModal = ({ isActive, closeModalCredentials }) => {
+const CredentialsModal = ({ isActive, closeModalCredentials, setClearBackground }) => {
+
+  const handleModalClose = () => {
+    setClearBackground();
+    closeModalCredentials();
+  }
+
   return (
     <Modal
       size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={isActive}
-      onHide={closeModalCredentials}
+      onHide={handleModalClose}
       className='credentials-modal'
     >
       <Modal.Header closeButton className='border-0 pb-0'>
@@ -36,6 +43,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  setClearBackground: () => dispatch(setClearBackground()),
   closeModalCredentials: () => dispatch(closeModalCredentials())
 })
 
