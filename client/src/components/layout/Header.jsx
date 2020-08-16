@@ -8,12 +8,17 @@ import {
   closeMobileMenu
 } from '../../redux/ui/ui.actions';
 
+// Components
+import LoginRegisterButtons from '../LoginRegisterButtons/LoginRegisterButtons';
+
 // Bootstrap Components
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import ReactLogo from '../../assets/hamburger_menu.svg';
+import { ReactComponent as RegisterIcon } from '../../assets/register.svg';
 
 const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
   const [classes, setClasses] = useState({
@@ -44,8 +49,7 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
       <nav className={`header-navbar sticky-top bg-white mt-lg-4 ${classes.header}`}>
         <Container fluid='xl'>
           <Row className='align-items-center'>
-            <Col xs='0' lg='4'></Col>
-            <Col xs='8' lg='4' className={`brand px-0 mr-auto mx-lg-auto ${classes.logo}`}>
+            <Col xs={8} lg={{ order: 2, span: 4 }} className={`brand px-0 mr-auto mx-lg-auto py-2 py-lg-1 ${classes.logo}`}>
               <Link to='/'>
                 <img
                   src={require('../../assets/tasty-recipes-logo-orange.svg')}
@@ -53,16 +57,17 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
                 />
               </Link>
             </Col>
-            <Col xs='4' className='py-3 d-none d-lg-block'>
-              <div className="navbar-menu--main">
+            <Col xs={4} lg={{ order: 3, span: 4 }} className='text-right p-xl-0 d-flex justify-content-end'>
+              <LoginRegisterButtons />
+              <button onClick={openMobileMenu} className='btn btn-link d-block d-lg-none'>
+                <img src={ReactLogo} alt='Menu Toggler' />
+              </button>
+            </Col>
+            <Col xs={0} lg={{ order: 1, span: 4 }} className='py-lg-3'>
+              <div className="navbar-menu--main d-none d-lg-block">
                 <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
                 <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4'>Ingredients</Link>
               </div>
-            </Col>
-            <Col xs='4' className='d-lg-none py-2 text-right'>
-              <button onClick={openMobileMenu} className='btn btn-link'>
-                <img src={ReactLogo} alt='Menu Toggler' />
-              </button>
             </Col>
           </Row>
         </Container>

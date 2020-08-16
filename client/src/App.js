@@ -7,8 +7,9 @@ import { getLatestRecipes } from './redux/recipes/recipes.actions';
 
 // Components
 import Layout from './components/layout/Layout';
-import VideoModal from './components/Modals/VideoModal/VideoModal';
+import CredentialsModal from './components/Modals/CredentialsModal/CredentialsModal';
 import IngredientsModal from './components/Modals/IngredientModal/IngredientModal';
+import VideoModal from './components/Modals/VideoModal/VideoModal';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -29,6 +30,7 @@ const App = ({ getLatestRecipes }) => {
           <Route path='/ingredients' component={IngredientsPage} />
         </Switch>
       </Layout>
+      <CredentialsModal />
       <IngredientsModal />
       <VideoModal />
     </Fragment>

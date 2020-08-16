@@ -5,11 +5,13 @@ import uiReducer from './ui/ui.reducer';
 import categoryReducer from './category/category.reducer';
 import ingredientsReducer from './ingredients/ingredients.reducer';
 import ingredientsModalReducer from './modals/ingredientModal/ingredientModal.reducer';
+import credentialsModalReducer from './modals/credentialsModal/credentialsModal.reducer';
 
 const rootReducer = combineReducers({
   recipes: recipesReducer,
   ingredients: ingredientsReducer,
   category: categoryReducer,
+  credentialsModal: credentialsModalReducer,
   videoModal: videoModalReducer,
   ingredientModal: ingredientsModalReducer,
   ui: uiReducer

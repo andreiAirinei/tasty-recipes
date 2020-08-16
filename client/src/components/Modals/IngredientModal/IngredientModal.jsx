@@ -29,7 +29,7 @@ const IngredientModal = ({ isActive, closeModal, ingredient, recipesByIngredient
     >
       <Modal.Header closeButton className='border-0 pb-0' />
       <Modal.Body className='pt-0'>
-        <div className="modal-image text-center">
+        <div className="modal-image text-center mx-auto">
           <img src=
             {`https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`}
             alt={''}
