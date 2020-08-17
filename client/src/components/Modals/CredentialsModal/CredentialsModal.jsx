@@ -2,48 +2,48 @@ import React from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { setClearBackground } from '../../../redux/ui/ui.actions';
 import { closeModalCredentials } from '../../../redux/modals/credentialsModal/credentialsModal.actions';
+
+// Components
+import Login from './Login';
+import Register from './Register';
 
 // Bootstrap
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 
-const CredentialsModal = ({ isActive, closeModalCredentials, setClearBackground }) => {
+const CredentialsModal = ({ isActive, topicLogin, closeModalCredentials }) => {
 
-  const handleModalClose = () => {
-    setClearBackground();
+  const handleClosingModal = () => {
     closeModalCredentials();
   }
 
   return (
     <Modal
-      size="sm"
+      size={topicLogin ? 'sm' : 'md'}
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={isActive}
-      onHide={handleModalClose}
+      onHide={handleClosingModal}
       className='credentials-modal'
     >
-      <Modal.Header closeButton className='border-0 pb-0'>
-        <h4>Login</h4>
+      <Modal.Header closeButton className='p-4 border-0 pb-0'>
+        {topicLogin ? <h4>Login</h4> : <h4>Register</h4>}
       </Modal.Header>
-      <Modal.Body className='pt-0'>
-        Modal Body
+      <Modal.Body className='px-4 pt-0'>
+        {
+          topicLogin ? <Login /> : <Register />
+        }
       </Modal.Body>
-      <Modal.Footer className='border-0'>
-        {/* <Button className='btn-dark text-size-09'>Close</Button> */}
-      </Modal.Footer>
     </Modal>
   )
 }
 
 const mapStateToProps = state => ({
-  isActive: state.credentialsModal.isActive
+  isActive: state.credentialsModal.isActive,
+  topicLogin: state.credentialsModal.topicLogin
 });
 
 const mapDispatchToProps = dispatch => ({
-  setClearBackground: () => dispatch(setClearBackground()),
   closeModalCredentials: () => dispatch(closeModalCredentials())
 })
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { closeModal } from '../../../redux/modals/ingredientModal/ingredientModal.actions';
+import { closeModalIngredient } from '../../../redux/modals/ingredientModal/ingredientModal.actions';
 import { getRecipesByIngredient } from '../../../redux/recipes/recipes.actions';
 
 import MiniRecipesList from '../../MiniRecipesList/MiniRecipesList';
@@ -12,7 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import LoadingSpinner from '../../layout/LoadingSpinner';
 
-const IngredientModal = ({ isActive, closeModal, ingredient, recipesByIngredient, getRecipesByIngredient }) => {
+const IngredientModal = ({ isActive, closeModalIngredient, ingredient, recipesByIngredient, getRecipesByIngredient }) => {
 
   useEffect(() => {
     ingredient && getRecipesByIngredient(ingredient);
@@ -24,7 +24,7 @@ const IngredientModal = ({ isActive, closeModal, ingredient, recipesByIngredient
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={isActive}
-      onHide={closeModal}
+      onHide={closeModalIngredient}
       className='ingredient-modal'
     >
       <Modal.Header closeButton className='border-0 pb-0' />
@@ -50,7 +50,7 @@ const IngredientModal = ({ isActive, closeModal, ingredient, recipesByIngredient
         }
       </Modal.Body>
       <Modal.Footer className='border-0'>
-        <Button onClick={() => closeModal()}
+        <Button onClick={() => closeModalIngredient()}
           className='btn-dark text-size-09'>Close</Button>
       </Modal.Footer>
     </Modal>
@@ -65,7 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getRecipesByIngredient: ingredient => dispatch(getRecipesByIngredient(ingredient)),
-  closeModal: () => dispatch(closeModal())
+  closeModalIngredient: () => dispatch(closeModalIngredient())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(IngredientModal);

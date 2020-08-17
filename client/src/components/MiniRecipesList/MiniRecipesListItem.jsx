@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Redux
 import { connect } from 'react-redux';
-import { closeModal } from '../../redux/modals/ingredientModal/ingredientModal.actions';
+import { closeModalIngredient } from '../../redux/modals/ingredientModal/ingredientModal.actions';
 
 // Bootstrap
 import Image from 'react-bootstrap/Image';
 
-const MiniRecipesListItem = ({ recipeID, name, category, imageURL, closeModal }) => {
+const MiniRecipesListItem = ({ recipeID, name, category, imageURL, closeModalIngredient }) => {
   return (
     <Link
       to={`/recipes/recipe/${recipeID}`}
       className='text-decoration-none text-dark'
-      onClick={closeModal}
+      onClick={closeModalIngredient}
     >
       <div className='latest-list-item d-flex align-items-center mb-1'>
         <div className="image-holder">
@@ -27,4 +28,4 @@ const MiniRecipesListItem = ({ recipeID, name, category, imageURL, closeModal })
   )
 }
 
-export default connect(null, { closeModal })(MiniRecipesListItem);
+export default connect(null, { closeModalIngredient })(MiniRecipesListItem);

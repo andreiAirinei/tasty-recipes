@@ -8,7 +8,11 @@ import { modalOpen, setVideoURL } from '../../../redux/modals/videoModal/videoMo
 import { createStructuredSelector } from 'reselect';
 import { selectSingleRecipe } from '../../../redux/recipes/recipes.selectors';
 
-const RecipeInstructions = ({ singleRecipe, setVideoURL, modalOpen }) => {
+const RecipeInstructions = ({
+  singleRecipe,
+  setVideoURL,
+  modalOpen
+}) => {
 
   const handleInstructions = (instructions) => {
     let stepCount = 1;
@@ -61,7 +65,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   setVideoURL: video => dispatch(setVideoURL(video)),
-  modalOpen: () => dispatch(modalOpen())
+  modalOpen: () => dispatch(modalOpen()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeInstructions);

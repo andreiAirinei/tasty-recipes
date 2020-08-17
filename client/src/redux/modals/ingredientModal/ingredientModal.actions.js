@@ -4,13 +4,20 @@ import {
   SET_INGREDIENT
 } from './ingredientModal.types';
 
+import {
+  SET_BLURRED_BACKGROUND,
+  SET_CLEAR_BACKGROUND
+} from '../../ui/ui.types';
+
 export const modalOpenIngredient = () => dispatch => {
+  dispatch({ type: SET_BLURRED_BACKGROUND });
   dispatch({
     type: MODAL_OPEN_INGREDIENT
   })
 }
 
-export const closeModal = () => dispatch => {
+export const closeModalIngredient = () => dispatch => {
+  dispatch({ type: SET_CLEAR_BACKGROUND });
   dispatch({
     type: MODAL_CLOSE_INGREDIENT
   });

@@ -1,10 +1,18 @@
 import {
   OPEN_MODAL_CREDENTIALS,
-  CLOSE_MODAL_CREDENTIALS
+  CLOSE_MODAL_CREDENTIALS,
+  SET_TOPIC_LOGIN
 } from './credentialsModal.types';
 
 const INITIAL_STATE = {
-  isActive: false
+  isActive: false,
+  topicLogin: true,
+  credentials: {
+    username: null,
+    email: null,
+    password: null,
+    confirmPassword: null
+  }
 };
 
 const credentialsModalReducer = (state = INITIAL_STATE, action) => {
@@ -20,6 +28,12 @@ const credentialsModalReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isActive: false
+      }
+
+    case SET_TOPIC_LOGIN:
+      return {
+        ...state,
+        topicLogin: action.payload
       }
 
     default:

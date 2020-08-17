@@ -20,17 +20,21 @@ import Modal from 'react-bootstrap/Modal';
 
 const VideoModal = ({ isActive, videoURL, modalClose }) => {
 
+  const handleClosingModal = () => {
+    modalClose();
+  }
+
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={isActive}
-      onHide={modalClose}
+      onHide={handleClosingModal}
     >
       <Modal.Body className='video-modal-body p-0'>
         <div className="modal-close">
-          <button className='modal-close-btn' onClick={modalClose}>
+          <button className='modal-close-btn' onClick={handleClosingModal}>
             <img src={ReactLogo} alt="Button Close" />
           </button>
         </div>

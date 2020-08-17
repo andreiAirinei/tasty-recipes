@@ -65,6 +65,16 @@ body {
   -webkit-filter: blur(4px);
 }
 
+.outline-none {
+  outline: none;
+  box-shadow: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 .box-shadow {
   -webkit-box-shadow: 0px 2px 5px 0px rgba(135,133,135,1);
   -moz-box-shadow: 0px 2px 5px 0px rgba(135,133,135,1);
@@ -101,6 +111,11 @@ body {
     }
   }
   
+}
+
+.form-control:focus {
+  border-color: var(--secondary);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
 
 // Key Frames
