@@ -75,6 +75,10 @@ body {
   }
 }
 
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 .box-shadow {
   -webkit-box-shadow: 0px 2px 5px 0px rgba(135,133,135,1);
   -moz-box-shadow: 0px 2px 5px 0px rgba(135,133,135,1);
@@ -157,7 +161,7 @@ body {
   }
 
   .navbar-item:hover {
-    color: var(--primary) !important;
+    color: #888 !important;
   }
 
 }

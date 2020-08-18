@@ -14,11 +14,13 @@ import { selectInfinityListSettings } from '../../../redux/ui/ui.selectors';
 import CollectionListItem from './CollectionListItem';
 import LoadingSpinner from '../../layout/LoadingSpinner';
 
+// Bootstrap
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const CollectionList = ({ infinityList, infinityListSettings, setInfinityListSettings }) => {
 
   const fetchMoreItems = () => {
-    console.log('Reached Bottom');
     setInfinityListSettings({
       idxStart: infinityListSettings.idxStart + 0,
       idxEnd: infinityListSettings.idxEnd + 8
@@ -30,22 +32,27 @@ const CollectionList = ({ infinityList, infinityListSettings, setInfinityListSet
       {
         infinityList.data &&
         <InfiniteScroll
-          className='d-flex flex-row flex-wrap justify-content-start'
+          // className='d-flex flex-row flex-wrap justify-content-center'
+          className='overflow-hidden'
           dataLength={infinityList.data.length}
           hasMore={infinityList.hasMore}
           next={fetchMoreItems}
           loader={<LoadingSpinner />}
         >
-          {
-            infinityList.data.map(recipe => (
-              <CollectionListItem
-                key={recipe.idMeal}
-                recipeID={recipe.idMeal}
-                name={recipe.strMeal}
-                imageURL={recipe.strMealThumb}
-              />
-            ))
-          }
+          <Row>
+            {
+              infinityList.data.map((recipe, idx) => (
+                <Col xs={6} md={4} lg={3} key={idx}>
+                  <CollectionListItem
+                    key={recipe.idMeal}
+                    recipeID={recipe.idMeal}
+                    name={recipe.strMeal}
+                    imageURL={recipe.strMealThumb}
+                  />
+                </Col>
+              ))
+            }
+          </Row>
         </InfiniteScroll>
       }
     </div>

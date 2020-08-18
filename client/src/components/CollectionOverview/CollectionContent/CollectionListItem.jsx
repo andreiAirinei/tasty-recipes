@@ -8,7 +8,7 @@ const CollectionListItem = ({ recipeID, imageURL, name }) => {
 
   return (
     <Link to={`/recipes/recipe/${recipeID}`} className='text-decoration-none'>
-      <div className='collection-list--item mb-4'>
+      <div className='collection-list--item mb-4 mx-auto'>
         <div className='item-thumbnail'>
           <Image src={imageURL} alt={name} fluid rounded />
           <div className="favorite">

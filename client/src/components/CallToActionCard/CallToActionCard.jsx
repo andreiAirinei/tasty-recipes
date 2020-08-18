@@ -1,10 +1,14 @@
 import React from 'react';
-import ReactLogo from '../../assets/tasty-recipes-logo-orange.svg'
+import ReactLogo from '../../assets/tasty-recipes-logo-orange.svg';
+
+// Redux
+import { connect } from 'react-redux';
+import { openModalCredentials } from '../../redux/modals/credentialsModal/credentialsModal.actions';
 
 // Bootstrap
 import Button from 'react-bootstrap/Button';
 
-const CallToActionCard = ({ withLogo = false }) => {
+const CallToActionCard = ({ withLogo = false, openModalCredentials }) => {
   return (
     <div className="cta-card p-3 mx-auto box-shadow">
       <div className="inner-box p-5 text-center">
@@ -14,10 +18,14 @@ const CallToActionCard = ({ withLogo = false }) => {
           withLogo &&
           <img src={ReactLogo} alt="Chef Hat" className='d-block mx-auto tasty-logo my-3' />
         }
-        <Button variant='danger' className='px-4 mt-3 l-spacing-1 text-uppercase' >Join now!</Button>
+        <Button onClick={openModalCredentials} variant='danger' className='px-4 mt-3 l-spacing-1 text-uppercase' >Join now!</Button>
       </div>
     </div>
   )
 }
 
-export default CallToActionCard;
+const mapDispatchToProps = dispatch => ({
+  openModalCredentials: () => dispatch(openModalCredentials())
+});
+
+export default connect(null, mapDispatchToProps)(CallToActionCard);

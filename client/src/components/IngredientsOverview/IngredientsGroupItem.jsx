@@ -23,17 +23,19 @@ const IngredientsGroupItem = ({
   }
 
   return (
-    <Col xs={6} sm={3} key={ingredient.idIngredient} className='mb-2'>
+    <Col xs={6} sm={4} md={3} key={ingredient.idIngredient} className='px-2'>
       <button
-        className='btn btn-link text-dark text-size-09'
+        className='btn btn-link text-dark text-size-09 text-left px-0'
         onClick={handleClick}
       >
-        <img src=
-          {`https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
-          alt={''}
-          className='ingredient-image mr-2'
-        />
-        <span className='text-size-09'>{ingredient.strIngredient}</span>
+        <div className="d-flex">
+          <img src=
+            {`https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
+            alt={''}
+            className='ingredient-image mr-2'
+          />
+          <p className='text-size-09 p-0 m-0'>{ingredient.strIngredient}</p>
+        </div>
       </button>
     </Col>
   )

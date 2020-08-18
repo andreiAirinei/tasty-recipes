@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sticky } from 'react-sticky';
 
 // Redux
@@ -29,10 +29,14 @@ const CollectionSidebar = ({
   dishTypes,
 }) => {
 
+  const [isMobileDevice, setIsMobileDevice] = useState(null);
+
   useEffect(() => {
     fetchCountries();
     fetchDishTypes();
-  }, [fetchCountries, fetchDishTypes]);
+    window.innerWidth < 576 ? setIsMobileDevice(true) : setIsMobileDevice(false);
+    window.addEventListener('resize', handleWindowResize);
+  }, [fetchCountries, fetchDishTypes, isMobileDevice]);
 
   // The 'currentTarget' read-only property of the Event interface identifies the current target for the event, as the event traverses the DOM. It always refers to the element to which the event handler has been attached, as opposed to Event.target, which identifies the element on which the event occurred and which may be its descendant.
   const handleSidebarButton = e => {
@@ -49,17 +53,24 @@ const CollectionSidebar = ({
     scrollToCustomY(580);
   }
 
+  const handleWindowResize = () => {
+    window.innerWidth < 576 ? setIsMobileDevice(true) : setIsMobileDevice(false);
+  }
+
   const scrollToCustomY = (posY) => {
     if (window.scrollY > posY) window.scrollTo(0, posY);
   };
 
   return (
-    <Sticky topOffset={-150} bottomOffset={150}>
+    <Sticky
+      topOffset={isMobileDevice ? -52 : -150}
+      bottomOffset={isMobileDevice ? 52 : 150}
+    >
       {
         ({ style, isSticky }) => (
           <div
-            className='sidebar-category'
-            style={{ ...style, marginTop: isSticky ? '150px' : '0px' }}
+            className='sidebar-category bg-white'
+            style={{ ...style, marginTop: isSticky ? (isMobileDevice ? '52px' : '150px') : '0px', zIndex: 2 }}
           >
             <SidebarButton
               handleClick={handleSidebarButton}
@@ -92,9 +103,11 @@ const CollectionSidebar = ({
                 ))
               }
             </ExpandableList>
-          </div>)
+            <br />
+          </div>
+        )
       }
-    </Sticky>
+    </Sticky >
   )
 }
 
