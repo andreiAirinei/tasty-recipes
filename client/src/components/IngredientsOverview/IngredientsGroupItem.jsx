@@ -32,9 +32,9 @@ const IngredientsGroupItem = ({
           <img src=
             {`https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
             alt={''}
-            className='ingredient-image mr-2'
+            className='ingredient-image'
           />
-          <p className='text-size-09 p-0 m-0'>{ingredient.strIngredient}</p>
+          <p className='text-size-09 p-0 m-0 ml-2'>{ingredient.strIngredient}</p>
         </div>
       </button>
     </Col>
