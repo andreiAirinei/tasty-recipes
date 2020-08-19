@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
+// Redux
 import { connect } from 'react-redux';
+import {
+  setModalIngredient,
+  modalOpenIngredient
+} from '../../../redux/modals/ingredientModal/ingredientModal.actions';
 
 // Selectors
 import { selectSingleRecipe } from '../../../redux/recipes/recipes.selectors';
@@ -8,12 +14,17 @@ import { selectSingleRecipe } from '../../../redux/recipes/recipes.selectors';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-const RecipeIngredients = ({ singleRecipe }) => {
+const RecipeIngredients = ({ singleRecipe, setModalIngredient, modalOpenIngredient }) => {
   const [state, setState] = useState(null);
 
   useEffect(() => {
     if (singleRecipe) setState(handleIngredients(singleRecipe));
   }, [singleRecipe]);
+
+  const handleIngredientClick = (ingredient) => {
+    setModalIngredient(ingredient);
+    modalOpenIngredient();
+  }
 
   // Function is returning an array of objects with 'id', ingredient' and 'quantity' properties
   // Reason of this function is because of poorly structured API from TheMealDB.com
@@ -51,20 +62,14 @@ const RecipeIngredients = ({ singleRecipe }) => {
         {state &&
           state.map(item => (
             <li key={item.id}>
-              <div className="d-flex flex-sm-column flex-md-row ingredients-list-item align-items-center py-1">
-                <OverlayTrigger
-                  placement='top'
-                  overlay={
-                    <Tooltip className='width-120'>
-                      <img src={item.image} alt={item.ingredient} />
-                    </Tooltip>
-                  }
-                >
-                  <div className='d-flex align-items-center'>
-                    <img src={item.image} alt={item.ingredient} className='mr-1' />
-                    <p className='ingredient m-0'><em>{item.ingredient}</em></p>
-                  </div>
-                </OverlayTrigger>
+              <div
+                onClick={() => handleIngredientClick(item.ingredient)}
+                className="ingredients-list-item d-flex flex-sm-column flex-md-row align-items-center py-1"
+              >
+                <div className="d-flex align-items-center">
+                  <img src={item.image} alt={item.ingredient} className='mr-1' />
+                  <p className='ingredient m-0 ml-1'><em>{item.ingredient}</em></p>
+                </div>
                 <p className='m-0'><strong>{item.quantity}</strong></p>
               </div>
             </li>
@@ -79,4 +84,9 @@ const mapStateToProps = state => ({
   singleRecipe: selectSingleRecipe(state)
 });
 
-export default connect(mapStateToProps)(RecipeIngredients);
+const mapDispatchToProps = dispatch => ({
+  modalOpenIngredient: () => dispatch(modalOpenIngredient()),
+  setModalIngredient: ingredient => dispatch(setModalIngredient(ingredient))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeIngredients);

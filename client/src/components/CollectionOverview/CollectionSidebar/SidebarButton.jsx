@@ -27,7 +27,7 @@ const SidebarButton = ({
       data-name={text}
       data-iscountry={isCountry}
       onClick={handleExpandableListButton}
-      className={`btn-category w-100 text-left text-decoration-none border-0 px-2 py-1 d-flex align-items-center justify-content-between 
+      className={`btn-category w-100 text-left font-weight-bold text-decoration-none border-0 px-2 py-1 d-flex align-items-center justify-content-between 
       ${isListItem && `btn-category--secondary`}
       ${activeCategory.type === text && `btn-category--active`}
       `}

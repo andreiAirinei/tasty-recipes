@@ -43,7 +43,7 @@ body {
  }
 
 .color-1 {
-  color: #888;
+  color: #888 !important;
 }
 
 .width-120 {
@@ -717,8 +717,19 @@ body {
   .recipe-ingredients {
     .ingredients-list li {
       border-bottom: 1px dotted #d3d3d3;
+
       img { width: 40px; }
+      
       .ingredient { width: 150px; }
+
+      &:hover {
+        background: var(--light);
+        cursor: pointer;
+
+        .ingredient { 
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
@@ -788,7 +799,7 @@ body {
 
 // CollectionSidebar.jsx
 .sidebar-category {
-  border-bottom: 1px dotted var(--dark);
+  // border-bottom: 1px dotted var(--dark);
 }
 
 // CollectionList.jsx & CollectionListItem.jsx

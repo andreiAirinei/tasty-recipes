@@ -15,10 +15,8 @@ import LoginRegisterButtons from '../LoginRegisterButtons/LoginRegisterButtons';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 import ReactLogo from '../../assets/hamburger_menu.svg';
-import { ReactComponent as RegisterIcon } from '../../assets/register.svg';
 
 const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
   const [classes, setClasses] = useState({

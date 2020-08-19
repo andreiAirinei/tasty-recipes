@@ -69,7 +69,7 @@ const CollectionSidebar = ({
       {
         ({ style, isSticky }) => (
           <div
-            className='sidebar-category pb-2'
+            className='sidebar-category bg-white pb-2'
             style={{ ...style, marginTop: isSticky ? (isMobileDevice ? '52px' : '150px') : '0px', zIndex: 2 }}
           >
             <SidebarButton
@@ -103,7 +103,6 @@ const CollectionSidebar = ({
                 ))
               }
             </ExpandableList>
-            {/* <br /> */}
           </div>
         )
       }
