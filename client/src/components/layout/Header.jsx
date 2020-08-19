@@ -55,17 +55,19 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
                 />
               </Link>
             </Col>
-            <Col xs={4} lg={{ order: 3, span: 4 }} className='text-right p-xl-0 d-flex justify-content-end'>
+            <Col xs={4} lg={{ order: 3, span: 4 }} className='text-right p-xl-0 d-flex align-items-center justify-content-end'>
+              <Link to='/dashboard' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 text-size-09 mr-5'>Dashboard</Link>
               <LoginRegisterButtons />
               <button onClick={openMobileMenu} className='btn btn-link d-block d-lg-none'>
                 <img src={ReactLogo} alt='Menu Toggler' />
               </button>
             </Col>
-            <Col xs={0} lg={{ order: 1, span: 4 }} className='py-lg-3'>
+            <Col xs={0} lg={{ order: 1, span: 4 }} className='py-lg-3 pl-3 pl-xl-1 '>
               <div className="navbar-menu--main d-none d-lg-block">
                 <Link to='/' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 text-size-09'>Home</Link>
                 <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4 text-size-09'>Recipes</Link>
                 <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4 text-size-09'>Ingredients</Link>
+                <Link to='/contact' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4 text-size-09'>Contact</Link>
               </div>
             </Col>
           </Row>

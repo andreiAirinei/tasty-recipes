@@ -161,7 +161,7 @@ body {
   }
 
   .navbar-item:hover {
-    color: #888 !important;
+    color: var(--danger) !important;
   }
 
 }
@@ -222,8 +222,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 
-  &-content {
+  &-content { 
+    border-radius: 10px;
     max-width: 600px;
+    position: relative;
   }
 
   &-text {

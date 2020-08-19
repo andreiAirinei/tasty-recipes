@@ -20,10 +20,10 @@ const IngredientsPage = ({ fetchAllIngredients }) => {
 
   return (
     <div className='page-ingredients'>
-      <Jumbotron imgURL='cooking3.jpg' title='Browse Ingredients' >
-        <h5 className='text-white text-center hero-text'>
-          Find recipes by your favorite ingredient!
-        </h5>
+      <Jumbotron imgURL='cooking3.jpg' title='Browse Ingredients' isLightBackground>
+        <h6 className='text-white text-center hero-text mt-3'>
+          Find recipes by your <span className='text-danger'>favorite</span> ingredient!
+        </h6>
       </Jumbotron>
       <Container fluid='xl'>
         <IngredientsOverview />

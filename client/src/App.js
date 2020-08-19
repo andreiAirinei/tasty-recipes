@@ -15,6 +15,7 @@ import VideoModal from './components/Modals/VideoModal/VideoModal';
 import HomePage from './pages/HomePage';
 import RecipesDirectory from './pages/RecipesDirectory';
 import IngredientsPage from './pages/IngredientsPage';
+import DashboardPage from './pages/DashboardPage';
 
 const App = ({ getLatestRecipes }) => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const App = ({ getLatestRecipes }) => {
           <Route exact path='/' component={HomePage} />
           <Route path='/recipes' component={RecipesDirectory} />
           <Route path='/ingredients' component={IngredientsPage} />
+          <Route path='/dashboard' component={DashboardPage} />
         </Switch>
       </Layout>
       <CredentialsModal />
