@@ -13,12 +13,13 @@ const SidebarButton = ({
   iconName = null,
   isListItem = false,
   isCountry,
-  activeCategory
+  activeCategory,
+  handleExpand
 }) => {
 
   const handleExpandableListButton = (e) => {
     handleClick(e);
-    // isListItem && 
+    isListItem && handleExpand();
   }
 
   return (

@@ -65,8 +65,9 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
             </Col>
             <Col xs={0} lg={{ order: 1, span: 4 }} className='py-lg-3'>
               <div className="navbar-menu--main d-none d-lg-block">
-                <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1'>Recipes</Link>
-                <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4'>Ingredients</Link>
+                <Link to='/' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 text-size-09'>Home</Link>
+                <Link to='/recipes' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4 text-size-09'>Recipes</Link>
+                <Link to='/ingredients' className='navbar-item text-dark font-weight-bold text-decoration-none l-spacing-1 ml-4 text-size-09'>Ingredients</Link>
               </div>
             </Col>
           </Row>
@@ -80,7 +81,7 @@ const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
             <h1 className='m-0 px-3'>&times;</h1>
           </button>
         </div>
-        <Link to='/' onClick={closeMobileMenu} className='d-block text-decoration-none'><h5 className='text-dark font-weight-bold l-spacing-1'>&rsaquo; HOME</h5></Link>
+        <Link to='/' onClick={closeMobileMenu} className='d-block text-decoration-none'><h5 className='text-dark l-spacing-1'>&rsaquo; Home</h5></Link>
         <hr className='mr-3' />
         <Link to='/recipes' onClick={closeMobileMenu} className='d-block text-decoration-none'><h5 className='text-dark l-spacing-1'>&rsaquo; Recipes</h5></Link>
         <hr className='mr-3' />
