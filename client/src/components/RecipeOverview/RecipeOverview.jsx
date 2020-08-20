@@ -11,6 +11,7 @@ import { selectSingleRecipe } from '../../redux/recipes/recipes.selectors';
 // Components
 import RecipeHeader from './RecipeHeader';
 import RecipeContent from './RecipeContent/RecipeContent';
+import CallToActionCard from '../CallToActionCard/CallToActionCard';
 import RelatedRecipes from '../Sliders/RelatedRecipes';
 import SectionTitle from '../layout/SectionTitle';
 
@@ -33,7 +34,9 @@ const RecipeOverview = ({ match, getRecipeByID, clearSingleRecipe, singleRecipe 
         <div className="curved-line d-none d-lg-block" />
         <RecipeHeader />
         <RecipeContent />
+        <CallToActionCard withLogo />
       </Container>
+
       {
         singleRecipe &&
         <Container className='recipes-slider px-0 mb-5' fluid='xl'>

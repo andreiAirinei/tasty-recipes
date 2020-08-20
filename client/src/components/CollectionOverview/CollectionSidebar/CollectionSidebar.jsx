@@ -72,6 +72,7 @@ const CollectionSidebar = ({
             className='sidebar-category bg-white pb-2'
             style={{ ...style, marginTop: isSticky ? (isMobileDevice ? '52px' : '150px') : '0px', zIndex: 2 }}
           >
+            <h4 className='text-dark'>Recipes</h4>
             <SidebarButton
               handleClick={handleSidebarButton}
               text='All'

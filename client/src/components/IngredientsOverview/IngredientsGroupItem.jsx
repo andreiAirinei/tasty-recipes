@@ -28,7 +28,7 @@ const IngredientsGroupItem = ({
         className='btn btn-link text-dark text-size-09 text-left px-0'
         onClick={handleClick}
       >
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <img src=
             {`https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
             alt={''}

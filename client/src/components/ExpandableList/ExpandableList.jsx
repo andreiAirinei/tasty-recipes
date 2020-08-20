@@ -21,7 +21,7 @@ const ExpandableList = ({ children, listName }) => {
 
   return (
     <div className='expandable-list'>
-      <button onClick={handleExpand} className='btn-category w-100 text-left text-decoration-none border-0 px-2 py-1'>
+      <button onClick={handleExpand} className='btn-category font-weight-bold w-100 text-left text-decoration-none border-0 px-2 py-1'>
         {listName}
         {dropdownToggle ?
           <img src={require('../../assets/angle-up.svg')} alt="Arrow" className='btn-arrows ml-2' /> :

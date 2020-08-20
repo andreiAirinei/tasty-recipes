@@ -46,6 +46,18 @@ body {
   color: #888 !important;
 }
 
+.text-white {
+  color: #fff !important;
+}
+
+.text-tasty {
+  color: #418327 !important;
+}
+
+.bg-tasty {
+  background: #418327 !important;
+}
+
 .width-120 {
   width: 120px;
 }
@@ -774,7 +786,7 @@ body {
   }
   
   &:not(.btn-category--active):hover {
-    background: #fceaea !important;
+    background: #e4eee5 !important;
   }
 
   .btn-arrows {
@@ -783,7 +795,7 @@ body {
 }
 
 .btn-category--active {
-  background-color: var(--secondary) !important;
+  background-color: #418327 !important;
   color: var(--white) !important;
 }
 
@@ -973,5 +985,10 @@ body {
     .recipe-image-holder {
       max-width: 350px;
     }
+  }
+
+  .cta-card {
+    width: inherit; 
+    max-width: 400px;
   }
 }

@@ -16,7 +16,7 @@ import Col from 'react-bootstrap/Col';
 const RecipeContent = ({ latestRecipes }) => {
 
   return (
-    <div className='recipe-content'>
+    <div className='recipe-content mb-5 mb-md-2'>
       <Row>
         <Col sm={{ order: 2, span: 5 }} lg={5}>
           <RecipeIngredients />
