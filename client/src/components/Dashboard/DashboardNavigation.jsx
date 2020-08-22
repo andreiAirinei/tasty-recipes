@@ -1,4 +1,7 @@
 import React from 'react';
+import { ReactComponent as AddIcon } from '../../assets/plus.svg';
+import { ReactComponent as RecipesIcon } from '../../assets/myrecipes.svg';
+import { ReactComponent as FavoritesIcon } from '../../assets/favorites.svg';
 
 // Redux
 import { connect } from 'react-redux';
@@ -15,30 +18,39 @@ const DashboardNavigation = ({ activeTab, setActiveTab }) => {
   }
 
   return (
-    <div className="d-flex flex-column justify-content-center">
+    <div className="dashboard-navigation d-flex flex-row flex-md-column justify-content-center">
       <Button
         onClick={handleClick}
         data-tab='create'
         variant='none'
-        className={`text-left outline-none text-dark border-0 ${activeTab === 'create' && 'bg-tasty text-white'}`}
+        className={`text-left outline-none text-dark border-0 ${activeTab === 'create' && 'bg-tasty text-white icon-white'}`}
       >
-        Create meal +
+        <div className="d-flex flex-row align-items-center justify-content-between">
+          <p className='m-0 mr-2'>Create Meal</p>
+          <AddIcon className='icon-small' />
+        </div>
       </Button>
       <Button
         onClick={handleClick}
         data-tab='myrecipes'
-        className={`text-left outline-none text-dark border-0 ${activeTab === 'myrecipes' && 'bg-tasty text-white'}`}
+        className={`text-left outline-none text-dark border-0 mx-1 mx-md-0 ${activeTab === 'myrecipes' && 'bg-tasty text-white icon-white'}`}
         variant='none'
       >
-        My recipes
-        </Button>
+        <div className="d-flex flex-row align-items-center justify-content-between">
+          <p className='m-0 mr-2'>My Recipes</p>
+          <RecipesIcon className='icon-small' />
+        </div>
+      </Button>
       <Button
         onClick={handleClick}
         data-tab='favorites'
-        className={`text-left outline-none text-dark border-0 ${activeTab === 'favorites' && 'bg-tasty text-white'}`}
+        className={`text-left outline-none text-dark border-0 ${activeTab === 'favorites' && 'bg-tasty text-white icon-white'}`}
         variant='none'
       >
-        Favorites
+        <div className="d-flex flex-row align-items-center justify-content-between">
+          <p className='m-0 mr-2'>Favorites</p>
+          <FavoritesIcon className='icon-small' />
+        </div>
       </Button>
     </div>
   )

@@ -10,6 +10,7 @@ connectDB();
 // Init Middleware
 // Allowing to accept JSON body data
 app.use(express.json({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => res.json({ msg: 'Welcome to Tasty Recipes API!' }));
 

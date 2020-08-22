@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 
 // Components
 import DashboardNavigation from './DashboardNavigation';
+import TabCreate from './Tabs/TabCreate';
+import TabMyRecipes from './Tabs/TabMyRecipes';
+import TabFavorites from './Tabs/TabFavorites';
 
 // Bootstrap
 import Row from 'react-bootstrap/Row';
@@ -12,15 +15,18 @@ import Col from 'react-bootstrap/Col';
 
 const DashboardDirectory = ({ activeTab }) => {
   return (
-    <div className='dashboard-directory mt-5'>
+    <div className='dashboard-directory mt-3 mt-md-5'>
       <Row>
-        <Col md={2}>
+        <Col md={3} lg={2}>
           <DashboardNavigation />
         </Col>
-        <Col md={10}>
-          {activeTab === 'create' && 'CREATE TAB'}
-          {activeTab === 'myrecipes' && 'MY RECIPES'}
-          {activeTab === 'favorites' && 'FAVORITE RECIPES'}
+        <Col md={9} lg={10}>
+          <div className="tab-overview mt-4 mt-md-0">
+
+          </div>
+          {activeTab === 'create' && <TabCreate />}
+          {activeTab === 'myrecipes' && <TabMyRecipes />}
+          {activeTab === 'favorites' && <TabFavorites />}
         </Col>
       </Row>
     </div>

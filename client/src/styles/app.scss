@@ -72,6 +72,10 @@ body {
   height: 15px;
 }
 
+.icon-white {
+  fill: #fff;
+}
+
 .isBlurred {
   filter: blur(3px);
   -webkit-filter: blur(3px);
@@ -984,6 +988,20 @@ body {
 
     .recipe-image-holder {
       max-width: 350px;
+    }
+  }
+
+  .dashboard-navigation {
+    button {
+      border: 1px solid #d3d3d3 !important;
+      p {
+        font-size: 12px;
+      }
+
+      .icon-small {
+        width: 12px;
+        height: 12px;
+      }
     }
   }
 
