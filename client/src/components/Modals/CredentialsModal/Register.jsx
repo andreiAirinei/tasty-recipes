@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { setTopicLogin } from '../../../redux/modals/credentialsModal/credentialsModal.actions';
+import { register } from '../../../redux/auth/auth.actions';
 
 // Bootstrap
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Register = ({ setTopicLogin }) => {
+const Register = ({ setTopicLogin, register }) => {
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -17,17 +18,23 @@ const Register = ({ setTopicLogin }) => {
     password2: ''
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log('Loged in');
-  }
+  const { email, username, password, password2 } = credentials;
 
   const handleChange = e => {
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value
     });
-  }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    register({
+      email,
+      username,
+      password
+    });
+  };
 
   return (
     <div className='credentials-modal--register'>
@@ -37,7 +44,7 @@ const Register = ({ setTopicLogin }) => {
           <Form.Control
             type="email"
             name="email"
-            value={credentials.email}
+            value={email}
             onChange={handleChange}
             required
           />
@@ -48,7 +55,7 @@ const Register = ({ setTopicLogin }) => {
           <Form.Control
             type="text"
             name="username"
-            value={credentials.username}
+            value={username}
             onChange={handleChange}
             required
           />
@@ -59,7 +66,7 @@ const Register = ({ setTopicLogin }) => {
           <Form.Control
             type="password"
             name="password"
-            value={credentials.password}
+            value={password}
             onChange={handleChange}
             required
           />
@@ -70,7 +77,7 @@ const Register = ({ setTopicLogin }) => {
           <Form.Control
             type="password"
             name="password2"
-            value={credentials.password2}
+            value={password2}
             onChange={handleChange}
             required
           />
@@ -91,7 +98,8 @@ const Register = ({ setTopicLogin }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setTopicLogin: topic => dispatch(setTopicLogin(topic))
+  setTopicLogin: topic => dispatch(setTopicLogin(topic)),
+  register: formData => dispatch(register(formData))
 });
 
 export default connect(null, mapDispatchToProps)(Register);

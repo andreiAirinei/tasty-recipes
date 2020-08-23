@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
+import { loadUser } from '../../redux/auth/auth.actions';
 import {
   openMobileMenu,
   closeMobileMenu
@@ -18,13 +19,15 @@ import Col from 'react-bootstrap/Col';
 
 import ReactLogo from '../../assets/hamburger_menu.svg';
 
-const Header = ({ openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
+const Header = ({ loadUser, openMobileMenu, closeMobileMenu, isShowingMobileMenu }) => {
   const [classes, setClasses] = useState({
     header: '',
     logo: ''
   });
 
   useEffect(() => {
+    // Load User on app refresh
+    loadUser();
     window.addEventListener('scroll', handleScroll);
   }, []);
 
@@ -99,7 +102,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   openMobileMenu: () => dispatch(openMobileMenu()),
-  closeMobileMenu: () => dispatch(closeMobileMenu())
+  closeMobileMenu: () => dispatch(closeMobileMenu()),
+  loadUser: () => dispatch(loadUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
