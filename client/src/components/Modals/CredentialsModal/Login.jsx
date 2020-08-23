@@ -2,40 +2,46 @@ import React, { useState } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
+import { login } from '../../../redux/auth/auth.actions';
 import { setTopicLogin } from '../../../redux/modals/credentialsModal/credentialsModal.actions';
 
 // Bootstrap
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Login = ({ setTopicLogin }) => {
+const Login = ({ setTopicLogin, login }) => {
 
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log('Loged in');
-  }
+  const { email, password } = credentials;
 
   const handleChange = e => {
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value
     });
-  }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    login({
+      email,
+      password
+    });
+  };
 
   return (
     <div className='credentials-modal--login'>
       <Form onSubmit={handleSubmit} className='mb-3'>
         <Form.Group controlId="formBasicEmail">
-          <Form.Control name="email" type="email" placeholder="Email" onChange={handleChange} value={credentials.email} required />
+          <Form.Control name="email" type="email" placeholder="Email" onChange={handleChange} value={email} required />
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} value={credentials.password} required />
+          <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} value={password} required />
         </Form.Group>
 
         <div className="submit-button text-center">
@@ -53,7 +59,8 @@ const Login = ({ setTopicLogin }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setTopicLogin: topic => dispatch(setTopicLogin(topic))
+  setTopicLogin: topic => dispatch(setTopicLogin(topic)),
+  login: formData => dispatch(login(formData))
 });
 
 export default connect(null, mapDispatchToProps)(Login);

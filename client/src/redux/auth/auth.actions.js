@@ -43,14 +43,46 @@ export const register = formData => async dispatch => {
       type: REGISTER_SUCCESS,
       payload: res.data
     });
-    debugger;
-    console.log('REG SUCCESS');
     dispatch(loadUser());
-    console.log('REG 2');
+
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
       payload: err.response.data.msg
     })
   }
+}
+
+// Login User
+export const login = formData => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const res = await axios.post('api/auth', formData, config);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: err.response.data.msg
+    })
+  }
+};
+
+// Logout
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
+}
+
+// Clear Errors
+export const clearErrors = () => dispatch => {
+  dispatch({ type: CLEAR_ERRORS });
 }
