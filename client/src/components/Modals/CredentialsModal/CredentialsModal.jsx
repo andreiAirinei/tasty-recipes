@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
@@ -11,7 +11,13 @@ import Register from './Register';
 // Bootstrap
 import Modal from 'react-bootstrap/Modal';
 
-const CredentialsModal = ({ isActive, topicLogin, closeModalCredentials }) => {
+const CredentialsModal = ({ isActive, topicLogin, closeModalCredentials, isAuthenticated }) => {
+
+  useEffect(() => {
+    console.log('CREDENTIALS MODAL');
+    console.log(isAuthenticated);
+    isAuthenticated && closeModalCredentials();
+  })
 
   const handleClosingModal = () => {
     closeModalCredentials();
@@ -40,7 +46,8 @@ const CredentialsModal = ({ isActive, topicLogin, closeModalCredentials }) => {
 
 const mapStateToProps = state => ({
   isActive: state.credentialsModal.isActive,
-  topicLogin: state.credentialsModal.topicLogin
+  topicLogin: state.credentialsModal.topicLogin,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

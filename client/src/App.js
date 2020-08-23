@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './routing/PrivateRoute';
 
 // JWToken
 import setAuthToken from './utils/setAuthToken';
@@ -37,7 +38,7 @@ const App = ({ getLatestRecipes }) => {
           <Route exact path='/' component={HomePage} />
           <Route path='/recipes' component={RecipesDirectory} />
           <Route path='/ingredients' component={IngredientsPage} />
-          <Route path='/dashboard' component={DashboardPage} />
+          <PrivateRoute path='/dashboard' component={DashboardPage} />
         </Switch>
       </Layout>
       <CredentialsModal />

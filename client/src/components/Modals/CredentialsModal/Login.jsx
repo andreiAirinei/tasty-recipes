@@ -12,8 +12,8 @@ import Button from 'react-bootstrap/Button';
 const Login = ({ setTopicLogin, login }) => {
 
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: ''
+    email: 'test@test.com',
+    password: 'test123'
   });
 
   const { email, password } = credentials;
