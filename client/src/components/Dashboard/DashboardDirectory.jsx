@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 // Components
 import DashboardNavigation from './DashboardNavigation';
-import TabCreate from './Tabs/TabCreate';
+import TabCreate from './Tabs/TabCreate/TabCreate';
 import TabMyRecipes from './Tabs/TabMyRecipes';
-import TabFavorites from './Tabs/TabFavorites';
+import TabFavorites from './Tabs/TabFavorites/TabFavorites';
 
 // Bootstrap
 import Row from 'react-bootstrap/Row';

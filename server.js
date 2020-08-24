@@ -19,6 +19,7 @@ app.get('/', (req, res) => res.json({ msg: 'Welcome to Tasty Recipes API!' }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/recipes', require('./routes/recipes'));
+app.use('/api/favorites', require('./routes/favorites'));
 
 const PORT = process.env.PORT || 5000;
 

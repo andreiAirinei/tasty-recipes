@@ -7,10 +7,24 @@ const RecipeSchema = mongoose.Schema({
     // Refer to 'users' collection
     ref: 'users'
   },
-  meal: {
+  name: {
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: true
+  },
+  // area: {
+  //   type: String,
+  //   required: true
+  // },
+  // youtube: {
+  //   type: String,
+  //   required: true
+  // },
+  // ingredients
+  // image / thumb
   date: {
     type: Date,
     default: Date.now

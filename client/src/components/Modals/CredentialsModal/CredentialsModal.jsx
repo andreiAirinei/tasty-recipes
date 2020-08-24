@@ -17,7 +17,7 @@ const CredentialsModal = ({ isActive, topicLogin, closeModalCredentials, isAuthe
     console.log('CREDENTIALS MODAL');
     console.log(isAuthenticated);
     isAuthenticated && closeModalCredentials();
-  })
+  });
 
   const handleClosingModal = () => {
     closeModalCredentials();

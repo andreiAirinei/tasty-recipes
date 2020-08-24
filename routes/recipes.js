@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 // @desc    Add new recipe
 // @access  Private
 router.post('/', [auth, [
-  check('meal', 'Recipe name is required!').not().isEmpty()
+  check('name', 'Recipe name is required!').not().isEmpty()
 ]], async (req, res) => {
   // Get errors if any
   const errors = validationResult(req);
@@ -32,13 +32,14 @@ router.post('/', [auth, [
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { meal } = req.body;
+  const { name, category } = req.body;
 
   try {
     const newRecipe = new Recipe({
-      meal,
-      user: req.user.id
-    })
+      user: req.user.id,
+      name,
+      category
+    });
 
     const recipe = await newRecipe.save();
 
@@ -53,11 +54,11 @@ router.post('/', [auth, [
 // @desc    Update/Edit recipe
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-  const { meal } = req.body;
+  const { name } = req.body;
 
   // Build recipe object
   const recipeFields = {};
-  if (meal) recipeFields.meal = meal;
+  if (name) recipeFields.name = name;
 
   try {
     let recipe = await Recipe.findById(req.params.id);

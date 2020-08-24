@@ -8,6 +8,7 @@ import ingredientsModalReducer from './modals/ingredientModal/ingredientModal.re
 import credentialsModalReducer from './modals/credentialsModal/credentialsModal.reducer';
 import dashboardReducer from './dashboard/dashboard.reducer';
 import authReducer from './auth/auth.reducer';
+import privateRecipesReducer from './private/recipes/privateRecipes.reducer';
 
 const rootReducer = combineReducers({
   recipes: recipesReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   ingredientModal: ingredientsModalReducer,
   dashboard: dashboardReducer,
   ui: uiReducer,
-  auth: authReducer
+  auth: authReducer,
+  privateRecipes: privateRecipesReducer
 });
 
 export default rootReducer;
