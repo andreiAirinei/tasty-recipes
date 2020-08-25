@@ -8,13 +8,12 @@ const Favorites = require('../models/Favorites');
 // @desc    Add to favorites
 // @access  Private
 router.post('/', auth, async (req, res) => {
-  console.log(req.body);
   const { recipeID } = req.body;
 
   try {
     const newFavorite = new Favorites({
-      recipeID,
-      user: req.user.id
+      user: req.user.id,
+      recipeID
     });
 
     const favorite = await newFavorite.save();

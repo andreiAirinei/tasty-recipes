@@ -4,7 +4,7 @@ import {
   ADD_FAVORITE
 } from './favorites.types';
 
-export const addFavorite = recipeID => async dispatch => {
+export const addFavorite = favorite => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -12,7 +12,7 @@ export const addFavorite = recipeID => async dispatch => {
   };
 
   try {
-    const res = await axios.post('/api/favorites', recipeID, config);
+    const res = await axios.post('/api/favorites', favorite, config);
 
     dispatch({
       type: ADD_FAVORITE,

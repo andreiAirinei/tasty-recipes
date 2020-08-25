@@ -7,7 +7,9 @@ import { addFavorite } from '../../../../redux/private/favorites/favorites.actio
 const TabFavorites = ({ addFavorite }) => {
 
   const handleFav = () => {
-    addFavorite('53024');
+    addFavorite({
+      recipeID: '53024'
+    });
   }
 
   return (
@@ -19,7 +21,7 @@ const TabFavorites = ({ addFavorite }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: recipeID => dispatch(addFavorite(recipeID))
+  addFavorite: favorite => dispatch(addFavorite(favorite))
 });
 
 export default connect(null, mapDispatchToProps)(TabFavorites);

@@ -8,8 +8,12 @@ const FavoriteSchema = mongoose.Schema({
     ref: 'users'
   },
   recipeID: {
-    type: Number,
+    type: String,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 
